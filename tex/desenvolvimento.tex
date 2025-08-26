@@ -16,26 +16,26 @@ Neste trabalho iremos exemplificar duas formas de se inserir figuras no Latex. O
 
 \textbf{Obs.:} A fonte pode ser uma citação do tipo  \textbackslash citeonline\{\}.
 
-A figura \ref{img:placeholder} é um exemplo deste método.
+% A figura \ref{img:placeholder} é um exemplo deste método.
 
-%--------------------------------------------------------------------------------------
-% Esse é um exemplo de figura simples
-%--------------------------------------------------------------------------------------
-\imagem{0.15}{placeholder}{Uma figura simples}{O autor}
+% %--------------------------------------------------------------------------------------
+% % Esse é um exemplo de figura simples
+% %--------------------------------------------------------------------------------------
+% \imagem{0.15}{placeholder}{Uma figura simples}{O autor}
 
-A figura \ref{img:figura1} é um exemplo do outro tipo de figura abordada aqui, chamada de figura composta. Esta figura é composta de outras subfiguras.
-%--------------------------------------------------------------------------------------
-% Esse é um exemplo de figura composta de outras subfiguras
-%--------------------------------------------------------------------------------------
-\begin{figure}[!htb]
-\centering
-    \caption{\label{img:figura1} Exemplo de figura composta}
-    \subcaptionbox{\label{img:subfigura1} Subfigura 1}{\includegraphics[scale=.1]{img/placeholder}}\qquad
-    \subcaptionbox{\label{img:subfigura2} Subfigura 2}{\includegraphics[scale=.1]{img/placeholder}}
-    \vspace{1.5em}
-    \legend{\textbf{Fonte:} \citeonline{SUA-REFERENCIA}}
-\label{fig:dag}
-\end{figure}
+% A figura \ref{img:figura1} é um exemplo do outro tipo de figura abordada aqui, chamada de figura composta. Esta figura é composta de outras subfiguras.
+% %--------------------------------------------------------------------------------------
+% % Esse é um exemplo de figura composta de outras subfiguras
+% %--------------------------------------------------------------------------------------
+% \begin{figure}[!htb]
+% \centering
+%     \caption{\label{img:figura1} Exemplo de figura composta}
+%     \subcaptionbox{\label{img:subfigura1} Subfigura 1}{\includegraphics[scale=.1]{img/placeholder}}\qquad
+%     \subcaptionbox{\label{img:subfigura2} Subfigura 2}{\includegraphics[scale=.1]{img/placeholder}}
+%     \vspace{1.5em}
+%     \legend{\textbf{Fonte:} \citeonline{SUA-REFERENCIA}}
+% \label{fig:dag}
+% \end{figure}
 
 %\begin{figure}[!htb]
 %\centering
@@ -52,6 +52,41 @@ A figura \ref{img:figura1} é um exemplo do outro tipo de figura abordada aqui, 
 %    \legend{\textbf{Fonte:} O Autor}
 %\label{fig:dag}
 %\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[height=12cm]{figuras/user_story_1.png}
+\caption{História de Usuário 1: Travamento de todas as portas}
+%\label{fig:casos-uso}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[height=12cm]{figuras/user_story_2.png}
+\caption{História de Usuário 2: Destravamento de todas as portas}
+%\label{fig:casos-uso}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[height=12cm]{figuras/user_story_3.png}
+\caption{História de Usuário 3: Feedback de travamento}
+%\label{fig:casos-uso}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[height=12cm]{figuras/user_story_4.png}
+\caption{História de Usuário 4: Keyless Access}
+%\label{fig:casos-uso}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[height=12cm]{figuras/user_story_5.png}
+\caption{História de Usuário 5: Travamento automático}
+%\label{fig:casos-uso}
+\end{figure}
 
 Para referenciar uma figura deve ser usada comando \textbackslash ref\{img:<label ou nome do arquivo>\}, como exemplo, estamos referenciando a figura \ref{img:placeholder}. Isso vale tanto para figuras simples quanto para as compostas, como por exemplo as figuras \ref{img:subfigura1} e \ref{img:subfigura2}. Ao inserir uma figura, ela é automaticamente identificada e incluída no elemento pré-textual da lista de figuras.
 
