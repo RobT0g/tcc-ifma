@@ -3,18 +3,88 @@
 %--------------------------------------------------------------------------------------
 \chapter{Fundamentação teórica}
 
-\section{Seção de exemplo 1 - Como fazer citações}
+A fundamentação deste trabalho é a aplicação prática do Desenvolvimento Orientado a Comportamento (BDD) ao desenvolvimento de sistemas de software automotivo. 
+Esse processo será aplicado no mapeamento de funcionalidades e modelagem de um sistema de travamento de portas veicular.
 
-Existem vários tipos de citações...
+\section{Desenvolvimento Orientado a Comportamento - BDD}
+
+A metodologia de desenvolvimento orientado a comportamento foi inicialmente proposta por Dan North, que compartilhou em seu blog \cite{north2006bdd} as lições 
+aprendidas ao aplicar e ensinar o processo de desenvolvimento orientado a testes (TDD). Segundo o mesmo, “Ele (BDD) evoluiu além de práticas ágeis e é designado 
+para fazê-las mais acessíveis e efetivas para times que são novos no desenvolvimento ágil”.
+A evolução do processo de BDD foi impulsionada por diversas descobertas práticas que surgiram em resposta às dificuldades enfrentadas na aplicação do TDD. A mudança 
+da nomenclatura de “teste” para “comportamento”, por exemplo, é aparentemente simples, mas gerou um impacto profundo. Essa nova terminologia ajudou a consolidar a 
+ideia de que os testes devem sempre validar o comportamento esperado do sistema, o que, por sua vez, reduziu significativamente dúvidas comuns entre desenvolvedores 
+iniciantes, como: “como eu testo isso?” ou “como eu nomeio este teste?”.
+Outra mudança importante nesse processo foi a adoção do termo should (deveria) em vez de shall (deve) ou will (vai) na formulação dos nomes dos testes. Dessa forma, 
+a sua nomenclatura se torna uma sentença natural e provoca a reflexão: Ao afirmar que “o sistema deveria fazer algo”, é natural que surja a dúvida: “mas deveria mesmo?”. 
+Esse tipo de reflexão é especialmente valioso em equipes ágeis \cite{atlassianAgileTeams}, pois estimula o diálogo — principalmente em discussões que envolvem 
+profissionais com diferentes níveis de conhecimento técnico ou de domínio do negócio.
+A trajetória de Dan North, marcada por suas descobertas, consolidaram um processo de desenvolvimento robusto e que traz diversas práticas voltadas a entregar valor 
+ao usuário de forma mais rápida. Esse amadurecimento é evidente nas características apontadas por \cite{studyBDD} sobre o processo de BDD em sua forma atual, que consistem de:
+
+\begin{enumerate}
+	\item \textbf{Linguagem Ubíqua} - uma linguagem comum compreensível tanto por desenvolvedores quanto por especialistas do domínio ou do negócio. Deve ser utilizada 
+	ao longo de todo o processo de desenvolvimento do produto, assegurando uma comunicação clara e evitando ambiguidades entre as partes envolvidas;
+	\item \textbf{Processo de decomposição iterativa} - facilita a priorização do desenvolvimento de funcionalidades para o sistema ao delinear o valor gerado para o cliente final;
+	\item \textbf{Descrições em texto simples com histórias de usuário e templates de cenários} - emprega templates que contém uma mistura de palavras chaves e linguagem natural na 
+	criação de histórias de usuário e de cenários, garantindo sua acessibilidade e facilidade de entendimento;
+	\item \textbf{Testes de aceitação automatizados com regras de mapeamento} - aplica especificações executáveis na forma de cenários compostos de passos que são traduzidos em testes
+	, os quais orientam o desenvolvimento.
+\end{enumerate}
+
+Para garantir que todas as características listadas sejam capturadas neste trabalho, o uso de histórias de usuário \cite{atlassianUserStories} e da 
+linguagem Gherkin (cucumber) \cite{cucumberHistory} serão aplicadas.
 
 
-\section{Seção de exemplo 2 - Como inserir figuras}
+\section{Definição das funcionalidades do sistema por meio de Histórias de Usuário e Mapeamento de Exemplos}
 
-Neste trabalho iremos exemplificar duas formas de se inserir figuras no Latex. O primeiro método insere, no documento, uma figura simples por meio do comando:
+Segundo \cite{atlassianUserStories}, histórias de usuário são “uma explicação informal de uma funcionalidade de software escrita na perspectiva do usuário”. Elas 
+representam uma unidade de trabalho, um objetivo de desenvolvimento a ser alcançado e garante que a equipe seja capaz de colaborar e trazer soluções inovadores 
+com o usuário final em foco. 
+Para isso, adota-se um formato que se utiliza de linguagem natural e assegura a definição de três elementos fundamentais:
 
-\textbackslash imagem\{ Escala \}\{ Arquivo sem extensão \}\{ Descrição \}\{ Fonte \}
+\begin{itemize}
+	\item Quem é o usuário?
+	\item Qual funcionalidade deve ser implementada?
+	\item Qual valor essa funcionalidade traz ao usuário?
+\end{itemize}
 
-\textbf{Obs.:} A fonte pode ser uma citação do tipo  \textbackslash citeonline\{\}.
+Esses três pontos são organizados em uma estrutura padronizada que utiliza conjunções específicas, resultando no seguinte modelo:
+\textit{“Como [tipo de usuário], eu quero [funcionalidade], para que [valor gerado].”}
+Assim como destacado por Dan North 
+\begin{citacao}
+“[...] sua força está em forçar que você identifique o valor de entregar uma história quando você a define [...]”. \cite{north2006bdd}
+\end{citacao}
+Essa ênfase em entender o valor entregue ao usuário — desde a formulação das histórias — é essencial para garantir que as funcionalidades desenvolvidas estejam 
+alinhadas com as reais necessidades do usuário.
+Para garantir um bom fluxo nas discussões durante a definição do escopo das histórias, o exemplo prático da aplicação de BDD demonstrado em \cite{gosling2014cucumber} 
+destaca o uso do mapeamento de exemplos como uma forma eficaz para explorar e esclarecer os comportamentos esperados do sistema. Esse método contribui para que 
+toda a equipe tenha uma compreensão da funcionalidade em questão e evita desvios no foco da conversa.
+Dessa maneira, a definição dos comportamento deve ser feita por meio de discussões que incluem toda a equipe e começa com citações de exemplos de uso real, priorizando 
+os cenários de happy path — aqueles em que o sistema se comporta conforme o esperado em condições normais. Estes exemplos devem ser sempre descritos a partir da 
+perspectiva do usuário e podem ser trazidos de forma iterativa, sem a necessidade de que todos os casos estejam definidos antes do início do desenvolvimento. 
+Neste estágio do processo, existem ainda muitas incertezas acerca do sistema, o que pode dificultar a definição de comportamentos concretos que sustentem 
+tecnicamente os exemplos levantados. Essa dificuldade é ainda maior quando não se tem uma descrição física do produto final ou detalhes de implementação - como no 
+caso deste trabalho onde o mecanismo do travamento da porta ainda não está definido durante a etapa de mapeamento de exemplos.
+Para lidar com tantos pontos desconhecidos durante discussões com a equipe, costuma-se aplicar o mapeamento de exemplos com o uso de notas adesivas coloridas, 
+assim como descrito na metodologia de \cite{cucumberExampleMapping}. Ela se utiliza de notas coloridas em 4 cores diferentes que representam diferentes pontos:
+
+\begin{itemize}
+	\item \textbf{Amarelo}: História de usuário ou funcionalidade;
+	\item \textbf{Azul}: Regra de funcionamento da história;
+	\item \textbf{Verde}: Exemplo concreto que demonstra uma regra;
+	\item \textbf{Vermelho}: Pergunta que foge do escopo da discussão e que deve ser investigada futuramente.
+\end{itemize}
+
+Dessa maneira, todos os pontos desconhecidos que foram previamente identificados são registrados como perguntas, evitando que a discussão se desvie para tópicos 
+fora do escopo naquele momento. Na etapa de implementação, serão apresentados exemplos dessas perguntas e a forma como cada uma será tratada ao longo do processo.
+Após as dúvidas serem anotadas, a discussão segue focada na experiência do usuário, mesmo que alguns aspectos técnicos ainda não estejam totalmente esclarecidos. 
+Neste caso, assume-se que o veículo existe e que suas portas funcionam “magicamente”, conforme os comportamentos definidos, permitindo que a discussão possa ser 
+prosseguida com os exemplos concretos que devem ser descritos usando as notas verdes.
+
+%\textbackslash imagem\{ Escala \}\{ Arquivo sem extensão \}\{ Descrição \}\{ Fonte \}
+
+%\textbf{Obs.:} A fonte pode ser uma citação do tipo  \textbackslash citeonline\{\}.
 
 % A figura \ref{img:placeholder} é um exemplo deste método.
 
@@ -53,113 +123,166 @@ Neste trabalho iremos exemplificar duas formas de se inserir figuras no Latex. O
 %\label{fig:dag}
 %\end{figure}
 
-\begin{figure}[ht]
-\centering
-\includegraphics[height=12cm]{figuras/user_story_1.png}
-\caption{História de Usuário 1: Travamento de todas as portas}
-%\label{fig:casos-uso}
-\end{figure}
+% \begin{figure}[ht]
+% \centering
+% \includegraphics[height=12cm]{figuras/user_story_1.png}
+% \caption{História de Usuário 1: Travamento de todas as portas}
+% %\label{fig:casos-uso}
+% \end{figure}
 
-\begin{figure}[ht]
-\centering
-\includegraphics[height=12cm]{figuras/user_story_2.png}
-\caption{História de Usuário 2: Destravamento de todas as portas}
-%\label{fig:casos-uso}
-\end{figure}
+% \begin{figure}[ht]
+% \centering
+% \includegraphics[height=12cm]{figuras/user_story_2.png}
+% \caption{História de Usuário 2: Destravamento de todas as portas}
+% %\label{fig:casos-uso}
+% \end{figure}
 
-\begin{figure}[ht]
-\centering
-\includegraphics[height=12cm]{figuras/user_story_3.png}
-\caption{História de Usuário 3: Feedback de travamento}
-%\label{fig:casos-uso}
-\end{figure}
+% \begin{figure}[ht]
+% \centering
+% \includegraphics[height=12cm]{figuras/user_story_3.png}
+% \caption{História de Usuário 3: Feedback de travamento}
+% %\label{fig:casos-uso}
+% \end{figure}
 
-\begin{figure}[ht]
-\centering
-\includegraphics[height=12cm]{figuras/user_story_4.png}
-\caption{História de Usuário 4: Keyless Access}
-%\label{fig:casos-uso}
-\end{figure}
+% \begin{figure}[ht]
+% \centering
+% \includegraphics[height=12cm]{figuras/user_story_4.png}
+% \caption{História de Usuário 4: Keyless Access}
+% %\label{fig:casos-uso}
+% \end{figure}
 
-\begin{figure}[ht]
-\centering
-\includegraphics[height=12cm]{figuras/user_story_5.png}
-\caption{História de Usuário 5: Travamento automático}
-%\label{fig:casos-uso}
-\end{figure}
+% \begin{figure}[ht]
+% \centering
+% \includegraphics[height=12cm]{figuras/user_story_5.png}
+% \caption{História de Usuário 5: Travamento automático}
+% %\label{fig:casos-uso}
+% \end{figure}
 
-Para referenciar uma figura deve ser usada comando \textbackslash ref\{img:<label ou nome do arquivo>\}, como exemplo, estamos referenciando a figura \ref{img:placeholder}. Isso vale tanto para figuras simples quanto para as compostas, como por exemplo as figuras \ref{img:subfigura1} e \ref{img:subfigura2}. Ao inserir uma figura, ela é automaticamente identificada e incluída no elemento pré-textual da lista de figuras.
-
-
+%Para referenciar uma figura deve ser usada comando \textbackslash ref\{img:<label ou nome do arquivo>\}, como exemplo, estamos referenciando a figura \ref{img:placeholder}. Isso vale tanto para figuras simples quanto para as compostas, como por exemplo as figuras \ref{img:subfigura1} e \ref{img:subfigura2}. Ao inserir uma figura, ela é automaticamente identificada e incluída no elemento pré-textual da lista de figuras.
 
 
-\section{Seção de exemplo 3 - Sobre tabelas}
-
-As tabelas em Latex são deveras capciosas, por isso não serão abordadas em sua completude neste documento.
-
-Há um site que possui uma ferramenta interessante para ser utilizada na construção tabelas em Latex.
-
-\centerline{\href{https://www.tablesgenerator.com/}{ O Tables Generator } <-- Isto é um \textit{link} :D}
-
-Contudo, busquem entendimento sobre o assunto, pois tabelas são elementos textuais importantes e enriquecem muito o texto, quando bem construídas.
-
-A tabela \ref{tab:crossplatform} é um exemplo de como uma tabela pode ser construída, assim como a tabela do anexo \ref{anex:anexo1}.
-
-\begin{table}[!htb]
-	\centering
-	\caption{\label{tab:crossplatform} Tipos de aplicações e abordagens preferenciais.}
-	\begin{adjustbox}{max width=\textwidth}
-		\begin{tabular}{@{} p{5cm} |c|c|c| @{}}
-		\toprule
-		\textbf{Código da Aplicação} & \textbf{Web} & \textbf{Híbrida} & \textbf{Interpretada / Compilação Cruzada} \\ \hline
-
-		\textbf{Aplicações baseadas em dados providos por um servidor} &
-			3 & 2 & 1
-		\\ \hline
-
-		\textbf{Aplicações independentes} & 1 & 2 & 3\\ \hline
-
-		\textbf{Aplicações baseadas em sensores e processamento de dados no dispositivo} & 1 & 2 & 3\\ \hline
-
-		\textbf{Aplicações baseadas em sensores e processamento de dados no servidor} & 1 & 3 & 2\\ \hline
-
-		\textbf{Aplicações Cliente-Servidor} & 1 & 3 & 2 \\ \bottomrule
-	\end{tabular}
-	\end{adjustbox}
-	\legend{\textbf{Fonte:} \citeonline{raj2012study} (Traduzido)}
-\end{table}
-
-Também é possível criar quadros, que são ligeiramente diferente de tabelas. Acompanhe o exemplo no Quadro \ref{qua:confusionmatrix}
-
-\begin{quadro}
-	\centering
-	\caption{\label{qua:confusionmatrix}Exemplo de matriz de confusão}
-	\begin{tabular}{ll|c|c|}
-		\cline{3-4}
-		\multicolumn{1}{c}{\textbf{}} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{2}{l|}{\textbf{Classe prevista}} \\ \cline{3-4}
-		 & \multicolumn{1}{c|}{\textbf{}} & Classe = 1 & Classe = 0 \\ \hline
-		\multicolumn{1}{|l|}{\multirow{2}{*}{\textbf{Classe real}}} & Classe = 1 & $f_{11}$ & $f_{10}$ \\ \cline{2-4}
-		\multicolumn{1}{|l|}{} & Classe = 0 & $f_{01}$ & $f_{00}$ \\ \hline
-	\end{tabular}
-	\Ididthis
-\end{quadro}
 
 
-\begin{quadro}
-	\caption{\label{qua:cron}Cronograma}
-	\center
-	\begin{tabular}{|c|c|c|c|c|c|}
-	\hline
-	\multicolumn{1}{|l|}{Atividade} & \multicolumn{1}{l|}{Set/19} & \multicolumn{1}{l|}{Out/19} & \multicolumn{1}{l|}{Nov/19} & \multicolumn{1}{l|}{Dez/19} & \multicolumn{1}{l|}{Jan/20} \\ \hline
-	1                               & x                           &                             &                             &                             &                             \\ \hline
-	2                               &                             & x                           &                             &                             &                             \\ \hline
-	3                               &                             & x                           &                             &                             &                             \\ \hline
-	4                               &                             &                             & x                           & x                           &                             \\ \hline
-	5                               &                             & x                           & x                           & x                           &                             \\ \hline
-	6                               &                             &                             &                             &                             & x                           \\ \hline
+\section{A linguagem Gherkin (Cucumber)}
+A validação das funcionalidades definidas, como detalhado no processo de BDD, consiste na criação de especificações executáveis na forma de cenários que servem de critérios de aceitação das histórias de usuário. Os cenários utilizam um padrão de escrita que incorpora uma junção de palavras-chave com linguagem natural e podem ter interface com o código desenvolvido por meio de diversas ferramentas como JBehave, RSpec [8] e a que será aplicado neste trabalho - Cucumber [9]  em junção com a biblioteca do Python chamada Behave [10].
+Cucumber utiliza a gramática Gherkin para a escrita dos cenários, adotando as palavras-chave Given/When/Then (Dado que/Quando/Então), que permitem descrever o comportamento esperado do sistema de forma compreensível para todas as partes envolvidas. Esses cenários são traduzidos em testes automatizados que interagem com o software e verificam seu comportamento por meio de passos e definições de passos, os quais contêm as instruções necessárias para manipular o sistema e gerar situações de teste.
+A estrutura da especificação é organizada em arquivos com extensão .feature, próprios do Cucumber. Esses arquivos descrevem conjuntos de cenários, compostos por passos que são interpretados e associados às definições implementadas em Python, por meio da biblioteca Behave. Cada cenário dentro da feature descreve, utilizando as palavras guias, os seguintes componentes do teste:
+Given - estado inicial ou pré-condições.
+When - evento ou transição de estado.
+Then - estado final do sistema ou ação.
+Dessa forma, um cenário descreve como o sistema deve transitar de um estado inicial — definido pela cláusula Given — para um estado final — especificado pelo Then — em resposta a uma mudança ou evento descrito pelo When. Um exemplo disso pode ser demonstrado da seguinte forma:
+
+Scenario: Derrubar dominós
+Given eu organizei vários dominós em pé numa fila reta
+When eu derrubar o primeiro dominó
+Then todos os dominós deveriam cair em sequência 
+
+Este exemplo ilustra como a gramática Gherkin pode ser utilizada para representar um cenário real na qual dominós são enfileirados e, ao se derrubar o primeiro, ocorre uma reação em cadeia. Ele demonstra uma clara mudança de estado que ocorre como uma resposta ao evento que é derrubar o primeiro dominó.
+Um exemplo aplicado a um sistema de software para travamento de portas — como no caso abordado neste trabalho — pode ser descrito da seguinte forma:
+
+Scenario: Travando o carro
+Given o meu carro está destravado
+When eu pressiono o botão de travamento das portas
+Then o carro deveria ser travado
+
+Tanto este quanto o exemplo anterior ilustram como o uso da linguagem natural proposto pelo processo de BDD na escrita dos cenários torna o entendimento claro e evita confusões. Outro benefício dessa abordagem é sua independência em relação à tecnologia utilizada — ao definir que o comportamento esperado do sistema é travar o carro em resposta ao pressionar o botão, essa especificação permanece válida independentemente do tipo de trava adotado ou mesmo do número de portas no veículo.
+Com a biblioteca Behave, do Python, é possível implementar os passos definidos nos cenários Gherkin por meio de funções associadas a decoradores específicos. Esses decoradores utilizam as palavras-chave da gramática Gherkin — como Given, When e Then — para vincular cada trecho do cenário a uma função que executa a lógica correspondente.
+Assim como citado por [3] as definições de passo e integração com o software é feita de maneira iterativa, similar ao do processo de TDD, seguindo o ciclo “vermelho-verde-refatorar”. Nesse contexto, cada passo do cenário assume o papel de um teste: inicialmente, o passo falha (“vermelho”); em seguida, são feitas alterações mínimas para que ele seja satisfeito (“verde”); por fim, o código é aprimorado mantendo o comportamento esperado (“refatoração”).
+No exemplo da cláusula When do último cenário descrito nesta seção, a intenção do passo é representar o pressionar do botão de travamento das portas. Essa ação pode ser realizada por meio da alteração do sinal de entrada do sistema que indica o estado do botão, modificando seu valor de 0 para 1. Utilizando a biblioteca Behave em Python, isso pode ser realizado da seguinte maneira:
+
+%@when(‘eu pressiono o botão de travamento das portas’)
+%def passo_pressionar_botao_de_travamento(context):
+%context.botao_trava = 1
+
+%Onde o decorador “@when” especifica qual passo está sendo definido, e a função “passo_pressionar_botao_de_travamento” contém a lógica que deve ser executada quando esse passo for invocado. O objeto “context” é amplamente utilizado na biblioteca Behave por permitir o compartilhamento de informações entre os passos, bem como o acesso a interfaces do sistema sob teste. Nesse caso, assume-se que o valor do sinal referente ao botão de travamento está armazenado no objeto “context” e pode ser modificado por meio de uma simples atribuição.
+%Na prática, existem algumas complexidades adicionais a serem tratadas na implementação dessas funções, como a comunicação entre o código Python e o modelo Simulink, além da identificação do bloco cujo valor deve ser alterado. No entanto, a função apresentada ilustra claramente o princípio do mapeamento entre os passos descritos em linguagem natural e as ações que operam sobre o sistema - cada passo, ao ser executado, invoca uma função responsável por manipular o sistema de forma a aplicar o comportamento definido na especificação.
+
+%%%%%%%%%
+% As tabelas em Latex são deveras capciosas, por isso não serão abordadas em sua completude neste documento.
+
+% Há um site que possui uma ferramenta interessante para ser utilizada na construção tabelas em Latex.
+
+% \centerline{\href{https://www.tablesgenerator.com/}{ O Tables Generator } <-- Isto é um \textit{link} :D}
+
+% Contudo, busquem entendimento sobre o assunto, pois tabelas são elementos textuais importantes e enriquecem muito o texto, quando bem construídas.
+
+% A tabela \ref{tab:crossplatform} é um exemplo de como uma tabela pode ser construída, assim como a tabela do anexo \ref{anex:anexo1}.
+
+% \begin{table}[!htb]
+% 	\centering
+% 	\caption{\label{tab:crossplatform} Tipos de aplicações e abordagens preferenciais.}
+% 	\begin{adjustbox}{max width=\textwidth}
+% 		\begin{tabular}{@{} p{5cm} |c|c|c| @{}}
+% 		\toprule
+% 		\textbf{Código da Aplicação} & \textbf{Web} & \textbf{Híbrida} & \textbf{Interpretada / Compilação Cruzada} \\ \hline
+
+% 		\textbf{Aplicações baseadas em dados providos por um servidor} &
+% 			3 & 2 & 1
+% 		\\ \hline
+
+% 		\textbf{Aplicações independentes} & 1 & 2 & 3\\ \hline
+
+% 		\textbf{Aplicações baseadas em sensores e processamento de dados no dispositivo} & 1 & 2 & 3\\ \hline
+
+% 		\textbf{Aplicações baseadas em sensores e processamento de dados no servidor} & 1 & 3 & 2\\ \hline
+
+% 		\textbf{Aplicações Cliente-Servidor} & 1 & 3 & 2 \\ \bottomrule
+% 	\end{tabular}
+% 	\end{adjustbox}
+% 	\legend{\textbf{Fonte:} \citeonline{raj2012study} (Traduzido)}
+% \end{table}
+
+% Também é possível criar quadros, que são ligeiramente diferente de tabelas. Acompanhe o exemplo no Quadro \ref{qua:confusionmatrix}
+
+% \begin{quadro}
+% 	\centering
+% 	\caption{\label{qua:confusionmatrix}Exemplo de matriz de confusão}
+% 	\begin{tabular}{ll|c|c|}
+% 		\cline{3-4}
+% 		\multicolumn{1}{c}{\textbf{}} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{2}{l|}{\textbf{Classe prevista}} \\ \cline{3-4}
+% 		 & \multicolumn{1}{c|}{\textbf{}} & Classe = 1 & Classe = 0 \\ \hline
+% 		\multicolumn{1}{|l|}{\multirow{2}{*}{\textbf{Classe real}}} & Classe = 1 & $f_{11}$ & $f_{10}$ \\ \cline{2-4}
+% 		\multicolumn{1}{|l|}{} & Classe = 0 & $f_{01}$ & $f_{00}$ \\ \hline
+% 	\end{tabular}
+% 	\Ididthis
+% \end{quadro}
+
+
+% \begin{quadro}
+% 	\caption{\label{qua:cron}Cronograma}
+% 	\center
+% 	\begin{tabular}{|c|c|c|c|c|c|}
+% 	\hline
+% 	\multicolumn{1}{|l|}{Atividade} & \multicolumn{1}{l|}{Set/19} & \multicolumn{1}{l|}{Out/19} & \multicolumn{1}{l|}{Nov/19} & \multicolumn{1}{l|}{Dez/19} & \multicolumn{1}{l|}{Jan/20} \\ \hline
+% 	1                               & x                           &                             &                             &                             &                             \\ \hline
+% 	2                               &                             & x                           &                             &                             &                             \\ \hline
+% 	3                               &                             & x                           &                             &                             &                             \\ \hline
+% 	4                               &                             &                             & x                           & x                           &                             \\ \hline
+% 	5                               &                             & x                           & x                           & x                           &                             \\ \hline
+% 	6                               &                             &                             &                             &                             & x                           \\ \hline
 	
-	\end{tabular}
-	\legend{\textbf{Fonte:} Elaborado pela autora (2019)}
-	\end{quadro}
+% 	\end{tabular}
+% 	\legend{\textbf{Fonte:} Elaborado pela autora (2019)}
+% 	\end{quadro}
 
-\section{Subseção de exemplo 4 - Seções}
+\section{Design Orientado por Modelo}
+O desenvolvimento de software embarcado impõe uma série de desafios, conforme destacado por [11]. Entre os principais, estão os altos custos associados ao ciclo de desenvolvimento e as severas restrições de performance, consumo de energia e capacidade de processamento — fatores diretamente condicionados pelo hardware utilizado. Essas limitações tornam o processo de definição e validação do sistema particularmente complexo, já que até mesmo alterações simples nos requisitos podem demandar modificações significativas no código-fonte, seguidas por longas etapas de recompilação, testes e depuração.
+Nesse cenário, o Model-Based Design (MBD) surge como uma abordagem eficaz para lidar com tais dificuldades. Segundo a MathWorks [12], ele consiste de uma metodologia que utiliza modelos computacionais e simulações ao longo do processo de desenvolvimento de um sistema, substituindo a escrita manual de código. Através dessa abordagem, os sistemas podem ser projetados, simulados e validados em um ambiente integrado.
+Os principais benefícios dessa metodologia são:
+Ligação do design diretamente aos requisitos.
+Colaboração em um ambiente de desenvolvimento compartilhado.
+Simulação de vários cenários possíveis.
+Otimização de performance a nível do sistema.
+Geração automática de código embarcado, documentação e relatórios.
+Detectar erros mais cedo por testar mais cedo.
+Neste trabalho o último ponto será especialmente demonstrado, devido a utilização dos testes de aceitação das histórias de usuário. Isso será feito ao integrar cenários Gherkin com o modelo em Simulink para executar os testes que validam o seu comportamento durante as simulações.
+Outra barreira frequentemente  encontrada no desenvolvimento de software embarcado é a sua forte dependência do hardware utilizado, especialmente quando se trata da interação com os diversos componentes conectados ao microcontrolador. No caso do sistema de travamento de portas, por exemplo, é necessária a utilização de um atuador que seja capaz de acionar a trava e impedir a abertura da porta — algo que pode ser implementado com o uso de motores de passo ou servo motores.
+A dificuldade surge justamente na definição das entradas e saídas do sistema, que precisam ser modeladas de forma compatível com os componentes selecionados. No entanto, muitas vezes o hardware ainda não está totalmente definido nesta etapa do projeto, ou pode vir a ser alterado futuramente por razões de custo, disponibilidade ou requisitos de desempenho. Essas mudanças forçam modificações no modelo do sistema, o que acaba reproduzindo um dos principais problemas da abordagem tradicional baseada em código manual: a necessidade constante de retrabalho sempre que há mudanças na base de hardware.
+Para mitigar esses tipo de problema, é comum a adoção de padrões de desenvolvimento de software, como o AUTOSAR [13], que separa o sistema em camadas, cada uma com um nível específico de abstração. Essa arquitetura em camadas permite isolar as dependências de hardware, facilitando a reutilização de código e a manutenção do sistema. 
+No modelo AUTOSAR, a estrutura do software é decomposta nas seguintes camadas:
+Camada de Aplicação — contém componentes de software que são responsáveis pela lógica funcional do sistema, que são completamente independentes do hardware.
+Software básico — implementa serviços que permitem o acesso direto ao hardware, lidando com os detalhes técnicos da plataforma física utilizada.
+RTE (Run-Time Environment) — faz a interface entre as duas camadas anteriores e gerencia a comunicação entre diferentes componentes de software.
+Neste caso, o desenvolvimento do modelo será focado na camada de aplicação, similar à presente no padrão AUTOSAR, definindo interfaces de entrada e saída como abstrações simplificadas que satisfazem o comportamento do sistema sem se prender em detalhes técnicos. Para isso, a definição do modelo do sistema e dos testes de aceitação tomará como base o teste de caixa preta [14].
+Dessa forma, uma possível abstração da saída do sistema, considerando o problema levantado anteriormente — o estado de travamento da porta —, pode ser feita ao representar cada trava por meio de um sinal binário: onde 1 indica o estado travado e 0, o destravado. Essa interface corresponde à saída do modelo, a qual, na prática, é transmitida através da camada de RTE para o software básico que é responsável por converter esse sinal em um formato compatível com o componente físico selecionado.
+Um benefício adicional dessa abstração é que ela permite a utilização direta das interfaces nos cenários Gherkin e torna a validação independente dos detalhes técnicos do sistema, assim como é definido em testes de caixa preta. Essa metodologia vai de acordo com a definição dos comportamentos no BDD, afinal, o valor gerado na funcionalidade de travamento de portas não depende da capacidade de movimentar um motor, mas sim da lógica que habilita o estado de travamento, independentemente do mecanismo utilizado para isso.
