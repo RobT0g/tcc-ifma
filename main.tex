@@ -58,6 +58,7 @@ CURSO DE GRADUAÇÃO EM ENGENHARIA DE COMPUTAÇÃO}
 % Para possibilitar o uso de codigo
 %\usepackage{minted}
 
+\usepackage{float}
 \usepackage{listings}
 \usepackage{xcolor} % Para customizar cores
 
@@ -74,6 +75,11 @@ CURSO DE GRADUAÇÃO EM ENGENHARIA DE COMPUTAÇÃO}
   captionpos=b,
   tabsize=2
 }
+
+%% Possibilita o uso da lista de quadros
+\newlistof{listofquadros}{loq}{Lista de Quadros}
+\renewcommand{\tablename}{Quadro}
+%\newcommand{\listofquadros}{\listoflistofquadros}
 
 % -----------------------------------------------------------------------------
 % Início do TCC 
@@ -97,6 +103,6 @@ CURSO DE GRADUAÇÃO EM ENGENHARIA DE COMPUTAÇÃO}
 	\postextual
 		\bibliographystyle{abntex2-alf}   % ou abntex2-alf, ieeetr, unsrt etc
 		\bibliography{referencias}  % nome do arquivo .bib sem a extensão
-		\input{tex/anexos}
+		%\input{tex/anexos}
 
 \end{document}
