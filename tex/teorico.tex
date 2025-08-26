@@ -57,7 +57,7 @@ Assim como destacado por Dan North
 \end{citacao}
 Essa ênfase em entender o valor entregue ao usuário — desde a formulação das histórias — é essencial para garantir que as funcionalidades desenvolvidas estejam 
 alinhadas com as reais necessidades do usuário.
-Para garantir um bom fluxo nas discussões durante a definição do escopo das histórias, o exemplo prático da aplicação de BDD demonstrado em \cite{gosling2014cucumber} 
+Para garantir um bom fluxo nas discussões durante a definição do escopo das histórias, o exemplo prático da aplicação de BDD demonstrado em \cite{Lawrence2019cucumber} 
 destaca o uso do mapeamento de exemplos como uma forma eficaz para explorar e esclarecer os comportamentos esperados do sistema. Esse método contribui para que 
 toda a equipe tenha uma compreensão da funcionalidade em questão e evita desvios no foco da conversa.
 Dessa maneira, a definição dos comportamento deve ser feita por meio de discussões que incluem toda a equipe e começa com citações de exemplos de uso real, priorizando 
@@ -164,9 +164,17 @@ prosseguida com os exemplos concretos que devem ser descritos usando as notas ve
 
 
 \section{A linguagem Gherkin (Cucumber)}
-A validação das funcionalidades definidas, como detalhado no processo de BDD, consiste na criação de especificações executáveis na forma de cenários que servem de critérios de aceitação das histórias de usuário. Os cenários utilizam um padrão de escrita que incorpora uma junção de palavras-chave com linguagem natural e podem ter interface com o código desenvolvido por meio de diversas ferramentas como JBehave, RSpec [8] e a que será aplicado neste trabalho - Cucumber [9]  em junção com a biblioteca do Python chamada Behave [10].
-Cucumber utiliza a gramática Gherkin para a escrita dos cenários, adotando as palavras-chave Given/When/Then (Dado que/Quando/Então), que permitem descrever o comportamento esperado do sistema de forma compreensível para todas as partes envolvidas. Esses cenários são traduzidos em testes automatizados que interagem com o software e verificam seu comportamento por meio de passos e definições de passos, os quais contêm as instruções necessárias para manipular o sistema e gerar situações de teste.
-A estrutura da especificação é organizada em arquivos com extensão .feature, próprios do Cucumber. Esses arquivos descrevem conjuntos de cenários, compostos por passos que são interpretados e associados às definições implementadas em Python, por meio da biblioteca Behave. Cada cenário dentro da feature descreve, utilizando as palavras guias, os seguintes componentes do teste:
+A validação das funcionalidades definidas, como detalhado no processo de BDD, consiste na criação de especificações executáveis na forma de cenários que servem de 
+critérios de aceitação das histórias de usuário. Os cenários utilizam um padrão de escrita que incorpora uma junção de palavras-chave com linguagem natural e podem 
+ter interface com o código desenvolvido por meio de diversas ferramentas como JBehave, RSpec \cite{cucumberHistory} e a que será aplicado neste trabalho - 
+Cucumber \cite{cucumberDocs}  em junção com a biblioteca do Python chamada Behave \cite{behaveDocs}.
+Cucumber utiliza a gramática Gherkin para a escrita dos cenários, adotando as palavras-chave Given/When/Then (Dado que/Quando/Então), que permitem descrever o 
+comportamento esperado do sistema de forma compreensível para todas as partes envolvidas. Esses cenários são traduzidos em testes automatizados que interagem com 
+o software e verificam seu comportamento por meio de passos e definições de passos, os quais contêm as instruções necessárias para manipular o sistema e gerar 
+situações de teste.
+A estrutura da especificação é organizada em arquivos com extensão .feature, próprios do Cucumber. Esses arquivos descrevem conjuntos de cenários, compostos por 
+passos que são interpretados e associados às definições implementadas em Python, por meio da biblioteca Behave. Cada cenário dentro da feature descreve, utilizando 
+as palavras guias, os seguintes componentes do teste:
 Given - estado inicial ou pré-condições.
 When - evento ou transição de estado.
 Then - estado final do sistema ou ação.
