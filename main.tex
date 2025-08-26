@@ -77,9 +77,26 @@ CURSO DE GRADUAÇÃO EM ENGENHARIA DE COMPUTAÇÃO}
 }
 
 %% Possibilita o uso da lista de quadros
-\newlistof{listofquadros}{loq}{Lista de Quadros}
-\renewcommand{\tablename}{Quadro}
-%\newcommand{\listofquadros}{\listoflistofquadros}
+\usepackage{tocloft} % criar listas personalizadas
+
+% ----- Definição de QUADRO -----
+%\newcounter{quadro}
+%\newlistof{listofquadros}{loq}{Lista de Quadros}
+%\renewcommand{\cftlistofquadrospresnum}{Quadro }
+%\renewcommand{\cftlistofquadrosaftersnum}{ – }
+
+% \newenvironment{quadro}[2][]{%
+%     \refstepcounter{quadro}
+%     \addcontentsline{loq}{quadro}{\protect\numberline{\thequadro}#2}
+%     \begin{table}[H]
+%     \centering
+%     \caption*{Quadro \thequadro – #2} % legenda exibida
+%     \ifx\\#1\\\else\label{#1}\fi
+% }{%
+%     \end{table}
+% }
+
+
 
 % -----------------------------------------------------------------------------
 % Início do TCC 
