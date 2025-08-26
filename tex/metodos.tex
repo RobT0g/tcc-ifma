@@ -1,19 +1,61 @@
 %--------------------------------------------------------------------------------------
 % Este arquivo contém a sua metodologia
 %--------------------------------------------------------------------------------------
-\chapter{Materiais e Métodos} \label{ch:MM} %Uma label é como você referencia uma seção no texto com a tag \ref{}
+\chapter{Metodologia} \label{ch:MM} %Uma label é como você referencia uma seção no texto com a tag \ref{}
+Neste capítulo, será apresentada a metodologia aplicada para o desenvolvimento deste produto do Trabalho de Conclusão de Curso (TCC), que possui natureza técnica 
+e tem como objetivo o desenvolvimento de um sistema integrado de travamento de portas veicular, quais as ferramentas utilizadas e como o Desenvolvimento Baseado 
+em Comportamento (BDD) foi empregado.
+
+\section{Tipo de Pesquisa} 
+Esta é uma pesquisa aplicada, tendo em vista à solução de problemas presentes em metodologias de desenvolvimento de produto tradicionais como rastreabilidade 
+de requisitos e aplicação de testes manuais. Também será aplicada uma abordagem mista, que demonstra quantitativamente a cobertura dos testes desenvolvidos em 
+Modelo em Loop (MIL) e qualitativamente na experiência de usuário no modelo final.
+
+\section{Procedimentos Metodológicos}
+Este produto teve seu desenvolvimento em etapas com base na metodologia do processo de BDD como denonstrado em \cite{studyBDD}, com uma série de modificações 
+para adapatà-lo à Engenharia Automotiva. As seguinte etapas de desenvolvimento serão aplicadas:
+\begin{enumerate}
+    \item Descrição das histórias de usuário: Capturar as histórias definidas em forma de requisitos funcionais com linguagem natural e que capture o valor 
+    gerado pela perspectiva do usuário;
+    \item Mapeamento de exemplos: Definição de exemplos concretos tomados da perspectiva do usuário final;
+    \item Desenho do diagrama de caixa preta: Desenho do diagrama do sistema que demonstra suas interfaces de entrada e saída, sem demonstrar detalhes de suas interações;
+    \item Desenvolvimento dos cenários Gherkin: Escrita dos cenários aplicando o padrão cucumber e que aborde todas as regras definidas;
+    \item Tradução dos cenários em testes: Desenvolvimento de funções dos passos dos cenários gherkin utilizando as interfaces do diagrama de caixa branca;
+    \item Modelagem iterativa do sistema em simulink: Modelagem feita de forma iterativa aplicando os cenários como critério de aceitação a cada iteração;
+    \item Análise qualitativa do produto final: Testes de uso do produto final e aprovação da experiência de usuário entregue.
+\end{enumerate}
+
+Neste projeto, algumas etapas serão repetidas, pois o desenvolvimento orientado por comportamento (BDD) é um processo incremental, baseado em iterações 
+sucessivas que introduzem novas funcionalidades ao produto. Assim, as etapas 1 e 2 serão inicialmente executadas para cada história de usuário. Ao final 
+desse ciclo, a etapa 3 será iniciada elaborando um diagrama de caixa preta que abrange todas as funcionalidades definidas até o momento.
+
+\section{Ferramentas Utilizadas}
+As ferramentas e tecnologias adotadas no desenvolvimento deste produto foram escolhidas com base na compatibilidade com o modelo proposto e na sua capacidade 
+de integrar diferentes etapas do processo. A seguir, descreve-se cada uma delas:
+
+\begin{itemize}
+    \item \textbf{Cucumber (Gherkin)}: utilizado como padrão para a escrita de cenários comportamentais, permitindo a especificação dos requisitos no formato Given-When-Then, de forma legível por humanos e máquinas;
+    \item \textbf{Miro}: empregado para a criação de diagramas não técnicos, bem como para auxiliar na discussão colaborativa de exemplos, fluxos e histórias de usuário;
+    \item \textbf{Visual Studio Code}: ambiente de desenvolvimento (IDE) utilizado para escrever os cenários em Gherkin, desenvolver a tradução para testes executáveis e integrar o código gerado ao microcontrolador;
+    \item \textbf{Python}: linguagem escolhida para implementar a lógica de tradução dos cenários Gherkin em testes executáveis, permitindo automatização e validação do comportamento esperado do sistema.
+    \begin{itemize}
+        \item \textbf{Behave}: biblioteca utilizada para interpretar e executar os cenários comportamentais no formato BDD, integrando as especificações Gherkin à lógica de teste.
+        \item \textbf{Matlab Engine API for Python}: biblioteca usada para permitir a comunicação entre scripts Python e o ambiente Simulink, possibilitando a execução dos testes durante a simulação.
+    \end{itemize}    
+    \item \textbf{Simulink}: ferramenta adotada para a modelagem do sistema embarcado funcional, possibilitando simulações e geração automática de código C para o sistema-alvo.
+    \item \textbf{Git/Github}: utilizado para o versionamento do projeto que inclui o modelo simulink do sistema, código embarcado gerado do modelo, arquivos feature dos cenários gherkin e códigos python dos testes executáveis.
+
+\end{itemize}
 
 
-\section{Seção de exemplo 1} 
 
 
-
-\subsection{Subseção de exemplo 1 - Referenciando seções} \label{subsec:subsec1}
-
-
-
-
-
+\section{Critérios de Avaliação}
+Para verificação e validação do produto gerado, serão aplicados critérios qualitativos e quantitativos de análise:
+\begin{itemize}
+    \item Aprovação dos cenários gherkin no modelo simulink (testes MIL);
+    \item Testes das histórias de usuário no modelo final.
+\end{itemize}
 
 %--------------------------------------------------------------------------------------
 % Insere a seção de cronograma
