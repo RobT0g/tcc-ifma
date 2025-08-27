@@ -2,9 +2,105 @@
 % Este arquivo contém a sua conclusão
 %--------------------------------------------------------------------------------------
 \chapter{Considerações Finais e Trabalhos Futuros}
-
-\lipsum[1-2]
  
+A adaptação do processo de Behavior-Driven Development (BDD) para o contexto da Engenharia Automotiva demonstra como a aplicação de testes automatizados e o 
+mapeamento de exemplos podem guiar o desenvolvimento de sistemas veiculares, resultando em produtos de maior qualidade. Essa metodologia foi implementada integrando 
+conceitos do BDD, técnicas de desenvolvimento de software embarcado e práticas da indústria automotiva.
+
+O trabalho evidenciou as complexidades inerentes ao desenvolvimento de sistemas automotivos, como a dependência de componentes mecânicos e eletrônicos e a necessidade 
+de testes que exigem a interação com software embarcado. Para superar essas dificuldades, foram aplicadas estratégias de abstração do desenvolvimento em camadas 
+e design orientado a modelo, garantindo a compatibilidade com o BDD.
+
+A etapa de análise do sistema mostrou-se especialmente produtiva, possibilitando a aplicação efetiva de técnicas de desenvolvimento ágil. O mapeamento de exemplos 
+demonstrou grande eficiência na definição do sistema, sobretudo quando realizado de forma colaborativa, permitindo que toda a equipe participe das discussões e 
+estabeleça funcionalidades em termos claros e acessíveis a todos.
+
+Assumir a perspectiva do cliente e compreender o valor agregado ao produto revelou-se fundamental nessa etapa. A definição de funcionalidades orientadas ao 
+comportamento desejado resultou em histórias de usuário mais robustas, capazes de traduzir requisitos em exemplos práticos que guiam a implementação.
+
+Os cenários em Gherkin constituem o eixo central de todo o processo, promovendo alinhamento entre as etapas do desenvolvimento. O uso de linguagem natural, estruturada 
+pelo padrão Given/When/Then, assegura que o comportamento definido seja compreensível para todos os envolvidos, além de gerar especificações executáveis que não 
+apenas descrevem o sistema, mas também validam seu funcionamento.
+
+Por fim, durante o desenvolvimento iterativo, todo o processo foi colocado à prova com a geração do produto final: o modelo do sistema. A execução repetitiva dos 
+testes assegurou que as especificações fossem atendidas e que o produto desenvolvido apresentasse robustez e conformidade com os requisitos definidos. No fim do 
+processo do desenvolvimento iterativo, o conjunto de cenários resultou em um relatório abrangente, contemplando:
+
+\begin{itemize}
+    \item 5 features
+    \item 101 cenários (incluindo combinação geradas pelas tabelas)
+    \item 890 passos
+\end{itemize}
+
+A execução no terminal demonstra ainda que todos os testes foram aprovados e que o processo de execução levou pouco mais de 31 minutos:
+
+\begin{figure}[H]
+\centering
+\includegraphics[height=3cm]{figuras/passed\_all\_tests.png}
+\caption{Relatório de testes - execução final.}
+%\label{fig:casos-uso}
+\end{figure}
+
+O quadro a seguir demonstra um sumário das falhas nos testes que foram capturadas durante a etapa, assim como uma demonstração da melhoria 
+necessária para capturar cada problema:
+
+\begin{quadro}[H]
+\caption{Falhas de comportamento capturadas durante a modelagem iterativa}
+\label{qua:falhas}
+\begin{tabular}{|p{5cm}|p{7cm}|}
+\hline
+Falha Capturada & Melhoria Implementada em \\ 
+\hline
+Definição dos estados iniciais de travamento das portas, conforme descrito na cláusula Given & Modelo \\
+\hline
+Travamento de todas as portas ao pressionar o botão de travamento & Modelo \\
+\hline
+Destravamento das portas ao acionar o botão de destravamento & Modelo \\
+\hline
+Abertura de portas específicas ao acionar o botão de abertura & Modelo \\
+\hline
+Definição das condições para cada status & Modelo \\
+\hline
+Utilização do tempo de espera para validar a saída de travamento em relação ao valor esperado & Cenários \\
+\hline
+Indicação da atualização de status & Definições dos passos \\
+\hline
+Todas as portas devem ser fechadas durante o início dos testes & Cenários \\
+\hline
+A porta não é destravada quando o botão de abertura é pressionado, mesmo com a chave presente & Modelo \\
+\hline
+No início de todos os cenários, a chave não deve estar presente & Cenários \\
+\hline
+O travamento automático não ocorre após a passagem do tempo & Modelo \\
+\hline
+As condições de abertura de uma porta, o estado inicial de travamento das portas e o acionamento do botão de destravamento duas vezes não impedem o travamento automático & Modelo \\
+\hline
+Problema na determinação correta do tempo decorrido na simulação & Definições dos passos  \\
+\hline
+\end{tabular}
+\end{quadro}
+
+É possível observar que as melhorias capturadas a cada iteração dos testes resultaram não apenas na evolução do produto — neste caso, o modelo do sistema — mas também 
+no aprimoramento da própria definição do sistema, com cenários mais bem estruturados e definições de passos mais detalhadas. Cada modificação decorrente de um problema 
+identificado nos testes não representa apenas a adição de lógica, mas sim um incremento na qualidade e na robustez do produto.
+
+Esse aspecto torna-se ainda mais evidente ao considerar como a utilização do modelo possibilitou a detecção antecipada de falhas que dificilmente seriam percebidas sem 
+a execução dos testes. Um exemplo claro foi a definição do feedback: na implementação inicial, ele era atualizado de forma repetitiva, gerando um loop que alternava 
+continuamente entre a mensagem “Sem status” e o feedback esperado. A identificação desse comportamento, seguida pela análise da causa raiz e pela implementação de uma 
+solução, permitiu eliminar uma falha que poderia resultar em insatisfação do usuário, ainda na fase de modelagem, antes mesmo do desenvolvimento do código.
+
+Este tipo de metodologia que permite a descoberta e tratamento de possíveis erros tão cedo no desenvolvimento de um produto é uma ferramenta perfeita para lidar com as 
+complexidades do sensor automotivo.
+
 \section{Trabalhos futuros}
 
-\lipsum[55]
+Para que o processo de BDD seja plenamente adaptado à Engenharia Automotiva, alguns passos adicionais precisam ser realizados, garantindo que a geração do 
+produto seja validada também em um veículo físico. O próximo passo imediato consiste no desenvolvimento do software embarcado, utilizando ferramentas específicas 
+para a geração de código a partir do modelo.
+
+As etapas futuras de validação tendem a ser ainda mais desafiadoras, pois envolvem diferentes níveis de testes, tais como:
+\begin{itemize}
+    \item Testes de software de aplicação, gerado diretamente a partir do modelo;
+    \item Testes do software básico, desenvolvido para o hardware utilizado;
+    \item Testes de hardware, realizados no produto físico.
+\end{itemize}
