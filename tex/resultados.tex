@@ -230,4 +230,257 @@ O relatório também apresenta os resultados da execução de passos específico
 Para facilitar a análise de falhas, as funções implementadas em \textbf{environment.py} registram no relatório todas as interações realizadas com o modelo. Isso permite validar 
 manualmente se a execução dos testes ocorreu conforme o esperado.
 
+\subsection{Execução dos testes de aceitação da História de Usuário 1}
+
+A execução dos cenários desta história inicia-se com o modelo vazio, o que resulta em falhas na validação de dois comportamentos:
+
+\begin{itemize}
+	\item Definição dos estados iniciais de travamento das portas, conforme descrito na cláusula \textit{Given};
+	\item Travamento de todas as portas ao pressionar o botão de travamento.
+\end{itemize}
+
+O primeiro ponto decorre do fato de que, em ambos os cenários, a cláusula \textit{Given} estabelece valores iniciais para o estado de travamento de cada porta. Contudo, 
+o teste falha porque o modelo não possui a implementação de um mecanismo que permita modificar diretamente o valor da saída nesse momento.
+
+Para viabilizar essa estrutura, foi criada uma interface auxiliar denominada \textbf{manual\_lock}, que possibilita alterar o estado inicial das portas sem recorrer aos 
+botões físicos ou ao sistema \textit{keyless access}. Essa interface executa uma operação de escrita direta no bloco \textit{Data Store Memory}, responsável por armazenar o 
+estado de travamento das portas no modelo.
+
+A adoção de uma interface auxiliar para definir o estado inicial de travamento de cada porta tem como objetivo preservar a independência entre as funcionalidades. 
+Conforme mencionado anteriormente, é possível obter qualquer combinação de travamento ou destravamento por meio do \textit{keyless access} em portas específicas. 
+Entretanto, para que essa sequência de entradas fosse utilizada diretamente na definição do primeiro passo, seria necessário que a história de usuário do 
+\textit{keyless access} já estivesse implementada e operacional.
+
+Tanto a interface quanto o bloco de memória utilizam um valor inteiro de 4 bits, no qual cada bit representa o estado de travamento de uma porta. Como cada passo 
+define de forma independente o estado de cada porta, a lógica da função de definição altera apenas o bit correspondente à porta em questão.
+
+No segundo ponto identificado, a lógica implementada para o travamento das portas utiliza a interface de entrada do botão de travamento como gatilho de um 
+\textit{Triggered Subsystem}. Quando o valor do botão altera de 0 para 1, o valor 15 — que corresponde ao bit 1 ativado em cada uma das quatro portas — é gravado 
+no \textit{Data Store Memory}.
+
+Com essa implementação, todos os testes da primeira história são aprovados, embora nenhuma lógica de abertura das portas tenha sido desenvolvida até o momento. Isso 
+ocorre porque o valor esperado no resultado final corresponde ao estado de porta segura (saída igual a 0), o que coincide com o valor padrão atribuído pelo Simulink.
+
+Essa coincidência leva à aprovação do teste, ainda que represente um falso positivo. A situação, contudo, será corretamente tratada na execução dos testes da segunda 
+história, em que o valor esperado é o de porta aberta.
+
+
+\subsection{Execução dos testes de aceitação da História de Usuário 2}
+
+Na execução dos cenários da segunda história de usuário, foram identificadas falhas nos seguintes comportamentos:
+
+\begin{itemize}
+	\item Destravamento das portas ao acionar o botão de destravamento;
+	\item Abertura de portas específicas ao acionar o botão de abertura.
+\end{itemize}
+
+Para atender à condição de destravamento, aplica-se uma lógica semelhante à utilizada no travamento, baseada em um bloco \textit{Triggered Subsystem}. Nesse caso, 
+a escrita na memória é realizada com o valor inteiro 0, indicando que todos os quatro bits possuem valor 0.
+
+Já para a condição de abertura das portas, a lógica de implementação pode ser construída de diferentes formas. Um exemplo, ainda que sem sentido do ponto de vista 
+funcional do sistema, mas suficiente para satisfazer os testes, seria manter as portas permanentemente abertas, conectando diretamente o valor 1 às saídas. Contudo, 
+essa abordagem é inviável, pois compromete a execução da primeira história, resultando em falhas na implementação anterior ao repetir os testes.
+
+Sob essa perspectiva, o design que satisfaz ambos os testes consiste em permitir a abertura das portas apenas quando duas condições são atendidas simultaneamente:
+
+\begin{itemize}
+	\item A porta está destravada - assegura que a abertura não ocorre enquanto a porta estiver travada;
+	\item O botão de abertura está pressionado - garante que a porta permaneça fechada mesmo quando destravada, caso o botão não seja acionado.
+\end{itemize}
+
+Para implementar essa lógica, utiliza-se um bloco \textit{AND}, que recebe como entradas o estado do botão de abertura e a condição de não travamento da porta. Essa 
+estrutura é replicada para cada porta, empregando as interfaces correspondentes e operações de manipulação de bits para extrair do bloco de memória o estado atual 
+de travamento de cada uma.
+
+
+\subsection{Execução dos testes de aceitação da História de Usuário 3}
+
+Na terceira história de usuário, foram identificadas as seguintes falhas de comportamento:
+
+\begin{itemize}
+	\item Definição das condições para cada status;
+	\item Utilização do tempo de espera para validar a saída de travamento em relação ao valor esperado;
+	\item Indicação da atualização de status;
+	\item Todas as portas devem ser fechadas durante o início dos testes.
+\end{itemize}
+
+O primeiro ponto observado nos testes ocorre porque a saída de status permanece inicialmente em 0, já que a lógica correspondente ainda não havia sido implementada. 
+Para corrigir esse problema, as condições que determinam cada status foram modeladas em um bloco \textit{Chart}, que possui os 3 estados a seguir:
+
+\begin{itemize}
+	\item Confirmação de travamento: o botão de travamento é pressionado e, em seguida, todas as portas são travadas;
+	\item Confirmação de destravamento: o botão de destravamento é pressionado e, em seguida, todas as portas são destravadas;
+	\item Operação falha: o botão de travamento é pressionado enquanto ao menos um dos sensores de abertura indica que a porta está aberta.
+\end{itemize}
+
+Na teoria, as condições listadas deveriam satisfazer o comportamento esperado; entretanto, durante a execução dos testes, ainda foram observados erros. A investigação 
+levantou a falha constatada no segundo ponto e exige uma pequena modificação nos cenários, incluindo uma condição temporal para validar que o status foi efetivamente 
+gerado na saída.
+
+Essa falha ocorre porque a implementação utiliza múltiplas entradas para determinar o status, o que ocasiona um leve atraso na execução do modelo. Esse efeito é 
+particularmente relevante nos status de travamento e destravamento, que só são acionados após a atualização da saída de travamento.
+
+Consequentemente, os testes falham não por falha no comportamento do sistema, mas porque o passo de validação do status é executado antes da atualização da saída no 
+modelo. Para contornar esse problema, os passos dos cenários foram ajustados para incluir uma janela temporal, durante a qual o status deve ser gerado, conforme 
+exemplificado abaixo:
+
+\begin{verbatim}
+	And I should receive a <feedback> feedback within '500' ms
+\end{verbatim}
+
+
+Para garantir que a implementação utilize valores de tempo compatíveis com a execução dos testes, foi criada uma nova interface auxiliar responsável por informar ao 
+modelo o tempo atual da simulação. A cada passo executado, o arquivo \textbf{environment.py} atualiza o valor dessa interface de tempo com o valor gerado pelo Python. 
+Esse valor é então considerado como uma condição adicional na determinação do status.
+
+A última falha identificada decorreu de inconsistências observadas durante a execução dos testes. De forma aparentemente aleatória, o valor "sem status" era gerado 
+repetidamente junto com o valor correto, como se o sistema estivesse oscilando continuamente entre os dois estados.
+
+O problema foi evidenciado ao analisar o modelo, especificamente o comportamento interno do bloco \textit{Chart}, que contém o diagrama de estados. Inicialmente, a 
+condição para iniciar a validação baseava-se apenas no acionamento do botão de travamento ou destravamento, verificando se o seu valor era 1 (pressionado). Isso 
+provocava a repetição contínua da validação enquanto o botão permanecia pressionado, gerando os resultados inconsistentes observados nos testes.
+
+A solução adotada consistiu em fazer com que a validação considerasse não o estado do botão em si, mas a transição de solto para pressionado. Dessa forma, assim que o 
+teste indica que o botão foi pressionado, apenas um único evento de validação é gerado, garantindo que o status seja atualizado uma única vez na saída.
+
+Para assegurar que os testes conseguissem detectar esse tipo de falha, a interface de status também foi aprimorada. Agora é possível identificar não apenas qual status 
+está sendo indicado, mas também quando a saída é gerada. Isso é implementado por meio de um valor inteiro que é incrementado toda vez que um novo status é gerado, 
+permitindo acompanhar a sequência de eventos na saída. A interface passa a assumir valores de 0 a 10, com a seguinte codificação:
+
+\begin{itemize}
+	\item 0 - Sem status
+	\item 1, 4 e 7 - Confirmação de travamento
+	\item 2, 5 e 8 - Confirmação de destravamento
+	\item 3, 6 e 9 - Operação falha
+\end{itemize}
+
+Dessa forma, o incremento do valor de status é realizado de maneira condicional, dependendo do tipo de status a ser comunicado. Por exemplo, se o status atual 
+for 2 e o sistema determinar que deve informar uma Confirmação de Travamento, o valor é incrementado para 4, que é o próximo valor disponível correspondente àquele status.
+
+Quando o valor máximo é atingido, a interface realiza um loop, retornando aos valores iniciais. Por exemplo, se o estado atual for 8 e uma nova confirmação de 
+destravamento precisar ser registrada, o valor é incrementado para 2.
+
+Com base nessa estratégia, foi adicionada uma lógica de validação de status como função utilitária no \textbf{environment.py}. Essa função mantém uma lista de todos os valores 
+de status, adicionando um novo item sempre que um novo status é gerado. Dessa forma, é possível validar não apenas se o resultado esperado foi alcançado, mas também se 
+a quantidade correta de status foi registrada.
+
+Por fim, um último problema foi identificado durante a execução repetida dos testes desta história: o feedback de operação falha era gerado em situações nas quais outro 
+valor era esperado. A causa estava relacionada à interface do sensor de abertura das portas, que permanecia configurada como "aberta" em cenários que não especificavam 
+explicitamente esse estado nos seus passos.
+
+Esse comportamento ocorria porque, em cenários destinados a validar a saída considerando uma porta aberta, o valor atribuído ao modelo permanecia persistente, afetando 
+a execução de cenários subsequentes ao manter indevidamente o estado de abertura.
+
+Para corrigir essa inconsistência, foi adicionada uma precondição comum a todos os cenários, garantindo que cada teste seja iniciado com todas as portas fechadas. Essa 
+configuração é feita por meio da funcionalidade \textit{Background}, utilizando o seguinte passo:
+
+\begin{verbatim}
+	Given all doors are 'closed'
+\end{verbatim}
+
+Dessa forma, todos os cenários iniciam com o passo do \textit{Background} e portanto as portas são sempre iniciadas com o valor fechado. Após a implementação dessa 
+lógica, todos os cenários de todas as histórias foram executados novamente, sendo aprovados com sucesso.
+
+
+\subsection{Execução dos testes de aceitação da História de Usuário 4}
+
+Após a execução dos testes da quarta história de usuário, foram identificadas as seguintes falhas:
+
+\begin{itemize}
+	\item A porta não é destravada quando o botão de abertura é pressionado, mesmo com a chave presente;
+	\item No início de todos os cenários, a chave não deve estar presente.
+\end{itemize}
+
+A primeira falha ocorre na validação do comportamento em que a porta deve ser destravada ao pressionar o botão de abertura com a chave presente. Isso se deve ao fato 
+de que ainda não havia sido implementada uma lógica de destravamento que considerasse a presença da chave como critério para cada porta individual.
+
+Para permitir essa funcionalidade, o destravamento de uma porta individual é realizado ao definir que um dos bits do \textit{Data Store Memory} deve assumir o valor 0. 
+Essa operação é acionada através de um Triggered Subsystem, cuja execução ocorre somente quando duas condições são simultaneamente satisfeitas:
+
+\begin{itemize}
+	\item A chave está presente
+	\item O botão de abertura da porta foi pressionado
+\end{itemize}
+
+Essa estrutura foi replicada para cada porta, ajustando a interface do botão de abertura correspondente e definindo qual bit do \textit{Data Store Memory} deve ser setado 
+para 0. Após a implementação, todos os testes da história foram aprovados. No entanto, um novo problema foi identificado ao executar a história de usuário 1.
+
+Durante os testes do \textit{keyless access}, a presença da chave é simulada no modelo ao escrever 1 no bloco de constante de entrada. O problema ocorre porque essa 
+condição não é revertida em nenhum momento, fazendo com que, durante o teste que verifica que uma porta travada não pode ser aberta, o \textit{keyless access} seja 
+aplicado inadvertidamente, permitindo que a porta se abra e causando a falha no teste.
+
+Este problema é exatamente igual ao caso demonstrado na história anterior, e sua solução também utiliza o Background para definir estados iniciais comuns para todos 
+os cenários. Neste caso os seguintes passos foram incluídos:
+
+\begin{verbatim}
+	Given I do not have an authenticated key with me
+	And my vehicle is 'locked' with no release buttons pressed
+\end{verbatim}
+
+As definições desses passos garantem que a condição inicial de todas as entradas seja estabelecida no início da simulação, conforme descrito a seguir:
+
+\begin{itemize}
+	\item A chave não está presente;
+	\item Todas as portas estão travadas;
+	\item Nenhum dos botões de abertura está pressionado.
+\end{itemize}
+
+Dessa forma, ao iniciar a execução dos cenários da primeira história, a chave permanece ausente, o \textit{keyless access} não é acionado e a porta travada não se 
+abre quando o botão de abertura é pressionado. Como resultado, todos os testes são aprovados.
+
+
+\subsection{Execução dos testes de aceitação da História de Usuário 5}
+
+Nesta história, foram identificados os seguintes problemas:
+
+\begin{itemize}
+	\item O travamento automático não ocorre após a passagem do tempo;
+	\item As condições de abertura de uma porta, o estado inicial de travamento das portas e o acionamento do botão de destravamento duas vezes não impedem o travamento automático;
+	\item Problema na determinação correta do tempo decorrido na simulação.
+\end{itemize}
+
+Os dois primeiros pontos estão diretamente relacionados à implementação da lógica responsável pelo auto travamento. Para tratá-los, utiliza-se um bloco \textit{Chart} 
+contendo um diagrama de estados, no qual o pressionamento do botão de destravamento inicia a contagem de tempo. Esse diagrama é estruturado da seguinte maneira:
+
+\begin{figure}[H]
+\centering
+\includegraphics[height=5cm]{figuras/diagrama\_auto\_travamento.png}
+\caption{Relatório de testes - por cenário.}
+%\label{fig:casos-uso}
+\end{figure}
+
+O sistema é iniciado no estado "Nada", no qual o auto-travamento não é verificado, permanecendo nessa condição até que seja atingida a situação válida para iniciar 
+a contagem de tempo. Essa situação ocorre quando duas condições são simultaneamente satisfeitas:
+
+\begin{itemize}
+	\item Todas as portas estão travadas;
+	\item O botão de travamento foi pressionado.
+\end{itemize}
+
+A primeira condição garante que o auto-travamento não será aplicado caso o veículo não esteja seguro inicialmente, atendendo ao último cenário de teste em que uma 
+ou mais portas permanecem destravadas no início. Durante essa transição, o sistema registra o valor atual do tempo de simulação, permitindo determinar o momento em 
+que a condição de passagem de 15 segundos é satisfeita.
+
+Uma vez realizada a transição para o estado "Esperando o tempo", o sistema aguarda a passagem dos 15 segundos, enquanto monitora se alguma das condições que impedem 
+o auto-travamento é satisfeita. Nessa situação, o sistema retorna ao estado "Nada" sem acionar o auto-travamento caso pelo menos uma das seguintes condições seja atendida:
+\begin{itemize}
+	\item Uma porta foi aberta;
+	\item O botão de destravamento foi acionado.
+\end{itemize}
+
+Cada uma dessas condições corresponde a um cenário de teste, definindo os comportamentos em que o usuário manifesta a intenção de manter o veículo acessível. Por fim, 
+caso nenhuma dessas condições seja satisfeita durante o período de espera, a passagem do tempo provoca a transição para o estado "Travamento automático", acionando 
+o mesmo \textit{Triggered Subsystem} utilizado na história de travamento de todas as portas.
+
+Dessa forma, o comportamento esperado do sistema em relação ao auto-travamento é completamente atendido; entretanto, uma complicação técnica faz com que diversos 
+testes falhem. Nos casos em que a espera é de 10 ou 14 segundos, os testes apresentam falha porque o auto-travamento é acionado antes que o tempo correto tenha decorrido.
+
+A investigação revelou que esse problema ocorre devido à latência nas interações do Python com o modelo, que pode chegar a cerca de 500 ms por operação de escrita e 
+200 ms por operação de leitura. Como inúmeras operações são executadas a cada instante, o valor do tempo gerado pelo Python é continuamente incrementado em operações 
+que deveriam ser praticamente instantâneas.
+
+Para resolver essa questão, a lógica de geração do tempo de simulação em Python foi ajustada para contabilizar o tempo gasto nas interações com o modelo. Dessa forma, 
+a passagem do tempo de simulação é incrementada apenas durante passos que envolvem espera de tempo, garantindo que todos os testes sejam aprovados.
+
+\chapter{Resumo Geral do Testes}
 
