@@ -2,158 +2,232 @@
 
 
 
-\section{Seção de exemplo 1 - Códigos} \label{sec:resex1}
+% \section{Seção de exemplo 1 - Códigos} \label{sec:resex1}
 
-\subsection{Subseção de exemplo 1 - Inserindo trechos de códigos}
+% \subsection{Subseção de exemplo 1 - Inserindo trechos de códigos}
  
-O nosso querido Leonardo Cavalcante providenciou um comando que deixa nossos trechos de códigos bonitinhos e gera um elemento pré-textual de Lista de Códigos. 
+% O nosso querido Leonardo Cavalcante providenciou um comando que deixa nossos trechos de códigos bonitinhos e gera um elemento pré-textual de Lista de Códigos. 
 
-Os códigos são adicionados através do comando seguinte:
+% Os códigos são adicionados através do comando seguinte:
 
-\textbackslash sourcecode\{ Descrição \}\{Label\}\{Linguagem\}\{Arquivo com extensão\}
+% \textbackslash sourcecode\{ Descrição \}\{Label\}\{Linguagem\}\{Arquivo com extensão\}
 
-Um exemplo pode ser visto no código \ref{cmd:cron} abaixo.
+% Um exemplo pode ser visto no código \ref{cmd:cron} abaixo.
 
-%\sourcecode{Configuração do intervalo de execução no Script Agendador}{cron}{javascript}{cron.js}
+% %\sourcecode{Configuração do intervalo de execução no Script Agendador}{cron}{javascript}{cron.js}
 
 
-\section{Seção de exemplo 2 - Listas} \label{sec:resex2}
+% \section{Seção de exemplo 2 - Listas} \label{sec:resex2}
 
-\subsection{Subseção de exemplo 2 - Lista de itens} 
+% \subsection{Subseção de exemplo 2 - Lista de itens} 
 
-Existem alguns tipos de listas no Latex, iremos exemplificar a lista sem numeração (seção \ref{subsubsec:itemize}), a lista enumerada (seção \ref{subsubsec:enumerate}) e a lista mista (seção \ref{subsubsec:mista}). As listas podem ser encadeadas de diversas maneiras,
-de acordo com a necessidade do autor.
+% Existem alguns tipos de listas no Latex, iremos exemplificar a lista sem numeração (seção \ref{subsubsec:itemize}), a lista enumerada (seção \ref{subsubsec:enumerate}) e a lista mista (seção \ref{subsubsec:mista}). As listas podem ser encadeadas de diversas maneiras,
+% de acordo com a necessidade do autor.
 
-\subsubsection{Subsubseção de exemplo 1 - Lista sem numeração} \label{subsubsec:itemize}
+% \subsubsection{Subsubseção de exemplo 1 - Lista sem numeração} \label{subsubsec:itemize}
 
-Este é um exemplo de lista sem numeração.
+% Este é um exemplo de lista sem numeração.
 
-\begin{itemize}
-	\item \textbf{Cadastrar usuário}
+% \begin{itemize}
+% 	\item \textbf{Cadastrar usuário}
 
-		\begin{itemize}
-    		\item Atores
-		    	\begin{itemize}
-    		    	\item Usuário
-		    	\end{itemize}
+% 		\begin{itemize}
+%     		\item Atores
+% 		    	\begin{itemize}
+%     		    	\item Usuário
+% 		    	\end{itemize}
 
-	    	\item Fluxo de eventos primário
-			    \begin{itemize}
-	    		    \item o usuário deve se cadastrar informando seu nome, \textit{e-mail} e senha;
-		        	\item a API armazena os dados do usuário;
-		    	    \item o usuário é liberado para realizar o \textit{login}.
-			    \end{itemize}
+% 	    	\item Fluxo de eventos primário
+% 			    \begin{itemize}
+% 	    		    \item o usuário deve se cadastrar informando seu nome, \textit{e-mail} e senha;
+% 		        	\item a API armazena os dados do usuário;
+% 		    	    \item o usuário é liberado para realizar o \textit{login}.
+% 			    \end{itemize}
 
-    		\item Fluxo alternativo
-			    \begin{itemize}
-		    	   \item o usuário desiste de se cadastrar e cancela o caso de uso clicando no botão voltar.
-	    		\end{itemize}
+%     		\item Fluxo alternativo
+% 			    \begin{itemize}
+% 		    	   \item o usuário desiste de se cadastrar e cancela o caso de uso clicando no botão voltar.
+% 	    		\end{itemize}
 
-		\end{itemize}
+% 		\end{itemize}
 	
-\end{itemize}
+% \end{itemize}
 
-\subsubsection{Subsubseção de exemplo 2 - Lista enumerada} \label{subsubsec:enumerate}
+% \subsubsection{Subsubseção de exemplo 2 - Lista enumerada} \label{subsubsec:enumerate}
 
-Este é um exemplo de lista enumerada.
+% Este é um exemplo de lista enumerada.
 
-\begin{enumerate}
-	\item O Usuário deseja ver o histórico das variáveis climáticas, então através da interface de usuário escolhe o período ao qual o histórico se refere;
-	\item A aplicação solicita à API através de uma requisição HTTP contendo o momento de início e o momento do fim do período em seus parâmetros;     			\item A API recebe a solicitação e se comunica com a base de dados, então requere as informações quem possuem a data de leitura no intervalo escolhido;
-	\item A base de dados retorna os dados em formato Json para a API;
-	\item A API responde à requisição retornando os dados, também em formato Json, para a aplicação cliente;
-	\item A aplicação cliente renderiza os gráficos utilizando o conjunto de dados obtidos.
-\end{enumerate}
+% \begin{enumerate}
+% 	\item O Usuário deseja ver o histórico das variáveis climáticas, então através da interface de usuário escolhe o período ao qual o histórico se refere;
+% 	\item A aplicação solicita à API através de uma requisição HTTP contendo o momento de início e o momento do fim do período em seus parâmetros;     			\item A API recebe a solicitação e se comunica com a base de dados, então requere as informações quem possuem a data de leitura no intervalo escolhido;
+% 	\item A base de dados retorna os dados em formato Json para a API;
+% 	\item A API responde à requisição retornando os dados, também em formato Json, para a aplicação cliente;
+% 	\item A aplicação cliente renderiza os gráficos utilizando o conjunto de dados obtidos.
+% \end{enumerate}
 
-\subsubsection{Subsubseção de exemplo 3 - Lista mista} \label{subsubsec:mista}
+% \subsubsection{Subsubseção de exemplo 3 - Lista mista} \label{subsubsec:mista}
 
-Este é um exemplo de lista mista.
+% Este é um exemplo de lista mista.
+
+% \begin{itemize}
+% 	\item \textbf{Cadastrar usuário}
+
+% 		\begin{itemize}
+%     		\item Atores
+% 		    	\begin{itemize}
+%     		    	\item Usuário
+% 		    	\end{itemize}
+
+% 	    	\item Fluxo de eventos primário
+% 			    \begin{enumerate}
+% 	    		    \item o usuário deve se cadastrar informando seu nome, \textit{e-mail} e senha;
+% 		        	\item a API armazena os dados do usuário;
+% 		    	    \item o usuário é liberado para realizar o \textit{login}.
+% 			    \end{enumerate}
+
+%     		\item Fluxo alternativo
+% 			    \begin{itemize}
+% 		    	   \item o usuário desiste de se cadastrar e cancela o caso de uso clicando no botão voltar.
+% 	    		\end{itemize}
+
+% 		\end{itemize}
+
+% 	\item \textbf{Visualizar dados atuais}
+
+% 		\begin{itemize}
+% 		    \item Atores
+% 	    		\begin{itemize}
+% 		    	    \item Usuário
+% 			    \end{itemize}
+    
+% 	    	\item Pré-condições
+% 			    \begin{itemize}
+% 		     	   \item o usuário deve estar autenticado
+% 			    \end{itemize}
+
+% 	    	\item Fluxo de eventos primário
+% 			    \begin{enumerate}
+% 		    	    \item o usuário deve efetuar o \textit{login} informando o \textit{e-mail} e a senha;
+% 	    		    \item caso o usuário não seja autenticado, o sistema informa a respeito de credenciais inválidas e encerra o caso de uso;
+% 		    	    \item a API autentica o usuário;
+%     			    \item o usuário é liberado para visualizar os dados atuais dos sensores da estação;
+% 		        	\item após a visualização o usuário pode finalizar o caso de uso ou efetuar uma nova consulta se desejar.
+% 			    \end{enumerate}
+
+%     		\item Fluxo alternativo
+% 			    \begin{itemize}
+%     			   \item o usuário desiste de visualizar os dados atuais e cancela o caso de uso clicando no botão voltar.
+% 			    \end{itemize}
+
+% 		\end{itemize}
+
+% 	\item \textbf{Visualizar histórico}
+
+% 		\begin{itemize}
+% 		    \item Atores
+% 	    		\begin{itemize}
+% 		    	    \item Usuário
+% 	    		\end{itemize}
+
+% 	    	\item Pré-condições
+%     			\begin{itemize}
+% 			        \item o usuário deve estar autenticado
+% 			    \end{itemize}
+
+% 		    \item Fluxo de eventos primário
+% 			    \begin{enumerate}
+% 			        \item o usuário deve efetuar o \textit{login} informando o \textit{e-mail} e a senha;
+% 			        \item caso o usuário não seja autenticado, o sistema informa a respeito de credenciais inválidas e encerra o caso de uso;
+% 			        \item a API autentica o usuário;
+% 			        \item o usuário é liberado para escolher qual período cujo histórico será exibido;
+% 			        \item o usuário seleciona as variáveis a serem exibidas no gráficos de linhas;
+% 			        \item após a visualização do histórico o usuário pode finalizar o caso de uso se desejar.
+% 			    \end{enumerate}
+
+% 		    \item Fluxo alternativo
+% 			    \begin{enumerate}
+% 			        \item após a escolha do período de exibição do histórico o usuário pode voltar para a tela anterior e escolher um novo período;
+% 			        \item o histórico é exibido para o usuário;
+% 			        \item após a visualização do histórico o usuário pode finalizar o caso de uso ou efetuar uma nova consulta se desejar.
+% 			    \end{enumerate}
+
+% 		    \item Fluxo alternativo
+% 			    \begin{enumerate}
+% 			        \item o usuário desiste de visualizar o histórico e cancela o caso de uso clicando no botão voltar.
+% 			    \end{enumerate}
+% 		\end{itemize}
+% \end{itemize}
+
+\section{Desenvolvimento iterativo}
+
+Após a finalização da criação dos cenários Gherkin, a implementação prossegue com o desenvolvimento do modelo e das definições de passos. Inicialmente, o modelo é 
+criado dentro da estrutura do projeto, em uma nova pasta denominada \textit{model}. O conteúdo desta pasta inclui:
 
 \begin{itemize}
-	\item \textbf{Cadastrar usuário}
-
-		\begin{itemize}
-    		\item Atores
-		    	\begin{itemize}
-    		    	\item Usuário
-		    	\end{itemize}
-
-	    	\item Fluxo de eventos primário
-			    \begin{enumerate}
-	    		    \item o usuário deve se cadastrar informando seu nome, \textit{e-mail} e senha;
-		        	\item a API armazena os dados do usuário;
-		    	    \item o usuário é liberado para realizar o \textit{login}.
-			    \end{enumerate}
-
-    		\item Fluxo alternativo
-			    \begin{itemize}
-		    	   \item o usuário desiste de se cadastrar e cancela o caso de uso clicando no botão voltar.
-	    		\end{itemize}
-
-		\end{itemize}
-
-	\item \textbf{Visualizar dados atuais}
-
-		\begin{itemize}
-		    \item Atores
-	    		\begin{itemize}
-		    	    \item Usuário
-			    \end{itemize}
-    
-	    	\item Pré-condições
-			    \begin{itemize}
-		     	   \item o usuário deve estar autenticado
-			    \end{itemize}
-
-	    	\item Fluxo de eventos primário
-			    \begin{enumerate}
-		    	    \item o usuário deve efetuar o \textit{login} informando o \textit{e-mail} e a senha;
-	    		    \item caso o usuário não seja autenticado, o sistema informa a respeito de credenciais inválidas e encerra o caso de uso;
-		    	    \item a API autentica o usuário;
-    			    \item o usuário é liberado para visualizar os dados atuais dos sensores da estação;
-		        	\item após a visualização o usuário pode finalizar o caso de uso ou efetuar uma nova consulta se desejar.
-			    \end{enumerate}
-
-    		\item Fluxo alternativo
-			    \begin{itemize}
-    			   \item o usuário desiste de visualizar os dados atuais e cancela o caso de uso clicando no botão voltar.
-			    \end{itemize}
-
-		\end{itemize}
-
-	\item \textbf{Visualizar histórico}
-
-		\begin{itemize}
-		    \item Atores
-	    		\begin{itemize}
-		    	    \item Usuário
-	    		\end{itemize}
-
-	    	\item Pré-condições
-    			\begin{itemize}
-			        \item o usuário deve estar autenticado
-			    \end{itemize}
-
-		    \item Fluxo de eventos primário
-			    \begin{enumerate}
-			        \item o usuário deve efetuar o \textit{login} informando o \textit{e-mail} e a senha;
-			        \item caso o usuário não seja autenticado, o sistema informa a respeito de credenciais inválidas e encerra o caso de uso;
-			        \item a API autentica o usuário;
-			        \item o usuário é liberado para escolher qual período cujo histórico será exibido;
-			        \item o usuário seleciona as variáveis a serem exibidas no gráficos de linhas;
-			        \item após a visualização do histórico o usuário pode finalizar o caso de uso se desejar.
-			    \end{enumerate}
-
-		    \item Fluxo alternativo
-			    \begin{enumerate}
-			        \item após a escolha do período de exibição do histórico o usuário pode voltar para a tela anterior e escolher um novo período;
-			        \item o histórico é exibido para o usuário;
-			        \item após a visualização do histórico o usuário pode finalizar o caso de uso ou efetuar uma nova consulta se desejar.
-			    \end{enumerate}
-
-		    \item Fluxo alternativo
-			    \begin{enumerate}
-			        \item o usuário desiste de visualizar o histórico e cancela o caso de uso clicando no botão voltar.
-			    \end{enumerate}
-		\end{itemize}
+	\item \textbf{feature\_model.slx} - modelo caixa preta, utilizado nos testes;
+	\item \textbf{main.slx} - modelo de caixa branca, que contém a lógica do sistema e é referenciado como um bloco subsystem dentro do modelo feature\_model.slx;
+	\item \textbf{write\_to\_model.m} - função MATLAB responsável por operações de escrita no modelo;
+	\item \textbf{read\_from\_model.m} - função MATLAB responsável por operações de leitura no modelo;
+	\item \textbf{initialize\_model.m} - função matlab que inicia o modelo e torna a API da aplicação disponível para as funções das definições de passo.
 \end{itemize}
+
+O modelo \textbf{feature\_model.slx} segue a estrutura do diagrama de caixa preta, contendo apenas as entradas e saídas do sistema, sem detalhar sua lógica interna. Para 
+isso, são utilizados blocos de constantes como entradas e \textit{displays} como saídas.
+
+Durante a execução dos testes, as definições de passos simulam o comportamento do sistema ao interagir com suas entradas, modificando os valores das constantes por 
+meio da função \textbf{write\_to\_model}. Para validar a resposta do sistema, os valores dos displays de saída, determinados pela lógica interna do modelo, são obtidos utilizando 
+a função \textbf{read\_from\_model}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[height=7cm]{figuras/feature\_model.png}
+\caption{Modelo \textbf{feature\_model.slx} que aplica o conceito de caixa preta.}
+%\label{fig:casos-uso}
+\end{figure}
+
+O modelo apresentado na imagem contém entradas auxiliares que ainda não estão contempladas no diagrama de caixa preta. Essas entradas foram adicionadas para tornar certos 
+comportamentos do sistema testáveis durante o desenvolvimento do modelo e serão detalhadas ao longo desta seção.
+
+O segundo modelo, \textbf{main.slx}, é referenciado no bloco central do modelo anterior, denominado controller. Ele é responsável pela implementação da lógica interna 
+do sistema em desenvolvimento, utilizando as entradas definidas como blocos \textit{Inport} e as saídas como \textit{Outport}, conectadas às constantes e \textit{displays} 
+do \textbf{feature\_model.slx}.
+
+Em seguida, o desenvolvimento do environment.py inclui funções em Python que tornam as operações de escrita e leitura do modelo acessíveis às definições de passos. 
+Para isso, são criadas diversas funções utilitárias, permitindo realizar ações como:
+
+\begin{itemize}
+	\item Iniciar a simulação;
+	\item Parar a simulação;
+	\item Executar operações de escrita no modelo;
+	\item Executar operações de leitura no modelo.
+\end{itemize}
+
+Essas funções utilitárias ficam disponíveis por meio do objeto context, o qual pode ser acessado diretamente na lógica das funções das definições de passos. Com isso, 
+cada passo consegue interagir com o modelo ao executar as operações especificadas no arquivo \textbf{environment.py}.
+
+Para garantir uma execução iterativa dos testes, cada história é validada individualmente em um primeiro momento. Após a sua aprovação, todas as histórias anteriores 
+são executadas novamente, assegurando que a implementação de novas funcionalidades não comprometa o comportamento já estabelecido.
+
+A execução dos testes é realizada após a definição da lógica interna das funções de cada passo. Os resultados são então documentados em um relatório automático, gerado 
+em formato \textbf{.xml}, que descreve detalhadamente todas as falhas encontradas, conforme o seguinte padrão:
+
+\begin{figure}[H]
+\centering
+\includegraphics[height=3cm]{figuras/teste\_feature.png}
+\caption{Relatório de testes - arquivo \textbf{.feature}.}
+%\label{fig:casos-uso}
+\end{figure}
+
+O relatório também apresenta os resultados da execução de passos específicos, organizados da seguinte forma:
+
+\begin{figure}[H]
+\centering
+\includegraphics[height=5cm]{figuras/teste\_cenario.png}
+\caption{Relatório de testes - por cenário.}
+%\label{fig:casos-uso}
+\end{figure}
+
+Para facilitar a análise de falhas, as funções implementadas em \textbf{environment.py} registram no relatório todas as interações realizadas com o modelo. Isso permite validar 
+manualmente se a execução dos testes ocorreu conforme o esperado.
+
+
