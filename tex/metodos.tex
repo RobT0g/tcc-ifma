@@ -6,14 +6,14 @@ Neste capítulo, será apresentada a metodologia aplicada para o desenvolvimento
 e tem como objetivo o desenvolvimento de um sistema integrado de travamento de portas veicular, quais as ferramentas utilizadas e como o Desenvolvimento Baseado 
 em Comportamento (BDD) foi empregado.
 
-\section{Tipo de Pesquisa} 
+\section{\textbf{Tipo de Pesquisa}} 
 Esta é uma pesquisa aplicada, tendo em vista à solução de problemas presentes em metodologias de desenvolvimento de produto tradicionais como rastreabilidade 
 de requisitos e aplicação de testes manuais. Também será aplicada uma abordagem mista, que demonstra quantitativamente a cobertura dos testes desenvolvidos em 
 Modelo em Loop (MIL) e qualitativamente na experiência de usuário no modelo final.
 
-\section{Procedimentos Metodológicos}
-Este produto teve seu desenvolvimento em etapas com base na metodologia do processo de BDD como denonstrado em \cite{studyBDD}, com uma série de modificações 
-para adapatà-lo à Engenharia Automotiva. As seguinte etapas de desenvolvimento serão aplicadas:
+\section{\textbf{Procedimentos Metodológicos}}
+Este produto teve seu desenvolvimento em etapas com base na metodologia do processo de BDD como demonstrado em \citeonline{studyBDD}, com uma série de adaptações específicas 
+para o contexto da Engenharia Automotiva. As etapas de desenvolvimento a seguir serão aplicadas:
 \begin{enumerate}
     \item Descrição das histórias de usuário: Capturar as histórias definidas em forma de requisitos funcionais com linguagem natural e que capture o valor 
     gerado pela perspectiva do usuário;
@@ -29,7 +29,7 @@ Neste projeto, algumas etapas serão repetidas, pois o desenvolvimento orientado
 sucessivas que introduzem novas funcionalidades ao produto. Assim, as etapas 1 e 2 serão inicialmente executadas para cada história de usuário. Ao final 
 desse ciclo, a etapa 3 será iniciada elaborando um diagrama de caixa preta que abrange todas as funcionalidades definidas até o momento.
 
-\section{Ferramentas Utilizadas}
+\section{\textbf{Ferramentas Utilizadas}}
 As ferramentas e tecnologias adotadas no desenvolvimento deste produto foram escolhidas com base na compatibilidade com o modelo proposto e na sua capacidade 
 de integrar diferentes etapas do processo. A seguir, descreve-se cada uma delas:
 
@@ -47,15 +47,19 @@ de integrar diferentes etapas do processo. A seguir, descreve-se cada uma delas:
 
 \end{itemize}
 
+\section{\textbf{Critérios de Avaliação}}
+Para a verificação e validação do produto gerado, serão aplicados critérios quantitativos de análise, com base nos testes de aceitação de cada história de usuário. Este 
+processo será realizado durante a etapa 6, correspondente à modelagem iterativa do sistema no Simulink.
 
+A cada iteração, os testes de aceitação de uma história de usuário serão executados e, com base nos cenários não aprovados, serão identificadas falhas no comportamento 
+do modelo. A partir dessas falhas, serão implementadas soluções para garantir a aprovação dos testes que podem envolver ajustes na lógica do modelo, 
+alterações na escrita dos cenários Gherkin ou atualizações nas funções de definição de passos.
 
+Após a aprovação dos testes de uma história, todos os cenários previamente aprovados serão reexecutados. Dessa forma, é possível verificar que modificações realizadas 
+para atender a um cenário específico não impactaram os demais, garantindo a robustez do sistema.
 
-\section{Critérios de Avaliação}
-Para verificação e validação do produto gerado, serão aplicados critérios qualitativos e quantitativos de análise:
-\begin{itemize}
-    \item Aprovação dos cenários gherkin no modelo simulink (testes MIL);
-    \item Testes das histórias de usuário no modelo final.
-\end{itemize}
+Ao final do processo, todos os cenários de todas as histórias de usuário serão executados em conjunto, assegurando que o produto final atenda a todas as funcionalidades 
+mapeadas e que 100\% dos testes de aceitação sejam aprovados.
 
 %--------------------------------------------------------------------------------------
 % Insere a seção de cronograma

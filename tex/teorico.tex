@@ -6,10 +6,10 @@
 A fundamentação deste trabalho é a aplicação prática do Desenvolvimento Orientado a Comportamento (BDD) ao desenvolvimento de sistemas de software automotivo. 
 Esse processo será aplicado no mapeamento de funcionalidades e modelagem de um sistema de travamento de portas veicular.
 
-\section{Desenvolvimento Orientado a Comportamento - BDD}
+\section{\textbf{Desenvolvimento Orientado a Comportamento - BDD}}
 
 A metodologia de desenvolvimento orientado a comportamento foi inicialmente proposta por Dan North, que compartilhou em seu blog \cite{north2006bdd} as lições 
-aprendidas ao aplicar e ensinar o processo de desenvolvimento orientado a testes (TDD). Segundo o mesmo, “Ele (BDD) evoluiu além de práticas ágeis e é designado 
+aprendidas ao aplicar e ensinar o processo de desenvolvimento orientado a testes (TDD). Segundo o autor, “Ele (BDD) evoluiu além de práticas ágeis e é designado 
 para fazê-las mais acessíveis e efetivas para times que são novos no desenvolvimento ágil”.
 
 A evolução do processo de BDD foi impulsionada por diversas descobertas práticas que surgiram em resposta às dificuldades enfrentadas na aplicação do TDD. A mudança 
@@ -17,13 +17,13 @@ da nomenclatura de “teste” para “comportamento”, por exemplo, é aparent
 ideia de que os testes devem sempre validar o comportamento esperado do sistema, o que, por sua vez, reduziu significativamente dúvidas comuns entre desenvolvedores 
 iniciantes, como: “como eu testo isso?” ou “como eu nomeio este teste?”.
 
-Outra mudança importante nesse processo foi a adoção do termo should (deveria) em vez de shall (deve) ou will (vai) na formulação dos nomes dos testes. Dessa forma, 
-a sua nomenclatura se torna uma sentença natural e provoca a reflexão: Ao afirmar que “o sistema deveria fazer algo”, é natural que surja a dúvida: “mas deveria mesmo?”. 
+Outra mudança importante nesse processo foi a adoção do termo \textit{should} (deveria) em vez de \textit{shall} (deve) ou \textit{will} (vai) na formulação dos nomes 
+dos testes. Desta forma, o teste se torna uma sentenção natural e provoca o questionamento se o comportamento demonstrado deveria ser realizado pelo sistema.  
 Esse tipo de reflexão é especialmente valioso em equipes ágeis \cite{atlassianAgileTeams}, pois estimula o diálogo — principalmente em discussões que envolvem 
 profissionais com diferentes níveis de conhecimento técnico ou de domínio do negócio.
 
-A trajetória de Dan North, marcada por suas descobertas, consolidaram um processo de desenvolvimento robusto e que traz diversas práticas voltadas a entregar valor 
-ao usuário de forma mais rápida. Esse amadurecimento é evidente nas características apontadas por \cite{studyBDD} sobre o processo de BDD em sua forma atual, que consistem de:
+O processo consolidado por Dan North tem foco no desenvolvimento robusto e traz diversas práticas voltadas à entregar valor ao usuário de forma mais rápida. Esse 
+amadurecimento é evidente nas características apontadas por \citeonline{studyBDD} sobre o processo de BDD em sua forma atual, que consistem de:
 
 \begin{enumerate}
 	\item \textbf{Linguagem Ubíqua} - uma linguagem comum compreensível tanto por desenvolvedores quanto por especialistas do domínio ou do negócio. Deve ser utilizada 
@@ -39,9 +39,9 @@ Para garantir que todas as características listadas sejam capturadas neste trab
 linguagem Gherkin (cucumber) \cite{cucumberHistory} serão aplicadas.
 
 
-\section{Definição das funcionalidades do sistema por meio de Histórias de Usuário e Mapeamento de Exemplos}
+\section{\textbf{Definição das funcionalidades do sistema por meio de Histórias de Usuário e Mapeamento de Exemplos}}
 
-Segundo \cite{atlassianUserStories}, histórias de usuário são “uma explicação informal de uma funcionalidade de software escrita na perspectiva do usuário”. Elas 
+Segundo \citeonline{atlassianUserStories}, histórias de usuário são “uma explicação informal de uma funcionalidade de software escrita na perspectiva do usuário”. Elas 
 representam uma unidade de trabalho, um objetivo de desenvolvimento a ser alcançado e garante que a equipe seja capaz de colaborar e trazer soluções inovadores 
 com o usuário final em foco.
 
@@ -55,18 +55,15 @@ Para isso, adota-se um formato que se utiliza de linguagem natural e assegura a 
 
 Esses três pontos são organizados em uma estrutura padronizada que utiliza conjunções específicas, resultando no seguinte modelo:
 \textit{“Como [tipo de usuário], eu quero [funcionalidade], para que [valor gerado].”}
-Assim como destacado por Dan North 
-\begin{citacao}
-“[...] sua força está em forçar que você identifique o valor de entregar uma história quando você a define [...]”. \cite{north2006bdd}
-\end{citacao}
-Essa ênfase em entender o valor entregue ao usuário — desde a formulação das histórias — é essencial para garantir que as funcionalidades desenvolvidas estejam 
+Assim como destacado por Dan North ``[...] sua força está em forçar que você identifique o valor de entregar uma história quando você a define [...]'' 
+\cite{north2006bdd}. Essa ênfase em entender o valor entregue ao usuário — desde a formulação das histórias — é essencial para garantir que as funcionalidades desenvolvidas estejam 
 alinhadas com as reais necessidades do usuário.
 
-Para garantir um bom fluxo nas discussões durante a definição do escopo das histórias, o exemplo prático da aplicação de BDD demonstrado em \cite{Lawrence2019cucumber} 
+Para garantir um bom fluxo nas discussões durante a definição do escopo das histórias, o exemplo prático da aplicação de BDD demonstrado em \citeonline{Lawrence2019cucumber} 
 destaca o uso do mapeamento de exemplos como uma forma eficaz para explorar e esclarecer os comportamentos esperados do sistema. Esse método contribui para que 
 toda a equipe tenha uma compreensão da funcionalidade em questão e evita desvios no foco da conversa.
 
-Dessa maneira, a definição dos comportamento deve ser feita por meio de discussões que incluem toda a equipe e começa com citações de exemplos de uso real, priorizando 
+Dessa maneira, a definição dos comportamentos deve ser feita por meio de discussões que incluem toda a equipe e começa com citações de exemplos de uso real, priorizando 
 os cenários de happy path — aqueles em que o sistema se comporta conforme o esperado em condições normais. Estes exemplos devem ser sempre descritos a partir da 
 perspectiva do usuário e podem ser trazidos de forma iterativa, sem a necessidade de que todos os casos estejam definidos antes do início do desenvolvimento.
 
@@ -75,7 +72,7 @@ tecnicamente os exemplos levantados. Essa dificuldade é ainda maior quando não
 caso deste trabalho onde o mecanismo do travamento da porta ainda não está definido durante a etapa de mapeamento de exemplos.
 
 Para lidar com tantos pontos desconhecidos durante discussões com a equipe, costuma-se aplicar o mapeamento de exemplos com o uso de notas adesivas coloridas, 
-assim como descrito na metodologia de \cite{cucumberExampleMapping}. Ela se utiliza de notas coloridas em 4 cores diferentes que representam diferentes pontos:
+assim como descrito na metodologia de \citeonline{cucumberExampleMapping}. Ela se utiliza de notas coloridas em 4 cores diferentes que representam diferentes pontos:
 
 \begin{itemize}
 	\item \textbf{Amarelo}: História de usuário ou funcionalidade;
@@ -85,7 +82,7 @@ assim como descrito na metodologia de \cite{cucumberExampleMapping}. Ela se util
 \end{itemize}
 
 Dessa maneira, todos os pontos desconhecidos que foram previamente identificados são registrados como perguntas, evitando que a discussão se desvie para tópicos 
-fora do escopo naquele momento. Na etapa de implementação, serão apresentados exemplos dessas perguntas e a forma como cada uma será tratada ao longo do processo.
+fora do escopo naquele momento. Na etapa \ref{ch:IM}, serão apresentados exemplos dessas perguntas e a forma como cada uma será tratada ao longo do processo.
 
 Após as dúvidas serem anotadas, a discussão segue focada na experiência do usuário, mesmo que alguns aspectos técnicos ainda não estejam totalmente esclarecidos. 
 Neste caso, assume-se que o veículo existe e que suas portas funcionam “magicamente”, conforme os comportamentos definidos, permitindo que a discussão possa ser 
@@ -169,10 +166,7 @@ prosseguida com os exemplos concretos que devem ser descritos usando as notas ve
 
 %Para referenciar uma figura deve ser usada comando \textbackslash ref\{img:<label ou nome do arquivo>\}, como exemplo, estamos referenciando a figura \ref{img:placeholder}. Isso vale tanto para figuras simples quanto para as compostas, como por exemplo as figuras \ref{img:subfigura1} e \ref{img:subfigura2}. Ao inserir uma figura, ela é automaticamente identificada e incluída no elemento pré-textual da lista de figuras.
 
-
-
-
-\section{A linguagem Gherkin (Cucumber)}
+\section{\textbf{A linguagem Gherkin}}
 A validação das funcionalidades definidas, como detalhado no processo de BDD, consiste na criação de especificações executáveis na forma de cenários que servem de 
 critérios de aceitação das histórias de usuário. Os cenários utilizam um padrão de escrita que incorpora uma junção de palavras-chave com linguagem natural e podem 
 ter interface com o código desenvolvido por meio de diversas ferramentas como JBehave, RSpec \cite{cucumberHistory} e a que será aplicado neste trabalho - 
@@ -223,7 +217,7 @@ Com a biblioteca Behave, do Python, é possível implementar os passos definidos
 Esses decoradores utilizam as palavras-chave da gramática Gherkin — como Given, When e Then — para vincular cada trecho do cenário a uma função que executa a 
 lógica correspondente.
 
-Assim como citado por \cite{studyBDD} as definições de passo e integração com o software é feita de maneira iterativa, similar ao do processo de TDD, seguindo o ciclo 
+Assim como citado por \citeonline{studyBDD} as definições de passo e integração com o software é feita de maneira iterativa, similar ao do processo de TDD, seguindo o ciclo 
 “vermelho-verde-refatorar”. Nesse contexto, cada passo do cenário assume o papel de um teste: inicialmente, o passo falha (“vermelho”); em seguida, são feitas alterações 
 mínimas para que ele seja satisfeito (“verde”); por fim, o código é aprimorado mantendo o comportamento esperado (“refatoração”).
 
@@ -242,8 +236,8 @@ esse passo for invocado. O objeto \texttt{context} é amplamente utilizado na bi
 acesso a interfaces do sistema sob teste. Nesse caso, assume-se que o valor do sinal referente ao botão de travamento está armazenado no objeto \texttt{context} e pode ser 
 modificado por meio de uma simples atribuição.
 
-Na prática, existem algumas complexidades adicionais a serem tratadas na implementação dessas funções, como a comunicação entre o código Python e o modelo Simulink, 
-além da identificação do bloco cujo valor deve ser alterado. No entanto, a função apresentada ilustra claramente o princípio do mapeamento entre os passos descritos 
+Na prática, existem algumas complexidades adicionais a serem tratadas na implementação dessas funções, como a determinação do método para estabelecer comunicação 
+com o sistema. No entanto, a função apresentada ilustra claramente o princípio do mapeamento entre os passos descritos 
 em linguagem natural e as ações que operam sobre o sistema - cada passo, ao ser executado, invoca uma função responsável por manipular o sistema de forma a aplicar o 
 comportamento definido na especificação.
 
@@ -315,8 +309,8 @@ comportamento definido na especificação.
 % 	\legend{\textbf{Fonte:} Elaborado pela autora (2019)}
 % 	\end{quadro}
 
-\section{Design Orientado por Modelo}
-O desenvolvimento de software embarcado impõe uma série de desafios, conforme destacado por \cite{Vincentelli2001}. Entre os principais, estão os altos custos associados 
+\section{\textbf{Design Orientado por Modelo}}
+O desenvolvimento de software embarcado impõe uma série de desafios, conforme destacado por \citeonline{Vincentelli2001}. Entre os principais, estão os altos custos associados 
 ao ciclo de desenvolvimento e as severas restrições de performance, consumo de energia e capacidade de processamento — fatores diretamente condicionados pelo 
 hardware utilizado. Essas limitações tornam o processo de definição e validação do sistema particularmente complexo, já que até mesmo alterações simples nos 
 requisitos podem demandar modificações significativas no código-fonte, seguidas por longas etapas de recompilação, testes e depuração.

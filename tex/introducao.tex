@@ -7,16 +7,21 @@ A indústria automotiva tem experimentado um crescimento constante, acompanhado 
 montadoras para entregar produtos cada vez mais robustos e de alta qualidade. Esse cenário traz consigo um aumento na complexidade do desenvolvimento, demandando soluções 
 mais eficientes e seguras para sistemas cada vez mais sofisticados e que sejam capazes de atender às necessidades específicas de cada cliente.
 
-Diante desse contexto, a Engenharia Automotiva enfrenta o desafio de projetar e desenvolver produtos com um nível altíssimo de qualidade, ao mesmo tempo em que busca reduzir 
-erros e retrabalho. A aplicação de metodologias ágeis, como o Behavior Driven Development (BDD) \cite{north2006bdd}, oferece uma abordagem promissora, pois foca na definição 
-do comportamento esperado do sistema a partir da perspectiva do usuário. Essa abordagem permite uma colaboração mais efetiva entre os membros de uma equipe ágil 
-\cite{atlassianAgileTeams}, facilita a descoberta de funcionalidades e possibilita que o desenvolvimento seja guiado por testes de aceitação automatizados, promovendo entregas de valor de forma 
-mais rápida e com maior confiabilidade.
+A modernização do setor automotivo tem conduzido ao próximo grande avanço: os veículos definidos por software (\textit{Software-Defined Vehicles}) 
+\cite{softwareVehicles2025}. Essa abordagem possibilita a customização contínua e a evolução do produto mesmo após a aquisição, permitindo a entrega de novas 
+funcionalidades ao veículo por meio de atualizações \textit{Over-the-Air (OTA)}, suportadas pelo hardware já embarcado.
 
-\section{Problemática}
+Diante desse contexto, a Engenharia Automotiva enfrenta o desafio de projetar e desenvolver produtos com um nível altíssimo de qualidade, ao mesmo tempo em que busca reduzir 
+erros e retrabalho. A aplicação de metodologias ágeis, como o \textit{Behavior Driven Development (BDD)} \cite{north2006bdd}, oferece uma abordagem promissora, pois foca na 
+definição do comportamento esperado do sistema a partir da perspectiva do usuário. Essa abordagem permite uma colaboração mais efetiva entre os membros de uma equipe ágil 
+\cite{atlassianAgileTeams}, facilita a descoberta de funcionalidades e possibilita que o desenvolvimento seja guiado por testes de aceitação automatizados, promovendo 
+entregas de valor de forma mais rápida e com maior confiabilidade.
+
+\section{\textbf{Justificativa}}
 
 O problema central deste trabalho é: “como é possível aplicar o processo de BDD para facilitar a definição do sistema e guiar seu desenvolvimento no contexto da 
-Engenharia de Sistemas Automotivos?”.
+Engenharia de Sistemas Automotivos?”. A solução proposta consiste na adaptação do processo, integrando as técnicas já consolidadas do BDD com metodologias 
+amplamente utilizadas na indústria automotiva, de forma a lidar com as complexidades inerentes ao desenvolvimento de sistemas veiculares.
 
 O BDD incorpora diversas premissas que surgem das lições aprendidas na aplicação de outras metodologias ágeis, definindo o desenvolvimento do produto a partir do 
 comportamento que gera valor ao usuário. Além disso, ele busca promover a colaboração entre as diferentes etapas do desenvolvimento, garantindo que toda a equipe 
@@ -28,12 +33,14 @@ potenciais e contemplar casos de uso extremos.
 
 O principal desafio deste trabalho está em identificar técnicas capazes de capturar essas complexidades e torná-las compatíveis com as premissas do BDD.
 
-\section{Objetivos gerais e específicos}
+\section{\textbf{Objetivos}}
 
+\subsection{Objetivo Geral}
 Para responder à problemática levantada, o presente estudo tem como objetivo geral aplicar o levantamento e definição de funcionalidades na análise de um sistema de 
 travamento de portas veicular, seguido do desenvolvimento guiado por testes de aceitação automatizados, demonstrando como essas práticas podem contribuir para o 
 desenvolvimento de software automotivo de forma mais organizada e eficiente.
-Para isso, os objetivos específicos serão focados em:
+
+\subsection{Objetivos Específicos}
 \begin{itemize}
 	\item Abordar as complexidades dos sistemas automotivos de maneira compatível com o processo de BDD;
     \item Empregar técnicas de desenvolvimento que são amplamente utilizadas na indústria automotiva;
@@ -43,22 +50,22 @@ Para isso, os objetivos específicos serão focados em:
     \item Possibilitar a adaptação às descobertas surgidas durante a aplicação do processo, garantindo a melhoria contínua do design do sistema e do valor entregue ao usuário.
 \end{itemize}
 
-\section{Metodologia}
+% \section{Metodologia}
 
-A metodologia utilizada neste estudo baseia-se na revisão da bibliografia disponível, com o objetivo de esclarecer o processo de BDD e investigar como ele pode 
-ser adaptado para incorporar práticas consolidadas na Engenharia Automotiva. Para tanto, serão aplicadas técnicas como o mapeamento de exemplos 
-\cite{Lawrence2019cucumber, cucumberExampleMapping}
-, voltado ao levantamento e definição de funcionalidades, e testes de aceitação automatizados 
-\cite{studyBDD}
-, que servirão para guiar o desenvolvimento do sistema.
+% A metodologia utilizada neste estudo baseia-se na revisão da bibliografia disponível, com o objetivo de esclarecer o processo de BDD e investigar como ele pode 
+% ser adaptado para incorporar práticas consolidadas na Engenharia Automotiva. Para tanto, serão aplicadas técnicas como o mapeamento de exemplos 
+% \cite{Lawrence2019cucumber, cucumberExampleMapping}
+% , voltado ao levantamento e definição de funcionalidades, e testes de aceitação automatizados 
+% \cite{studyBDD}
+% , que servirão para guiar o desenvolvimento do sistema.
 
-A implementação do sistema simulado também fará uso de técnicas típicas da Engenharia Automotiva, incluindo o Model Based Design
-\cite{Vincentelli2001, mathworksMBD2024} e a geração automática de código segundo o padrão de software AUTOSAR 
-\cite{autosarClassic}. Conceitos adicionais do domínio automotivo serão considerados para 
-assegurar a adequada abstração nas diferentes etapas do desenvolvimento.
+% A implementação do sistema simulado também fará uso de técnicas típicas da Engenharia Automotiva, incluindo o Model Based Design
+% \cite{Vincentelli2001, mathworksMBD2024} e a geração automática de código segundo o padrão de software AUTOSAR 
+% \cite{autosarClassic}. Conceitos adicionais do domínio automotivo serão considerados para 
+% assegurar a adequada abstração nas diferentes etapas do desenvolvimento.
 
-Espera-se que os resultados obtidos evidenciam os benefícios da integração do BDD no contexto automotivo, destacando sua contribuição para a qualidade e 
-confiabilidade do sistema. A validação será realizada por meio da execução dos testes de aceitação e da análise do uso do sistema final sob a perspectiva do usuário.
+% Espera-se que os resultados obtidos evidenciam os benefícios da integração do BDD no contexto automotivo, destacando sua contribuição para a qualidade e 
+% confiabilidade do sistema. A validação será realizada por meio da execução dos testes de aceitação e da análise do uso do sistema final sob a perspectiva do usuário.
 
 \section{Organização do trabalho}
 Este trabalho está estruturado da seguinte forma: o capítulo 2 apresenta a fundamentação teórica sobre BDD e testes automatizados, 

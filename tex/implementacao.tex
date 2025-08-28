@@ -1,9 +1,10 @@
-\chapter{Implementação} \label{ch:IM}
+\chapter{Implementação} 
+\label{ch:IM}
 
 Neste capítulo será demonstrado em detalhes o procedimento da aplicação de desenvolvimento de produto como anteriormente apresentado, 
-com 9 etapas que expandem o modelo de \cite{Lawrence2019cucumber} para adaptá-lo ao produto em questão.
+com 9 etapas que expandem o modelo de \citeonline{Lawrence2019cucumber} para adaptá-lo ao produto em questão.
 
-\section{Etapa 1: Descrição das histórias de usuário}
+\section{\textbf{Etapa 1: Descrição das histórias de usuário}}
 A etapa inicial do Desenvolvimento Orientado por Comportamento (BDD) consiste na definição das funcionalidades a serem implementadas por meio de histórias de usuário. 
 Nessa fase, a perspectiva do usuário — ou da pessoa que se beneficia da funcionalidade — deve ser o foco principal. Essa abordagem é um dos pilares fundamentais do BDD, 
 pois garante que o produto desenvolvido entregue valor real ao usuário final.
@@ -21,7 +22,7 @@ em veículos de diversas montadoras e pode ser capturado por meio de duas histó
 \end{itemize}
 
 Além disso, outra funcionalidade que é também vastamente presente é a indicação da confirmação do travamento ou destravamento das portas, que normalmente utiliza um 
-sinal visual com os faróis do carro, assim como descrito por \cite{vwLocking}. A seguinte história de usuário será implementada para capturar essa funcionalidade:
+sinal visual com os faróis do carro, assim como descrito por \citeonline{vwLocking}. A seguinte história de usuário será implementada para capturar essa funcionalidade:
 
 \begin{itemize}
     \item Como dono de um veículo automotivo, quero receber uma indicação clara sempre que o travamento ou destravamento das portas ocorrer, para que eu tenha certeza do estado de segurança do meu carro.
@@ -36,7 +37,7 @@ tradicional exija que o usuário retire a chave do bolso, pressione o botão de 
 essa sequência. A diferença é pequena — apenas alguns segundos de tempo —, porém a implementação de uma funcionalidade que elimina etapas desnecessárias torna a 
 experiência mais prática, especialmente considerando que esse mesmo uso será repetido diversas vezes ao longo do dia.
 
-O manual do veículo descreve funcionalidades adicionais, como o travamento das portas ou o destravamento total do veículo ao se interagir duas vezes com a maçaneta. 
+O manual do veículo \textbf{ID.4} descreve funcionalidades adicionais, como o travamento das portas ou o destravamento total do veículo ao se interagir duas vezes com a maçaneta. 
 No entanto, para fins de simplificação, este trabalho irá considerar apenas o cenário básico de destravamento de uma única porta — especificamente, aquela com a 
 qual o usuário interage. Com base nisso, a seguinte história de usuário é adotada:
 
@@ -45,8 +46,8 @@ qual o usuário interage. Com base nisso, a seguinte história de usuário é ad
 \end{itemize}
 
 Por fim, será implementada mais uma história de usuário, também baseada em funcionalidades descritas no manual do proprietário. Trata-se de um recurso que realiza o 
-travamento automático do veículo após um determinado período de tempo, ativado em diferentes situações. Neste trabalho, será abordado especificamente o caso de 
-destravamento não intencional.
+travamento automático do veículo após um determinado período de tempo, ativado em diferentes situações. Neste trabalho, a funcionalidade implementada será especificamente 
+aquela em que o travamento automático é causado para evitar o destravamento não intencional.
 
 Considerando que o usuário deseja manter seu veículo seguro contra furtos, garantir que ele permaneça travado é fundamental. Por esse motivo, identificar uma possível 
 destrava indevida possui valor semelhante ao travamento convencional. A lógica adotada para essa funcionalidade depende de como o sistema reconhece a não intenção 
@@ -59,7 +60,7 @@ Essa funcionalidade será capturada pela seguinte história de usuário:
     \item Como dono de um veículo automotivo, quero que as portas sejam re-travadas automaticamente caso o carro seja destravado sem intenção, para que o veículo permaneça seguro contra acessos não autorizados.
 \end{itemize}
 
-\section{Etapa 2: Mapeamento de exemplos}
+\section{\textbf{Etapa 2: Mapeamento de exemplos}}
 As histórias definidas na etapa anterior têm o papel de estabelecer um escopo claro da funcionalidade em discussão, garantindo que toda a equipe compreenda de forma 
 alinhada o incremento de produto que está sendo proposto. Essa clareza é essencial para a etapa de mapeamento de exemplos, na qual ocorrem discussões colaborativas 
 com pessoas de diferentes áreas.
@@ -68,7 +69,7 @@ com pessoas de diferentes áreas.
 Em equipes ágeis \cite{atlassianAgileTeams}, a colaboração é um dos pilares para assegurar a qualidade do produto em desenvolvimento, especialmente em discussões que 
 envolvem profissionais com diferentes formações e níveis de familiaridade técnica ou de negócio.
 
-Para guiar a discussão, o padrão de mapeamento de exemplos utilizando notas coloridas como descrito por \cite{cucumberExampleMapping}. Com essa estrutura em mente, 
+Para guiar a discussão, o padrão de mapeamento de exemplos utilizando notas coloridas como descrito por \citeonline{cucumberExampleMapping}. Com essa estrutura em mente, 
 todos os pontos desconhecidos previamente identificados são registrados como perguntas, evitando que a discussão se desvie para tópicos fora do escopo naquele momento. 
 
 As seguintes perguntas serão adicionadas em notas vermelhas na discussão da primeira história:
@@ -81,7 +82,7 @@ As seguintes perguntas serão adicionadas em notas vermelhas na discussão da pr
 Após as dúvidas serem anotadas, a discussão segue focada na experiência do usuário, mesmo que alguns aspectos técnicos ainda não estejam totalmente esclarecidos.
 
 \subsection{História de usuário 1}
-Para garantir o foco na perspectiva do usuário, a discussão da história será iniciada com a listagem de exemplos concretos. assim como recomendado por 
+Para garantir o foco na perspectiva do usuário, a discussão da história será iniciada com a listagem de exemplos concretos. Assim como recomendado por 
 Matt Wynne \cite{cucumberExampleMapping}, pode-se utilizar uma nomenclatura do exemplo capturado como em um episódio de seriado, que é simplificado 
 no formato de \texttt{“aquele em que…”}.
 
@@ -125,16 +126,16 @@ Embora existam incertezas técnicas quanto à forma de implementação — seja 
 adotada, uma porta travada não deve abrir quando a maçaneta for acionada. Como nos casos anteriores, as dúvidas ainda existentes serão registradas como perguntas 
 adicionais para orientar futuras discussões da equipe.
 
-Ao fim da discussão, foram capturadas 2 regras e 2 perguntas relativas a essa história de usuário. Está é a representação final das notas coloridas:
+Ao fim da definição da história, foram capturadas 2 regras e 2 perguntas relativas a essa história de usuário. Está é a representação final das notas coloridas:
 
 \begin{figure}[H]
 \centering
 \includegraphics[height=12cm]{figuras/user_story_1.png}
 \caption{História de Usuário 1: Travamento de todas as portas.}
-%\label{fig:casos-uso}
+\label{fig:historia1}
 \end{figure}
 
-Antes de seguir para a próxima história de usuário, aqui serão tratadas as perguntas que foram anotadas anteriormente. Esta etapa poderia ser postergada 
+Antes de seguir para a próxima história de usuário, aqui serão tratadas as perguntas que foram anotadas nesta seção. Esta etapa poderia ser postergada 
 para o final do processo de discussão de exemplos, mas para garantir uma evolução incremental do produto, a próxima história será tratada quando os pontos 
 abertos da atual forem respondidos.
 
@@ -151,13 +152,13 @@ são desnecessários, substituídos pela fiação que se liga ao componente.
 
 Embutido na trava eletrônica também é incluído o mecanismo básico de travamento como descrito por \cite{reif2017locking}. Ele é composto por três peças principais: 
 o trinco (1) e engate (2) — que são acoplados à porta — e  o pino de batente (3) — que é acoplado ao chassi do veículo. Eles são responsáveis por manter a porta 
-firmemente fechada, conforme ilustrado na imagem a seguir:
+firmemente fechada, conforme ilustrado na figura 2:
 
 \begin{figure}[H]
 \centering
 \includegraphics[height=6cm]{figuras/trava_mecanismo.png}
 \caption{Mecanismo de travamento da porta \cite{reif2017locking}.}
-%\label{fig:casos-uso}
+\label{fig:travaporta}
 \end{figure}
 
 Durante o fechamento da porta, o engate (2) colide com o pino de batente (3) e gira no sentido anti-horário, passando por baixo do pino até retornar à sua posição 
@@ -180,13 +181,13 @@ Para modelar esse comportamento do sistema, o seu escopo pode ser definido em te
 
 Além do mecanismo de travamento em si, serão utilizados botões para realizar o travamento e abertura das portas. Seu escopo será feito de maneira similar, utilizando 
 valores binários como abstrações dos sinais existentes a nível de hardware que são convertidos no software básico. Em suma, para atender a primeira história de 
-usuário discutida, o modelo do sistema será desenvolvido tomando como base a lógica de aplicação assim como destacado no diagrama abaixo:
+usuário discutida, o modelo do sistema será desenvolvido tomando como base a lógica de aplicação assim como destacado na figura 3:
 
 \begin{figure}[H]
 \centering
 \includegraphics[height=8cm]{figuras/diagrama_aplication.png}
 \caption{Diagrama de abstração do sistema em camadas de aplicação, software básico e componentes físicos.}
-%\label{fig:casos-uso}
+\label{fig:abstracaosw}
 \end{figure}
 
 Portanto, para a lógica de aplicação do modelo, receber o valor 1 recebido pela interface binária do botão de travamento é interpretado como um comando de 
@@ -222,7 +223,7 @@ Ao final, foram capturados 3 exemplos e 2 regras capturadas na história de usu�
 \centering
 \includegraphics[height=12cm]{figuras/user_story_2.png}
 \caption{História de Usuário 2: Destravamento de todas as portas.}
-%\label{fig:casos-uso}
+\label{fig:historia2}
 \end{figure}
 
 Com base nas respostas obtidas na história anterior, diversas incertezas acerca do funcionamento do destravamento das portas já foram determinadas. Sabe-se, 
@@ -265,7 +266,7 @@ Dessa forma, essa história de usuário foi mapeada com 3 exemplos, 2 regras e 2
 \centering
 \includegraphics[height=12cm]{figuras/user_story_3.png}
 \caption{História de Usuário 3: Feedback de travamento.}
-%\label{fig:casos-uso}
+\label{fig:historia3}
 \end{figure}
 
 A investigação das perguntas levantadas envolvem detalhes que dependem diretamente da implementação física do produto. Para respondê-las, é necessário 
@@ -326,7 +327,7 @@ O mapeamento de exemplos dessa história na forma de notas coloridas é composto
 \centering
 \includegraphics[height=12cm]{figuras/user_story_4.png}
 \caption{História de Usuário 4: Keyless Access.}
-%\label{fig:casos-uso}
+\label{fig:historia4}
 \end{figure}
 
 Por fim, uma nova pergunta foi levantada no mapeamento de exemplos da história e deve ser respondida antes do trabalho na próxima história. Para fazê-lo, é 
@@ -402,10 +403,10 @@ O mapeamento de exemplos dessa história na forma de notas coloridas é composto
 \centering
 \includegraphics[height=12cm]{figuras/user_story_5.png}
 \caption{História de Usuário 5: Travamento automático.}
-%\label{fig:casos-uso}
+\label{fig:historia5}
 \end{figure}
 
-\section{Etapa 3: Desenho do diagrama de caixa preta}
+\section{\textbf{Etapa 3: Desenho do diagrama de caixa preta}}
 Com todas as histórias de usuário definidas, o próximo passo do trabalho consiste na elaboração do diagrama de caixa preta, com o objetivo de identificar todas as 
 interfaces necessárias para suportar os comportamentos previamente levantados. Essa etapa é essencial para garantir que todas as interações entre o usuário e o 
 sistema estejam claramente especificadas e para suportar a criação dos cenários Gherkin a seguir.
@@ -440,7 +441,7 @@ Dessa forma, o diagrama assume a seguinte configuração:
 \centering
 \includegraphics[height=8cm]{figuras/diagrama_caixa_preta.png}
 \caption{Diagrama de Caixa Preta do sistema de travamento de portas.}
-%\label{fig:casos-uso}
+\label{fig:caixapreta}
 \end{figure}
 
 De maneira análoga, o modelo desenvolvido no Simulink também deverá adotar uma estrutura semelhante, composta por um modelo de alto nível — que define apenas as 
@@ -575,7 +576,7 @@ Feedback de travamento &
 Nesta tabela, os valores das interfaces foram descritos de maneira textual, com valores que se aplicam à linguagem natural proposta pela metodologia de BDD. 
 Na prática, todos os valores serão utilizados como enumerações convertidas para um valor numérico que representa o estado da interface.
 
-\section{Etapa 4: Desenvolvimento dos cenários Gherkin}
+\section{\textbf{Etapa 4: Desenvolvimento dos cenários Gherkin}}
 
 Nesta etapa, os cenários Gherkin serão desenvolvidos e utilizados como critérios de aceitação das histórias previamente definidas. Estes cenários devem ser capazes 
 de cobrir todos os exemplos capturados durante o mapeamento, assegurando que o desenvolvimento do sistema atenda à experiência de usuário desejada.
