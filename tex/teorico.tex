@@ -19,7 +19,7 @@ iniciantes.
 
 Outra mudança importante nesse processo foi a adoção do termo \textit{should} (deveria) em vez de \textit{shall} (deve) ou \textit{will} (vai) na formulação dos nomes 
 dos testes. Desta forma, o teste se torna uma sentenção natural e provoca o questionamento se o comportamento demonstrado deveria ser realizado pelo sistema.  
-Esse tipo de reflexão é especialmente valioso em equipes ágeis \cite{atlassianAgileTeams}, pois estimula o diálogo — principalmente em discussões que envolvem 
+Esse tipo de reflexão é especialmente valioso em equipes ágeis \cite{atlassianAgileTeams}, pois estimula o diálogo - principalmente em discussões que envolvem 
 profissionais com diferentes níveis de conhecimento técnico ou de domínio do negócio.
 
 O processo consolidado por Dan North tem foco no desenvolvimento robusto e traz diversas práticas voltadas à entregar valor ao usuário de forma mais rápida. Esse 
@@ -64,7 +64,7 @@ destaca o uso do mapeamento de exemplos como uma forma eficaz para explorar e es
 toda a equipe tenha uma compreensão da funcionalidade em questão e evita desvios no foco da conversa.
 
 Dessa maneira, a definição dos comportamentos deve ser feita por meio de discussões que incluem toda a equipe e começa com citações de exemplos de uso real, priorizando 
-os cenários de \textit{happy path} — aqueles em que o sistema se comporta conforme o esperado em condições normais. Estes exemplos devem ser sempre descritos a partir da 
+os cenários de \textit{happy path} - aqueles em que o sistema se comporta conforme o esperado em condições normais. Estes exemplos devem ser sempre descritos a partir da 
 perspectiva do usuário e podem ser trazidos de forma iterativa, sem a necessidade de que todos os casos estejam definidos antes do início do desenvolvimento.
 
 Neste estágio do processo, existem ainda muitas incertezas acerca do sistema, o que pode dificultar a definição de comportamentos concretos que sustentem 
@@ -187,8 +187,8 @@ as palavras guias, os seguintes componentes do teste:
    	\item \textit{Then} - estado final do sistema ou ação.
 \end{itemize}
 
-Dessa forma, um cenário descreve como o sistema deve transitar de um estado inicial — definido pela cláusula \textit{Given} — para um estado final — especificado pelo 
-\textit{Then} — em resposta a uma mudança ou evento descrito pelo \textit{When}. Um exemplo disso pode ser demonstrado da seguinte forma:
+Dessa forma, um cenário descreve como o sistema deve transitar de um estado inicial - definido pela cláusula \textit{Given} - para um estado final - especificado pelo 
+\textit{Then} - em resposta a uma mudança ou evento descrito pelo \textit{When}. Um exemplo disso pode ser demonstrado da seguinte forma:
 
 \begin{verbatim}
 	Scenario: Derrubar dominós
@@ -200,7 +200,7 @@ Dessa forma, um cenário descreve como o sistema deve transitar de um estado ini
 Este exemplo ilustra como a gramática \textit{Gherkin} pode ser utilizada para representar um cenário real na qual dominós são enfileirados e, ao se derrubar o primeiro, 
 ocorre uma reação em cadeia. Ele demonstra uma clara mudança de estado que ocorre como uma resposta ao evento que é derrubar o primeiro dominó.
 
-Um exemplo aplicado a um sistema de software para travamento de portas — como no caso abordado neste trabalho — pode ser descrito da seguinte forma:
+Um exemplo aplicado a um sistema de software para travamento de portas - como no caso abordado neste trabalho - pode ser descrito da seguinte forma:
 
 \begin{verbatim}
 	Scenario: Travando o carro
@@ -210,11 +210,11 @@ Um exemplo aplicado a um sistema de software para travamento de portas — como 
 \end{verbatim}
 
 Tanto este quanto o exemplo anterior ilustram como o uso da linguagem natural proposto pelo processo de BDD na escrita dos cenários torna o entendimento claro 
-e evita confusões. Outro benefício dessa abordagem é sua independência em relação à tecnologia utilizada — ao definir que o comportamento esperado do sistema é 
+e evita confusões. Outro benefício dessa abordagem é sua independência em relação à tecnologia utilizada - ao definir que o comportamento esperado do sistema é 
 travar o carro em resposta ao pressionar o botão, essa especificação permanece válida independentemente do tipo de trava adotado ou mesmo do número de portas no veículo.
 
 Com a biblioteca \textit{Behave}, do Python, é possível implementar os passos definidos nos cenários \textit{Gherkin} por meio de funções associadas a decoradores específicos. 
-Esses decoradores utilizam as palavras-chave da gramática \textit{Gherkin} — como Given, When e Then — para vincular cada trecho do cenário a uma função que executa a 
+Esses decoradores utilizam as palavras-chave da gramática \textit{Gherkin} - como Given, When e Then - para vincular cada trecho do cenário a uma função que executa a 
 lógica correspondente.
 
 Assim como citado por \citeonline{studyBDD} as definições de passo e integração com o software é feita de maneira iterativa, similar ao do processo de TDD, seguindo o ciclo 
@@ -312,7 +312,7 @@ comportamento definido na especificação.
 
 \section{\textbf{Design Orientado por Modelo}}
 O desenvolvimento de software embarcado impõe uma série de desafios, conforme destacado por \citeonline{Vincentelli2001}. Entre os principais, estão os altos custos associados 
-ao ciclo de desenvolvimento e as severas restrições de performance, consumo de energia e capacidade de processamento — fatores diretamente condicionados pelo 
+ao ciclo de desenvolvimento e as severas restrições de performance, consumo de energia e capacidade de processamento - fatores diretamente condicionados pelo 
 hardware utilizado. Essas limitações tornam o processo de definição e validação do sistema particularmente complexo, já que até mesmo alterações simples nos 
 requisitos podem demandar modificações significativas no código-fonte, seguidas por longas etapas de recompilação, testes e depuração.
 
@@ -336,7 +336,7 @@ cenários \textit{Gherkin} com o modelo em \textit{Simulink} para executar os te
 
 Outra barreira frequentemente  encontrada no desenvolvimento de software embarcado é a sua forte dependência do hardware utilizado, especialmente quando se trata 
 da interação com os diversos componentes conectados ao microcontrolador. No caso do sistema de travamento de portas, por exemplo, é necessária a utilização de um 
-atuador que seja capaz de acionar a trava e impedir a abertura da porta — algo que pode ser implementado com o uso de motores de passo ou servo motores.
+atuador que seja capaz de acionar a trava e impedir a abertura da porta - algo que pode ser implementado com o uso de motores de passo ou servo motores.
 
 A dificuldade surge justamente na definição das entradas e saídas do sistema, que precisam ser modeladas de forma compatível com os componentes selecionados. No 
 entanto, muitas vezes o hardware ainda não está totalmente definido nesta etapa do projeto, ou pode vir a ser alterado futuramente por razões de custo, 
@@ -350,16 +350,16 @@ código e a manutenção do sistema.
 No modelo AUTOSAR, a estrutura do software é decomposta nas seguintes camadas:
 
 \begin{itemize}
-	\item \textbf{Camada de Aplicação} — contém componentes de software que são responsáveis pela lógica funcional do sistema, que são completamente independentes do hardware;
-	\item \textbf{Software básico} — implementa serviços que permitem o acesso direto ao hardware, lidando com os detalhes técnicos da plataforma física utilizada;
-	\item \textbf{\textit{RTE (Run-Time Environment)}} — faz a interface entre as duas camadas anteriores e gerencia a comunicação entre diferentes componentes de software;
+	\item \textbf{Camada de Aplicação} - contém componentes de software que são responsáveis pela lógica funcional do sistema, que são completamente independentes do hardware;
+	\item \textbf{Software básico} - implementa serviços que permitem o acesso direto ao hardware, lidando com os detalhes técnicos da plataforma física utilizada;
+	\item \textbf{\textit{RTE (Run-Time Environment)}} - faz a interface entre as duas camadas anteriores e gerencia a comunicação entre diferentes componentes de software;
 \end{itemize}
 
 Neste caso, o desenvolvimento do modelo será focado na camada de aplicação, similar à presente no padrão \textit{AUTOSAR}, definindo interfaces de entrada e saída como 
 abstrações simplificadas que satisfazem o comportamento do sistema sem se prender em detalhes técnicos. Para isso, a definição do modelo do sistema e dos testes 
 de aceitação tomará como base o teste de caixa preta \cite{sommerville2019}.
 
-Dessa forma, uma possível abstração da saída do sistema, considerando o problema levantado anteriormente — o estado de travamento da porta —, pode ser feita ao 
+Dessa forma, uma possível abstração da saída do sistema, considerando o problema levantado anteriormente - o estado de travamento da porta -, pode ser feita ao 
 representar cada trava por meio de um sinal binário: onde 1 indica o estado travado e 0, o destravado. Essa interface corresponde à saída do modelo, a qual, na 
 prática, é transmitida através da camada de RTE para o software básico que é responsável por converter esse sinal em um formato compatível com o componente físico 
 selecionado.
