@@ -29,11 +29,11 @@ sinal visual com os faróis do carro, assim como descrito por \citeonline{vwLock
 \end{itemize}
 
 Em alguns veículos como os da Volkswagen \cite{vwLocking}, há uma funcionalidade que permite destravar as portas sem a necessidade de usar a chave, desde que ela 
-esteja próxima ao veículo. O sistema \texttt{Keyless Access} possibilita que, ao interagir com as maçanetas das portas, o motorista possa destravar ou travar o carro sem 
+esteja próxima ao veículo. O sistema \textit{Keyless Access} possibilita que, ao interagir com as maçanetas das portas, o motorista possa destravar ou travar o carro sem 
 precisar pressionar o botão no controle.
 
 Esse recurso é útil em situações cotidianas, como quando o motorista deseja entrar no carro enquanto a chave está, por exemplo, no bolso. Embora o processo 
-tradicional exija que o usuário retire a chave do bolso, pressione o botão de destravamento e, em seguida, guarde-a novamente, o uso do \texttt{Keyless Access} simplifica 
+tradicional exija que o usuário retire a chave do bolso, pressione o botão de destravamento e, em seguida, guarde-a novamente, o uso do \textit{Keyless Access} simplifica 
 essa sequência. A diferença é pequena — apenas alguns segundos de tempo —, porém a implementação de uma funcionalidade que elimina etapas desnecessárias torna a 
 experiência mais prática, especialmente considerando que esse mesmo uso será repetido diversas vezes ao longo do dia.
 
@@ -82,6 +82,7 @@ As seguintes perguntas serão adicionadas em notas vermelhas na discussão da pr
 Após as dúvidas serem anotadas, a discussão segue focada na experiência do usuário, mesmo que alguns aspectos técnicos ainda não estejam totalmente esclarecidos.
 
 \subsection{História de usuário 1}
+\label{sbs:historia1}
 Para garantir o foco na perspectiva do usuário, a discussão da história será iniciada com a listagem de exemplos concretos. Assim como recomendado por 
 Matt Wynne \cite{cucumberExampleMapping}, pode-se utilizar uma nomenclatura do exemplo capturado como em um episódio de seriado, que é simplificado 
 no formato de \texttt{“aquele em que…”}.
@@ -116,7 +117,7 @@ Outras perguntas podem também surgir a partir de variações no questionamento 
 o veículo estivesse com apenas algumas portas travadas? Poderia haver um estado intermediário, em que nem todas as portas estejam travadas ou destravadas?
 
 Como será detalhado em uma história de usuário futura, tais situações são de fato possíveis — por exemplo, quando o sistema permite o destravamento de portas 
-específicas com o Keyless Access. Ainda assim, a resposta anterior permanece válida: ao acionar o botão de travamento, o sistema deve garantir que todas as portas 
+específicas com o \textit{Keyless Access}. Ainda assim, a resposta anterior permanece válida: ao acionar o botão de travamento, o sistema deve garantir que todas as portas 
 estejam devidamente travadas.
 
 A segunda regra trata da abertura da porta e estabelece que ela não deve ser permitida quando estiver travada. Esse comportamento é fundamental para a existência 
@@ -196,10 +197,11 @@ o software básico, esses valores são interpretados e convertidos em sinais de 
 
 Na prática, o travamento ou destravamento funciona apenas como uma limitação à abertura das portas e portanto, especialmente no caso da trava eletrônica, 
 não há distinção física evidente entre os dois estados. Para facilitar essa identificação, este trabalho introduz uma indicação adicional, representada 
-pela última caixa na imagem do diagrama. Ela servirá apenas para indicar o estado atual de cada porta, facilitando a execução dos testes e a validação 
+pelo "Mecanismo de travamento" na figura \ref{fig:abstracaosw}. Ela servirá apenas para indicar o estado atual de cada porta, facilitando a execução dos testes e a validação 
 funcional do sistema.
 
 \subsection{História de usuário 2}
+\label{sbs:historia2}
 
 Ao considerar a história de usuário de destravamento das portas, é importante pensar na perspectiva da intenção de acessar o veículo. Isso é uma situação 
 cotidiana que acontece com altíssima frequência, e portanto possui exemplos muito semelhantes a história 1:
@@ -217,7 +219,7 @@ Para satisfazer os exemplos listados, as seguintes regras serão implementadas:
     \item Qualquer porta destravada deve ser aberta ao utilizar a maçaneta.
 \end{itemize}
 
-Ao final, foram capturados 3 exemplos e 2 regras capturadas na história de usuário, o que compõe as seguintes notas coloridas:
+Ao final, foram capturados 3 exemplos e 2 regras na história de usuário, o que compõe as seguintes notas coloridas:
 
 \begin{figure}[H]
 \centering
@@ -236,7 +238,7 @@ igualmente interpretada pelo software básico como um valor de tensão e convert
 \subsection{História de usuário 3}
 
 A indicação da confirmação de travamento ou destravamento do veículo tem a grande importância de permitir que o usuário esteja assegurado de que o seu comando foi 
-recebido e executado pelo veículo. Ela deve portanto ser invocada sempre que o usuário estiver utilizando as histórias mencionadas anteriormente, além de capturar 
+recebido e executado pelo veículo. Ela deve portanto ser invocada sempre que o usuário estiver utilizando as histórias 1 e 2, além de capturar 
 os seguintes exemplos:
 
 \begin{itemize}
@@ -252,7 +254,7 @@ As regras que cobrem os exemplos listados são:
     \item O veículo deve indicar com um sinal de falha quando pelo menos uma das portas está aberta ao receber o comando de travamento.
 \end{itemize}
 
-O último exemplo levanta questões que precisam ser exploradas por meio de perguntas e trazem consigo um novo fator que o sistema deve considerar: O estado de 
+O último exemplo levanta questões que precisam ser exploradas por meio de perguntas e trazem consigo um novo fator que o sistema deve considerar: o estado de 
 abertura das portas. Para isso, as seguintes perguntas são criadas:
 
 \begin{itemize}
@@ -260,7 +262,7 @@ abertura das portas. Para isso, as seguintes perguntas são criadas:
     \item É possível travar ou destravar uma porta que está aberta?
 \end{itemize}
 
-Dessa forma, essa história de usuário foi mapeada com 3 exemplos, 2 regras e 2 perguntas, da seguinte maneira:
+Dessa forma, essa história de usuário foi mapeada com 3 exemplos, 2 regras e 2 perguntas, de acordo com a figura \ref{fig:historia3}:
 
 \begin{figure}[H]
 \centering
@@ -272,8 +274,8 @@ Dessa forma, essa história de usuário foi mapeada com 3 exemplos, 2 regras e 2
 A investigação das perguntas levantadas envolvem detalhes que dependem diretamente da implementação física do produto. Para respondê-las, é necessário 
 compreender como um sistema veicular real consegue identificar se as portas estão fisicamente abertas.
 
-Esta detecção é normalmente feita por meio de sensores ou mecanismos capazes de indicar quando a porta está entreaberta (estado ajar). Um exemplo é 
-apresentado em \cite{us4566285a}, que descreve o uso de switches físicos: eles são pressionados quando a porta está completamente fechada e liberados 
+Esta detecção é normalmente feita por meio de sensores ou mecanismos capazes de indicar quando a porta está entreaberta (estado \textit{ajar}). Um exemplo é 
+apresentado em \citeonline{us4566285a}, que descreve o uso de switches físicos: eles são pressionados quando a porta está completamente fechada e liberados 
 quando a porta se abre. 
 
 Esse tipo de sensor pode ser integrado de forma semelhante às interfaces binárias utilizadas nos botões de travamento e destravamento, empregando sinais 
@@ -299,7 +301,7 @@ de usuário e por conta disso o alerta do usuário se vê necessário.
 
 \subsection{História de usuário 4}
 
-A funcionalidade de Keyless Access permite o destravamento individual das portas assim que o usuário aciona a maçaneta de uma porta travada, desde que a chave 
+A funcionalidade de \textit{Keyless Access} permite o destravamento individual das portas assim que o usuário aciona a maçaneta de uma porta travada, desde que a chave 
 autorizada esteja presente em sua posse. Os exemplos de uso dessa funcionalidade são bastante semelhantes aos do destravamento convencional, pois refletem 
 situações em que o usuário tem a intenção de acessar o veículo. 
 
@@ -311,14 +313,14 @@ Os exemplos capturados na discussão da história são:
 \begin{itemize}
     \item \textbf{Aquele em que o usuário tinha a chave no bolso e usou a maçaneta} — Este é o caso típico de uso da funcionalidade: a chave autorizada está próxima e é reconhecida pelo sistema, permitindo o destravamento imediato da porta acionada;
     \item \textbf{Aquele em que outra pessoa abriu outra porta simultaneamente} — Neste caso, mais uma porta é aberta simultaneamente, possivelmente por alguém acompanhando o dono do veículo. O sistema deve tratar as portas de forma independente, e portanto ambas devem ser destravadas individualmente, permitindo o acesso simultâneo;
-    \item \textbf{Aquele em que o usuário destravou a porta e a fechou de novo} — Após acessar o veículo utilizando o Keyless Access e em seguida fechar a porta, o sistema deve manter a porta destravada até que o usuário execute explicitamente o comando de travamento. Isso garante que a intenção do usuário seja respeitada e evita travamentos não intencionais.
+    \item \textbf{Aquele em que o usuário destravou a porta e a fechou de novo} — Após acessar o veículo utilizando o \textit{Keyless Access} e em seguida fechar a porta, o sistema deve manter a porta destravada até que o usuário execute explicitamente o comando de travamento. Isso garante que a intenção do usuário seja respeitada e evita travamentos não intencionais.
 \end{itemize}
 
 Para cobrir os exemplos, as seguintes regras serão utilizadas:
 
 \begin{itemize}
     \item Qualquer porta que tiver sua maçaneta utilizada deve ser destravada desde que a chave esteja próxima ao veículo;
-    \item A porta deve ser mantida destravada após a operação de Keyless Access.
+    \item A porta deve ser mantida destravada após a operação de \textit{Keyless Access}.
 \end{itemize}
 
 O mapeamento de exemplos dessa história na forma de notas coloridas é composto por 3 exemplos, 2 regras e 1 pergunta:
@@ -326,28 +328,28 @@ O mapeamento de exemplos dessa história na forma de notas coloridas é composto
 \begin{figure}[H]
 \centering
 \includegraphics[height=12cm]{figuras/user_story_4.png}
-\caption{História de Usuário 4: Keyless Access.}
+\caption{História de Usuário 4: \textit{Keyless Access}.}
 \label{fig:historia4}
 \end{figure}
 
 Por fim, uma nova pergunta foi levantada no mapeamento de exemplos da história e deve ser respondida antes do trabalho na próxima história. Para fazê-lo, é 
 preciso investigar alguma opção de tecnologia que possa ser utilizada para representar a validação de chave de usuário. 
 
-A implementação de sistemas de detecção de chave, conforme descrito por \cite{glocker2016protocol}, costumam utilizar módulos de comunicação por rádio-frequência (RF), 
+A implementação de sistemas de detecção de chave, conforme descrito por \citeonline{glocker2016protocol}, costumam utilizar módulos de comunicação por rádio-frequência (RF), 
 capazes de estabelecer conexão com um dispositivo autorizado. A validação desse dispositivo pode ser realizada por meio de diferentes métodos e protocolos de segurança, 
 que incluem mecanismos de autenticação mútua entre a chave e o veículo. Esses protocolos aumentam a robustez do sistema contra tentativas de acesso não autorizado.
 
-Em casos mais simples, como demonstrado em \cite{arduinoRFID}, o sistema utiliza um sensor RFID (Radio Frequency Identification) e uma tag que contém uma chave 
+Em casos mais simples, como demonstrado em \citeonline{arduinoRFID}, o sistema utiliza um sensor \textit{RFID (Radio Frequency Identification)} e uma tag que contém uma chave 
 de identificação única. O funcionamento baseia-se na transmissão do identificador por meio de um sinal de rádio quando a tag é aproximada do sensor. O sensor, 
 por sua vez, envia o código recebido ao microcontrolador, que o compara com um identificador previamente armazenado em sua memória. Caso haja correspondência, 
 a chave é considerada válida e o acesso é autorizado.
 
-Esse tipo de autenticação, no contexto da arquitetura AUTOSAR, é normalmente responsabilidade de um componente específico do software básico pertencente 
-à pilha de cibersegurança. Esse componente, conhecido como Key Manager \cite{autosarKeyManager}, fornece serviços utilizados para a validação de chaves, 
+Esse tipo de autenticação, no contexto da arquitetura \textit{AUTOSAR}, é normalmente responsabilidade de um componente específico do software básico pertencente 
+à pilha de cibersegurança. Esse componente, conhecido como \textit{Key Manager} \cite{autosarKeyManager}, fornece serviços utilizados para a validação de chaves, 
 utilizando diferentes protocolos de segurança. Ele também se comunica com a unidade de memória do controlador para acessar os dados das chaves previamente registradas.
 
-Considerando a presença desse componente no sistema AUTOSAR, será adotada novamente uma abstração da tecnologia de hardware envolvida, por meio de uma interface 
-binária. Nesse cenário, a verificação da chave de identificação em relação ao valor armazenado em memória é realizada pelo Key Manager e o resultado dessa 
+Considerando a presença desse componente no sistema \textit{AUTOSAR}, será adotada novamente uma abstração da tecnologia de hardware envolvida, por meio de uma interface 
+binária. Nesse cenário, a verificação da chave de identificação em relação ao valor armazenado em memória é realizada pelo \textit{Key Manager} e o resultado dessa 
 validação é então comunicado à aplicação de forma semelhante ao funcionamento dos botões de entrada: por meio de um sinal binário que indica se a chave foi 
 validada (1) ou não (0).
 
@@ -374,7 +376,7 @@ pressionado, e portanto ele não precisa ser travado novamente.
 Sabe-se que o principal objetivo do travamento do veículo é garantir sua segurança contra furtos e impedir o acesso de pessoas não autorizadas. No entanto, existem 
 cenários em que o usuário pode intencionalmente optar por deixar o veículo destravado, mesmo que não pretenda acessá-lo de imediato. Um exemplo disso seria quando 
 o veículo é deixado em uma garagem particular, onde o usuário deseja mantê-lo acessível para buscar um item posteriormente ou por qualquer outro motivo, sem a 
-necessidade de utilizar novamente a chave ou o sistema de Keyless Access.
+necessidade de utilizar novamente a chave ou o sistema de \textit{Keyless Access}.
 
 Para contemplar essa situação e permitir que a intenção do usuário seja respeitada, é necessário que exista pelo menos uma regra específica que permita o 
 destravamento completo, sem que seja necessário o acesso ao veículo. Neste caso, será adotada a estratégia de considerar o duplo acionamento do botão de 
@@ -409,7 +411,7 @@ O mapeamento de exemplos dessa história na forma de notas coloridas é composto
 \section{\textbf{Etapa 3: Desenho do diagrama de caixa preta}}
 Com todas as histórias de usuário definidas, o próximo passo do trabalho consiste na elaboração do diagrama de caixa preta, com o objetivo de identificar todas as 
 interfaces necessárias para suportar os comportamentos previamente levantados. Essa etapa é essencial para garantir que todas as interações entre o usuário e o 
-sistema estejam claramente especificadas e para suportar a criação dos cenários Gherkin a seguir.
+sistema estejam claramente especificadas e para suportar a criação dos cenários \textit{Gherkin} a seguir.
 
 Para dar início ao processo, é necessário listar todas as entradas e saídas do sistema:
 
@@ -435,7 +437,7 @@ O diagrama é então elaborado com um bloco central representando o sistema, ao 
 o bloco central permanece sem conteúdo interno, uma vez que o objetivo é abstrair os detalhes da implementação e focar exclusivamente na definição das 
 interações entre o sistema e o usuário.
 
-Dessa forma, o diagrama assume a seguinte configuração:
+Dessa forma, o diagrama assume a configuração ilustrada na figura \ref{fig:caixapreta}:
 
 \begin{figure}[H]
 \centering
@@ -448,11 +450,10 @@ De maneira análoga, o modelo desenvolvido no Simulink também deverá adotar um
 entradas e saídas do sistema — e um modelo de baixo nível, responsável por conter toda a lógica funcional implementada.
 
 É importante destacar que algumas interfaces adicionais serão necessárias no modelo do sistema, embora não estejam representadas no diagrama de caixa preta, 
-pois não estão diretamente relacionadas aos comportamentos observáveis pelo usuário. Essas interfaces serão detalhadas posteriormente, durante a etapa de 
-modelagem iterativa, e são fundamentais para suportar aspectos técnicos que garantem o funcionamento correto do sistema. Um exemplo dessas interfaces é o tempo 
+pois não estão diretamente relacionadas aos comportamentos observáveis pelo usuário. Essas interfaces serão detalhadas em \ref{ch:RD}, e são fundamentais para suportar aspectos técnicos que garantem o funcionamento correto do sistema. Um exemplo dessas interfaces é o tempo 
 de simulação, necessário para validar a condição de auto travamento descrita na história de usuário 5.
 
-Para finalizar essa etapa, é necessário definir quais são os valores possíveis que devem ser capturados em cada uma das interfaces criadas neste diagrama:
+Para finalizar essa etapa, é necessário definir quais são os valores possíveis que devem ser capturados em cada uma das interfaces criadas no diagrama da figura \ref{fig:caixapreta}.
 
 % \begin{tabular}{|p{5cm}|p{7cm}|}
 % %\centering
@@ -578,9 +579,9 @@ Na prática, todos os valores serão utilizados como enumerações convertidas p
 
 \section{\textbf{Etapa 4: Desenvolvimento dos cenários Gherkin}}
 
-Nesta etapa, os cenários Gherkin serão desenvolvidos e utilizados como critérios de aceitação das histórias previamente definidas. Estes cenários devem ser capazes 
+Nesta etapa, os cenários \textit{Gherkin} serão desenvolvidos e utilizados como critérios de aceitação das histórias previamente definidas. Estes cenários devem ser capazes 
 de cobrir todos os exemplos capturados durante o mapeamento, assegurando que o desenvolvimento do sistema atenda à experiência de usuário desejada.
-Como primeiro passo, será definida a estrutura de pastas do projeto, responsável por organizar tanto os arquivos .feature — um para cada história de usuário — 
+Como primeiro passo, será definida a estrutura de pastas do projeto, responsável por organizar tanto os arquivos \texttt{.feature} — um para cada história de usuário — 
 quanto o modelo em Simulink. Seguindo a estrutura recomendada na documentação da biblioteca Behave \cite{behaveDocs}, o projeto será organizado da seguinte forma:
 
 \begin{verbatim}
@@ -595,7 +596,7 @@ quanto o modelo em Simulink. Seguindo a estrutura recomendada na documentação 
     |       `-- lock\_unlock.py
 \end{verbatim}
 
-Cada história de usuário possui um arquivo \texttt{\.feature} correspondente, todos organizados dentro da pasta features do projeto. A nomenclatura desses 
+Cada história de usuário possui um arquivo \texttt{\.feature} correspondente, todos organizados dentro da pasta \texttt{features} do projeto. A nomenclatura desses 
 arquivos foi definida de forma a evidenciar a funcionalidade representada em cada um, facilitando a identificação e o rastreamento das histórias implementadas. 
 Por exemplo, o arquivo \texttt{lock\_all.feature} refere-se à primeira história de usuário, que descreve a funcionalidade de travamento de todas as portas 
 por meio do botão de travamento.
@@ -603,10 +604,10 @@ por meio do botão de travamento.
 Além disso, o arquivo environment.py é utilizado para definir funções de inicialização que são executadas antes do início dos testes ou de cada passo individual. 
 Uma de suas responsabilidades é iniciar a simulação quando os testes são acionados, além de disponibilizar interfaces que permitem a comunicação com o modelo Simulink.
 
-Por fim, o arquivo de definição dos passos (step definitions) é armazenado na pasta steps e foi nomeado de \texttt{lock\_unlock.py}. Ele é responsável por mapear os 
-passos descritos nos cenários Gherkin para funções executáveis, que realizam as ações esperadas e interagem com o modelo.
+Por fim, o arquivo de definição dos passos \textit{(step definitions)} é armazenado na pasta steps e foi nomeado de \texttt{lock\_unlock.py}. Ele é responsável por mapear os 
+passos descritos nos cenários \textit{Gherkin} para funções executáveis, que realizam as ações esperadas e interagem com o modelo.
 
-É importante destacar que o desenvolvimento dos cenários Gherkin é um processo iterativo, que deve evoluir de acordo com o grau de maturidade do sistema. 
+É importante destacar que o desenvolvimento dos cenários \textit{Gherkin} é um processo iterativo, que deve evoluir de acordo com o grau de maturidade do sistema. 
 Por esse motivo, como será demonstrado na etapa de modelagem, ajustes pontuais nos cenários — como a adição de passos que facilitem a execução da simulação — 
 poderão ser realizados ao longo do tempo.
 
@@ -618,12 +619,12 @@ Uma possível definição para esse passo consiste em realizar a leitura dos val
 de cada porta. Considerando que o valor 1 representa uma porta travada, a função deve verificar se todas as saídas possuem esse valor, aprovando o teste apenas se 
 essa condição for satisfeita.
 
-Para torná-la ainda mais reutilizável, essa função pode incorporar um parâmetro textual extraído diretamente do passo Gherkin, permitindo que parte da frase do 
+Para torná-la ainda mais reutilizável, essa função pode incorporar um parâmetro textual extraído diretamente do passo \textit{Gherkin}, permitindo que parte da frase do 
 cenário seja utilizada como argumento. Dessa forma, a lógica de verificação pode ser adaptada dinamicamente: por exemplo, a função pode identificar se a última 
 palavra do passo é “travadas” ou “destravadas” e, com base nisso, validar se os valores lidos são 1 (para travadas) ou 0 (para destravadas), aprovando o teste 
 conforme o caso.
 
-Outra funcionalidade importante empregada na escrita dos cenários é o uso de tabelas de exemplos (Examples), que possibilitam a execução repetida de um mesmo 
+Outra funcionalidade importante empregada na escrita dos cenários é o uso de tabelas de exemplos \textit{(Examples)}, que possibilitam a execução repetida de um mesmo 
 cenário com diferentes combinações de parâmetros. Essa abordagem é especialmente útil para validar comportamentos sob múltiplas condições iniciais, evitando a 
 necessidade de duplicar cenários com estruturas idênticas.
 
@@ -650,13 +651,13 @@ ele é \texttt{Given a porta 1 está destravada}.
 Essa estrutura oferece grande flexibilidade na criação dos cenários e assegura a cobertura completa das possíveis combinações. No cenário real que será apresentado 
 a seguir, existem 16 combinações possíveis, resultantes dos diferentes estados (travada ou destravada) das quatro portas.
 
-Por fim, a funcionalidade Background também será utilizada nos arquivos .feature para definir um estado inicial comum a todos os cenários. Essa estrutura permite 
+Por fim, a funcionalidade \textit{Background} também será utilizada nos arquivos .feature para definir um estado inicial comum a todos os cenários. Essa estrutura permite 
 declarar uma sequência de passos Given que serão executados automaticamente antes de cada cenário presente no arquivo. Isso evita a repetição de passos que se 
 aplicam a múltiplos cenários, promovendo maior clareza e reutilização na especificação dos testes.
 
 \subsection{História de usuário 1}
 
-Uma maneira eficaz de estruturar o cenário Gherkin é adotar a perspectiva do usuário e tentar descrever o comportamento esperado como uma sequência de ações, 
+Uma maneira eficaz de estruturar o cenário \textit{Gherkin} é adotar a perspectiva do usuário e tentar descrever o comportamento esperado como uma sequência de ações, 
 utilizando as cláusulas Given, When e Then. Tomando como base o primeiro exemplo da história — “aquele em que o usuário estacionou o carro e travou as portas” — 
 o cenário pode ser representado da seguinte forma:
 
@@ -666,10 +667,10 @@ o cenário pode ser representado da seguinte forma:
     Then todas as portas foram travadas
 \end{verbatim}
 
-Além disso, é possível aplicar o recurso de tabelas de exemplos (Examples) para generalizar o cenário e incluir o segundo exemplo descrito na história: “aquele 
-em que o usuário tentou travar o veículo que já estava travado”. Nesse caso, substitui-se a primeira condição (Given) por um conjunto de passos que definem 
+Além disso, é possível aplicar o recurso de tabelas de exemplos \textit{(Examples)} para generalizar o cenário e incluir o segundo exemplo descrito na história: “aquele 
+em que o usuário tentou travar o veículo que já estava travado”. Nesse caso, substitui-se a primeira condição \textit{(Given)} por um conjunto de passos que definem 
 individualmente o estado inicial de cada porta, utilizando os valores fornecidos pela tabela para simular todas as combinações possíveis de estados iniciais. 
-A resposta final do sistema é comum entre os exemplos já que ambos compartilham o mesmo resultado final — a mesma cláusula Then. 
+A resposta final do sistema é comum entre os exemplos já que ambos compartilham o mesmo resultado final — a mesma cláusula \textit{Then}. 
 
 Dessa forma, o primeiro exemplo é coberto em uma das linhas da tabela — a que define que todas as portas estão inicialmente destravadas — e o segundo é coberto 
 por todas as demais linhas — que definem todas as possíveis combinações de estado para cada porta. O cenário geral pode assumir a seguinte forma:
@@ -704,10 +705,10 @@ Scenario Outline: Locking all doors
         | locked       | locked       | locked       | locked       |
 \end{verbatim}
 
-A cláusula Given utiliza quatro passos para definir os valores iniciais de cada porta, de forma que cada um recebe uma variável correspondente a uma coluna da 
+A cláusula \textit{Given} utiliza quatro passos para definir os valores iniciais de cada porta, de forma que cada um recebe uma variável correspondente a uma coluna da 
 tabela de exemplos. Essa tabela contém 16 linhas, que representam todas as combinações possíveis entre os estados "travada" e "destravada" para as quatro portas.
 
-Na cláusula When, é descrita a ação do usuário ao pressionar o botão de travamento. Em seguida, a cláusula Then especifica que todas as portas devem estar travadas, 
+Na cláusula \textit{When}, é descrita a ação do usuário ao pressionar o botão de travamento. Em seguida, a cláusula \textit{Then} especifica que todas as portas devem estar travadas, 
 validando assim o comportamento esperado de assegurar o veículo independentemente de seu estado inicial.
 
 O último exemplo a ser coberto é: “aquele em que uma pessoa não autorizada tentou abrir a porta do veículo travado usando a maçaneta”. Ele é validado por um 
@@ -817,8 +818,7 @@ Scenario Outline: Locking feedback when locking or unlocking the vehicle
         | unlock    | unlocked | unlocking confirmation |
 \end{verbatim}
 
-Esse cenário descreve que, ao pressionar o botão correspondente, todas as portas devem ser travadas ou destravadas, e um feedback específico deve ser emitido 
-dentro de 500 ms. A cláusula Given foi omitida neste caso, pois o estado inicial do veículo — seja total ou parcialmente travado/destravado — não deve influenciar 
+Esse cenário descreve que, ao pressionar o botão correspondente, todas as portas devem ser travadas ou destravadas, e um feedback específico deve ser emitido. A cláusula \textit{Given} foi omitida neste caso, pois o estado inicial do veículo — seja total ou parcialmente travado/destravado — não deve influenciar 
 o resultado esperado. Ou seja, independentemente da condição inicial, o sistema deve aplicar a ação solicitada e fornecer o feedback apropriado.
 
 Os seguintes exemplos são cobertos neste cenário:

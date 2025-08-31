@@ -160,7 +160,7 @@
 
 \section{Desenvolvimento iterativo}
 
-Após a finalização da criação dos cenários Gherkin, a implementação prossegue com o desenvolvimento do modelo e das definições de passos. Inicialmente, o modelo é 
+Após a finalização da criação dos cenários \textit{Gherkin}, a implementação prossegue com o desenvolvimento do modelo e das definições de passos. Inicialmente, o modelo é 
 criado dentro da estrutura do projeto, em uma nova pasta denominada \textit{model}. O conteúdo desta pasta inclui:
 
 \begin{itemize}
@@ -182,17 +182,17 @@ a função \textbf{read\_from\_model}.
 \centering
 \includegraphics[height=7cm]{figuras/feature\_model.png}
 \caption{Modelo \textbf{feature\_model.slx} que aplica o conceito de caixa preta.}
-%\label{fig:casos-uso}
+\label{fig:featuremodel}
 \end{figure}
 
-O modelo apresentado na imagem contém entradas auxiliares que ainda não estão contempladas no diagrama de caixa preta. Essas entradas foram adicionadas para tornar certos 
+O modelo apresentado na figura \ref{fig:featuremodel} contém entradas auxiliares que ainda não estão contempladas no diagrama de caixa preta. Essas entradas foram adicionadas para tornar certos 
 comportamentos do sistema testáveis durante o desenvolvimento do modelo e serão detalhadas ao longo desta seção.
 
 O segundo modelo, \textbf{main.slx}, é referenciado no bloco central do modelo anterior, denominado controller. Ele é responsável pela implementação da lógica interna 
 do sistema em desenvolvimento, utilizando as entradas definidas como blocos \textit{Inport} e as saídas como \textit{Outport}, conectadas às constantes e \textit{displays} 
 do \textbf{feature\_model.slx}.
 
-Em seguida, o desenvolvimento do environment.py inclui funções em Python que tornam as operações de escrita e leitura do modelo acessíveis às definições de passos. 
+Em seguida, o desenvolvimento do \textbf{environment.py} inclui funções em Python que tornam as operações de escrita e leitura do modelo acessíveis às definições de passos. 
 Para isso, são criadas diversas funções utilitárias, permitindo realizar ações como:
 
 \begin{itemize}
@@ -209,22 +209,22 @@ Para garantir uma execução iterativa dos testes, cada história é validada in
 são executadas novamente, assegurando que a implementação de novas funcionalidades não comprometa o comportamento já estabelecido.
 
 A execução dos testes é realizada após a definição da lógica interna das funções de cada passo. Os resultados são então documentados em um relatório automático, gerado 
-em formato \textbf{.xml}, que descreve detalhadamente todas as falhas encontradas, conforme o seguinte padrão:
+em formato \textbf{.xml}, que descreve detalhadamente todas as falhas encontradas, conforme o padrão da figura \ref{fig:relatoriofeature}:
 
 \begin{figure}[H]
 \centering
 \includegraphics[height=3cm]{figuras/teste\_feature.png}
-\caption{Relatório de testes - arquivo \textbf{.feature}.}
-%\label{fig:casos-uso}
+\caption{Relatório de testes - resultado da execução do arquivo \textbf{.feature}.}
+\label{fig:relatoriofeature}
 \end{figure}
 
-O relatório também apresenta os resultados da execução de passos específicos, organizados da seguinte forma:
+O relatório também apresenta os resultados da execução de passos específicos, organizados de acordo com a figura \ref{fig:relatoriocenario}:
 
 \begin{figure}[H]
 \centering
 \includegraphics[height=5cm]{figuras/teste\_cenario.png}
-\caption{Relatório de testes - por cenário.}
-%\label{fig:casos-uso}
+\caption{Relatório de testes - resultados por cenário.}
+\label{fig:relatoriocenario}
 \end{figure}
 
 Para facilitar a análise de falhas, as funções implementadas em \textbf{environment.py} registram no relatório todas as interações realizadas com o modelo. Isso permite validar 
