@@ -3,14 +3,14 @@
 %--------------------------------------------------------------------------------------
 \chapter{Fundamentação teórica}
 
-A fundamentação deste trabalho é a aplicação prática do Desenvolvimento Orientado a Comportamento (BDD) ao desenvolvimento de sistemas de software automotivo. 
-Esse processo será aplicado no mapeamento de funcionalidades e modelagem de um sistema de travamento de portas veicular.
+Este trabalho tem sua fundamentação no Desenvolvimento Orientado a Comportamento (BDD), com foco em sua adapatção para aplicação em desenvolvimento de sistemas de software automotivo. 
+Esse processo será aplicado na definição, implementação e validação de um sistema de travamento de portas veicular.
 
 \section{\textbf{Desenvolvimento Orientado a Comportamento - BDD}}
 
-A metodologia de desenvolvimento orientado a comportamento foi inicialmente proposta por Dan North, que compartilhou em seu blog \cite{north2006bdd} as lições 
-aprendidas ao aplicar e ensinar o processo de desenvolvimento orientado a testes (TDD). Segundo o autor, “Ele (BDD) evoluiu além de práticas ágeis e é designado 
-para fazê-las mais acessíveis e efetivas para times que são novos no desenvolvimento ágil”.
+A metodologia de desenvolvimento orientado a comportamento foi inicialmente proposta por Dan North \cite{north2006bdd}, que compartilhou em seu blog as lições 
+aprendidas ao aplicar e ensinar o processo de desenvolvimento orientado a testes (TDD). Segundo o autor, o BDD evoluiu além de práticas ágeis e é designado 
+para fazê-las mais acessíveis e efetivas para times que são novos no desenvolvimento ágil.
 
 A evolução do processo de BDD foi impulsionada por diversas descobertas práticas que surgiram em resposta às dificuldades enfrentadas na aplicação do TDD. A mudança 
 da nomenclatura de “teste” para “comportamento”, por exemplo, é aparentemente simples, mas gerou um impacto profundo. Essa nova terminologia ajudou a consolidar a 
@@ -31,8 +31,8 @@ amadurecimento é evidente nas características apontadas por \citeonline{studyB
 	\item \textbf{Processo de decomposição iterativa} - facilita a priorização do desenvolvimento de funcionalidades para o sistema ao delinear o valor gerado para o cliente final;
 	\item \textbf{Descrições em texto simples com histórias de usuário e templates de cenários} - emprega templates que contém uma mistura de palavras chaves e linguagem natural na 
 	criação de histórias de usuário e de cenários, garantindo sua acessibilidade e facilidade de entendimento;
-	\item \textbf{Testes de aceitação automatizados com regras de mapeamento} - aplica especificações executáveis na forma de cenários compostos de passos que são traduzidos em testes
-	, os quais orientam o desenvolvimento.
+	\item \textbf{Testes de aceitação automatizados com regras de mapeamento} - aplica especificações executáveis na forma de cenários compostos de passos que são traduzidos em testes, 
+	os quais orientam o desenvolvimento.
 \end{enumerate}
 
 Para garantir que todas as características listadas sejam capturadas neste trabalho, o uso de histórias de usuário \cite{atlassianUserStories} e da 
@@ -56,7 +56,7 @@ Para isso, adota-se um formato que se utiliza de linguagem natural e assegura a 
 Esses três pontos são organizados em uma estrutura padronizada que utiliza conjunções específicas, resultando no seguinte modelo:
 \textit{“Como [tipo de usuário], eu quero [funcionalidade], para que [valor gerado].”}
 Assim como destacado por Dan North ``[...] sua força está em forçar que você identifique o valor de entregar uma história quando você a define [...]'' 
-\cite{north2006bdd}. Essa ênfase em entender o valor entregue ao usuário — desde a formulação das histórias — é essencial para garantir que as funcionalidades desenvolvidas estejam 
+\cite{north2006bdd}. Essa ênfase em entender o valor entregue ao usuário - desde a formulação das histórias - é essencial para garantir que as funcionalidades desenvolvidas estejam 
 alinhadas com as reais necessidades do usuário.
 
 Para garantir um bom fluxo nas discussões durante a definição do escopo das histórias, o exemplo prático da aplicação de BDD demonstrado em \citeonline{Lawrence2019cucumber} 
