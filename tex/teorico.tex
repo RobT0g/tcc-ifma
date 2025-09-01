@@ -393,3 +393,26 @@ afinal, o valor gerado na funcionalidade de travamento de portas não depende da
 independentemente do mecanismo utilizado para isso.
 
 \section{\textbf{Sistemas de Travamento de Porta Veiculares}}
+Segundo \citeonline{bosch2022handbook}, o sistema de travamento de portas veicular engloba todos os componentes responsáveis pelo gerenciamento do acesso ao interior 
+e à saída do veículo. Sua função principal é oferecer ao motorista a possibilidade de limitar a abertura das portas, assegurando o veículo contra intrusões e acessos 
+não autorizados.
+
+Esse sistema constitui um importante recurso de conveniência e segurança, sendo capaz de realizar o travamento central \cite{reif2017locking}, que abrange não apenas 
+as portas laterais, mas também o porta-malas e a tampa de acesso ao tanque de combustível. Além disso, pode incorporar diversas funcionalidades adicionais, como a 
+prevenção da abertura das portas durante o uso do veículo ou o destravamento automático em situações de emergência, como em acidentes.
+
+O travamento das portas é tipicamente feito com o uso de atuadores elétricos ou pneumáticos, que servem para segurar a porta em sua posição fechada e permitir - de 
+acordo com a limitação imposta pela trava - que a porta seja aberta por meio das maçanetas. Componentes estruturais deste sistema são integrados na construção do 
+veículo, como a inclusão de barras de travamento nos pilares do corpo do veículo, além dos atuadores que gerenciam as trancas.
+
+Para gerenciar o acesso ao veículo de maneira segura contra ataques, a autenticação da chave aplica protocolos de criptografia \cite{glocker2016protocol} que garantem
+segurança no registro e na validação de chaves. A sua implementação é realizada, de acordo com o padrão AUTOSAR, em um componente de software básico chamado de Key 
+Manager \cite{autosarKeyManager}, que abstrai a metodologia aplicada e fornece a validação da chave de maneira simplificada para o software de aplicação. 
+
+O veículo costuma empregar a leitura da chave por meio de dispositivos \textit{transcievers}, que estabelecem a troca de informação com a chave por meio de tecnologias 
+como o \textit{Radio Frequency Identification} (RFID) \cite{arduinoRFID}. Dessa maneira, o registro da chave é encaminhando para o \textit{Key Manager} para que sua 
+validação seja feita de acordo com o protocolo de criptografia utilizado.
+
+Durante a sessão \ref{ch:IM}, detalhes técnicos a cerca dos sistemas destacados - de travamneto das portas e de validação da chave - serão demonstrados. A discussão 
+gerada a partir do mapeamento de exemplos em \ref{sbs:etapa2} resulta na captura de perguntas a cerca do funcionamento de ambos.
+
