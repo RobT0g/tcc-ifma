@@ -7,7 +7,7 @@ com 6 etapas que expandem o modelo de \citeonline{Lawrence2019cucumber} para ada
 \section{\textbf{Etapa 1: Descrição das histórias de usuário}}
 \label{sbs:etapa1}
 A etapa inicial do Desenvolvimento Orientado por Comportamento (BDD) consiste na definição das funcionalidades a serem implementadas por meio de histórias de usuário. 
-Nessa fase, a perspectiva do usuário — ou da pessoa que se beneficia da funcionalidade — deve ser o foco principal. Essa abordagem é um dos pilares fundamentais do BDD, 
+Nessa fase, a perspectiva do usuário - ou da pessoa que se beneficia da funcionalidade - deve ser o foco principal. Essa abordagem é um dos pilares fundamentais do BDD, 
 pois garante que o produto desenvolvido entregue valor real ao usuário final.
 
 Portanto, no contexto deste trabalho que trata do sistema de travamento de portas veicular, serão consideradas implementações práticas amplamente adotadas pela 
@@ -35,11 +35,11 @@ precisar pressionar o botão no controle.
 
 Esse recurso é útil em situações cotidianas, como quando o motorista deseja entrar no carro enquanto a chave está, por exemplo, no bolso. Embora o processo 
 tradicional exija que o usuário retire a chave do bolso, pressione o botão de destravamento e, em seguida, guarde-a novamente, o uso do \textit{Keyless Access} simplifica 
-essa sequência. A diferença é pequena — apenas alguns segundos de tempo —, porém a implementação de uma funcionalidade que elimina etapas desnecessárias torna a 
+essa sequência. A diferença é pequena - apenas alguns segundos de tempo -, porém a implementação de uma funcionalidade que elimina etapas desnecessárias torna a 
 experiência mais prática, especialmente considerando que esse mesmo uso será repetido diversas vezes ao longo do dia.
 
-O manual do veículo \textbf{ID.4} descreve funcionalidades adicionais, como o travamento das portas ou o destravamento total do veículo ao se interagir duas vezes com a maçaneta. 
-No entanto, para fins de simplificação, este trabalho irá considerar apenas o cenário básico de destravamento de uma única porta — especificamente, aquela com a 
+O manual do veículo \textbf{Tera} descreve funcionalidades adicionais, como o travamento das portas ou o destravamento total do veículo ao se interagir duas vezes com a maçaneta. 
+No entanto, para fins de simplificação, este trabalho irá considerar apenas o cenário básico de destravamento de uma única porta - especificamente, aquela com a 
 qual o usuário interage. Com base nisso, a seguinte história de usuário é adotada:
 
 \begin{itemize}
@@ -92,9 +92,9 @@ no formato de \texttt{“aquele em que…”}.
 Para a primeira história, alguns exemplos podem ser:
 
 \begin{itemize}
-    \item \textbf{Aquele em que o usuário estacionou o carro e travou as portas} — situação típica de uso normal, especialmente quando o veículo está em uma área onde pessoas não autorizadas podem tentar acessá-lo. Nesse caso, a intenção do usuário é evidente: as portas devem ser travadas;
-    \item \textbf{Aquele em que o usuário tentou travar o veículo que já estava travado} — para o caso em que, talvez por incerteza, o botão de travamento foi pressionado mais de uma vez, para garantir que o veículo realmente estava seguro;
-    \item \textbf{Aquele em que uma pessoa não autorizada tentou abrir a porta do veículo travado usando a maçaneta} — como o usuário do veículo previamente acionou o travamento, presume-se que sua intenção era impedir qualquer acesso não autorizado. Assim, neste caso, a maçaneta não deve permitir a abertura da porta.
+    \item \textbf{Aquele em que o usuário estacionou o carro e travou as portas} - situação típica de uso normal, especialmente quando o veículo está em uma área onde pessoas não autorizadas podem tentar acessá-lo. Nesse caso, a intenção do usuário é evidente: as portas devem ser travadas;
+    \item \textbf{Aquele em que o usuário tentou travar o veículo que já estava travado} - para o caso em que, talvez por incerteza, o botão de travamento foi pressionado mais de uma vez, para garantir que o veículo realmente estava seguro;
+    \item \textbf{Aquele em que uma pessoa não autorizada tentou abrir a porta do veículo travado usando a maçaneta} - como o usuário do veículo previamente acionou o travamento, presume-se que sua intenção era impedir qualquer acesso não autorizado. Assim, neste caso, a maçaneta não deve permitir a abertura da porta.
 \end{itemize}
 
 Destes exemplos concretos, é possível extrair as seguintes regras acerca do comportamento esperado do produto:
@@ -104,11 +104,10 @@ Destes exemplos concretos, é possível extrair as seguintes regras acerca do co
     \item Qualquer porta travada não deve ser aberta ao utilizar a maçaneta.
 \end{itemize}
 
-Um dos principais benefícios da metodologia de desenvolvimento orientado a comportamento já se manifesta neste estágio do processo: Os questionamentos 
-provocados quando a equipe se coloca no lugar do usuário final e que surgem de forma natural em um ambiente de discussão colaborativa sobre a história 
-do usuário e exemplos concretos.
+Um dos principais benefícios da metodologia de desenvolvimento orientado a comportamento manifesta-se já nesta etapa do processo: os questionamentos gerados durante 
+a discussão. Esses surgem de forma natural ao adotar a perspectiva do usuário em um ambiente colaborativo, no qual o foco está no mapeamento de exemplos concretos.
 
-Por exemplo, ao definir a primeira regra — “ao pressionar o botão de travamento, todas as portas devem ser travadas” — surge uma pergunta instintiva: 
+Por exemplo, ao definir a primeira regra - “ao pressionar o botão de travamento, todas as portas devem ser travadas” - surge uma pergunta instintiva: 
 “E se o veículo já estiver travado quando o botão for pressionado?”. Essas dúvidas enriquecem a especificação e ajudam a prever cenários reais de uso.
 
 Neste exemplo, a história de usuário fornece uma indicação clara da intenção do usuário, expressa pelo valor que se busca alcançar. O objetivo é travar todas 
@@ -118,14 +117,14 @@ o comportamento esperado do sistema é o de garantir o travamento completo de to
 Outras perguntas podem também surgir a partir de variações no questionamento original que foi levantado. Por exemplo: seria possível que, em determinado cenário, 
 o veículo estivesse com apenas algumas portas travadas? Poderia haver um estado intermediário, em que nem todas as portas estejam travadas ou destravadas?
 
-Como será detalhado em uma história de usuário futura, tais situações são de fato possíveis — por exemplo, quando o sistema permite o destravamento de portas 
+Como será detalhado em uma história de usuário futura, tais situações são de fato possíveis - por exemplo, quando o sistema permite o destravamento de portas 
 específicas com o \textit{Keyless Access}. Ainda assim, a resposta anterior permanece válida: ao acionar o botão de travamento, o sistema deve garantir que todas as portas 
 estejam devidamente travadas.
 
 A segunda regra trata da abertura da porta e estabelece que ela não deve ser permitida quando estiver travada. Esse comportamento é fundamental para a existência 
 de um sistema de travamento, pois assegura que o acesso ao veículo seja restrito a pessoas autorizadas.
 
-Embora existam incertezas técnicas quanto à forma de implementação — seja ela mecânica ou eletrônica —, define-se neste momento que, independentemente da abordagem 
+Embora existam incertezas técnicas quanto à forma de implementação - seja ela mecânica ou eletrônica -, define-se neste momento que, independentemente da abordagem 
 adotada, uma porta travada não deve abrir quando a maçaneta for acionada. Como nos casos anteriores, as dúvidas ainda existentes serão registradas como perguntas 
 adicionais para orientar futuras discussões da equipe.
 
@@ -142,7 +141,7 @@ Antes de seguir para a próxima história de usuário, aqui serão tratadas as p
 para o final do processo de discussão de exemplos, mas para garantir uma evolução incremental do produto, a próxima história será tratada quando os pontos 
 abertos da atual forem respondidos.
 
-Assim como descrito por \cite{reif2017locking}, sabe-se que existem 2 principais tipos de sistemas de travamento de porta que podem ser encontrados em veículos modernos:
+Assim como descrito por \citeonline{reif2017locking}, sabe-se que existem 2 principais tipos de sistemas de travamento de porta que podem ser encontrados em veículos modernos:
 \begin{itemize}
     \item Trava mecânica que é operada de maneira elétrica ou pneumática;
     \item Trava eletrônica que é montada com a trava e os eletrônicos embutidos.
@@ -153,20 +152,20 @@ mecânicos no produto físico. Tipicamente, nesse sistema as maçanetas não pre
 por botões equipados com sensores que se comunicam com a trava. Além disso, todos os componentes que transmitem o movimento da maçaneta no sistema mecânico aqui 
 são desnecessários, substituídos pela fiação que se liga ao componente.
 
-Embutido na trava eletrônica também é incluído o mecanismo básico de travamento como descrito por \cite{reif2017locking}. Ele é composto por três peças principais: 
-o trinco (1) e engate (2) — que são acoplados à porta — e  o pino de batente (3) — que é acoplado ao chassi do veículo. Eles são responsáveis por manter a porta 
+Embutido na trava eletrônica também é incluído o mecanismo básico de travamento como descrito por \citeonline{reif2017locking}. Ele é composto por três peças principais: 
+o trinco (1) e engate (2) - que são acoplados à porta - e  o pino de batente (3) - que é acoplado ao chassi do veículo. Eles são responsáveis por manter a porta 
 firmemente fechada, conforme ilustrado na figura 2:
 
 \begin{figure}[H]
 \centering
 \includegraphics[height=6cm]{figuras/trava_mecanismo.png}
-\caption{Mecanismo de travamento da porta \cite{reif2017locking}.}
+\caption{Mecanismo de travamento da porta. Fonte: \cite{reif2017locking}.}
 \label{fig:travaporta}
 \end{figure}
 
 Durante o fechamento da porta, o engate (2) colide com o pino de batente (3) e gira no sentido anti-horário, passando por baixo do pino até retornar à sua posição 
 inicial e fazer contato com o trinco (1). Nesse ponto, a trava encontra-se na posição fechada, exatamente como demonstrado na imagem, e qualquer tentativa de abrir 
-a porta força o engate no sentido horário — movimento que é impedido pela presença do trinco.
+a porta força o engate no sentido horário - movimento que é impedido pela presença do trinco.
 
 Quando a porta está destravada, no entanto, é possível abri-la ao girar o trinco no sentido anti-horário. Esse movimento libera o engate, permitindo que ele se 
 afaste do pino de batente e possibilite a abertura da porta.
@@ -199,8 +198,8 @@ o software básico, esses valores são interpretados e convertidos em sinais de 
 
 Na prática, o travamento ou destravamento funciona apenas como uma limitação à abertura das portas e portanto, especialmente no caso da trava eletrônica, 
 não há distinção física evidente entre os dois estados. Para facilitar essa identificação, este trabalho introduz uma indicação adicional, representada 
-pelo "Mecanismo de travamento" na figura \ref{fig:abstracaosw}. Ela servirá apenas para indicar o estado atual de cada porta, facilitando a execução dos testes e a validação 
-funcional do sistema.
+pelo \texttt{Mecanismo de travamento} na Figura \ref{fig:abstracaosw}. Ela servirá apenas para indicar o estado atual de cada porta, facilitando a execução dos 
+testes e a validação funcional do sistema.
 
 \subsection{História de usuário 2}
 \label{sbs:historia2}
@@ -209,9 +208,9 @@ Ao considerar a história de usuário de destravamento das portas, é importante
 cotidiana que acontece com altíssima frequência, e portanto possui exemplos muito semelhantes a história 1:
 
 \begin{itemize}
-    \item \textbf{Aquele em que o usuário destravou as portas e entrou no carro} — situação típica de uso, ocorre sempre que o usuário retorna ao carro e precisa acessá-lo normalmente após o destravamento;
+    \item \textbf{Aquele em que o usuário destravou as portas e entrou no carro} - situação típica de uso, ocorre sempre que o usuário retorna ao carro e precisa acessá-lo normalmente após o destravamento;
     \item \textbf{Aquele em que algumas portas já estavam destravadas} - caso em que o veículo se encontrava parcial ou totalmente destravado no momento em que o botão de destravamento foi acionado;
-    \item \textbf{Aquele em que o usuário abriu a porta que estava destravada} —  situação em que, após o destravamento, o usuário acessa o veículo por meio da maçaneta, uma vez que a porta está destravada.
+    \item \textbf{Aquele em que o usuário abriu a porta que estava destravada} -  situação em que, após o destravamento, o usuário acessa o veículo por meio da maçaneta, uma vez que a porta está destravada.
 \end{itemize}
 
 Para satisfazer os exemplos listados, as seguintes regras serão implementadas:
@@ -232,7 +231,7 @@ Ao final, foram capturados 3 exemplos e 2 regras na história de usuário, o que
 
 Com base nas respostas obtidas na história anterior, diversas incertezas acerca do funcionamento do destravamento das portas já foram determinadas. Sabe-se, 
 por exemplo, que a porta destravada possui uma indicação de estado e que, ao pressionar o botão de abertura, a saída do modelo deve informar ao software básico 
-que o mecanismo da porta deve ser liberado — ação que será realizada por meio do sinal de controle enviado ao motor.
+que o mecanismo da porta deve ser liberado - ação que será realizada por meio do sinal de controle enviado ao motor.
 
 A única distinção nesta história é a introdução de um novo botão: o botão de destravamento. Ele exige uma interface semelhante à descrita anteriormente, sendo 
 igualmente interpretada pelo software básico como um valor de tensão e convertido em um sinal binário que indica o estado atual do botão.
@@ -289,8 +288,8 @@ determinar seu estado real. Esse cenário é comum no controle de componentes me
 lógica de software ou eletrônica.
 
 No caso em questão, a saída final do sistema de travamento consiste no acionamento do motor que movimenta o trinco e libera o mecanismo da trava, permitindo 
-que a porta seja aberta. No entanto, uma vez que essa ação é executada, o sistema não tem como saber se o usuário realmente abriu a porta — ou se, após abri-la, 
-voltou a fechá-la — sem o auxílio de um sensor. Isso ocorre porque a abertura da porta é uma ação mecânica realizada pelo usuário, sendo apenas condicionada, e 
+que a porta seja aberta. No entanto, uma vez que essa ação é executada, o sistema não tem como saber se o usuário realmente abriu a porta - ou se, após abri-la, 
+voltou a fechá-la - sem o auxílio de um sensor. Isso ocorre porque a abertura da porta é uma ação mecânica realizada pelo usuário, sendo apenas condicionada, e 
 não diretamente executada, pelo sistema eletrônico em desenvolvimento.
 
 Além disso, o travamento e destravamento das portas é realizado de maneira independente do estado da porta e pode ser realizado mesmo que ela esteja aberta. Isso 
@@ -313,9 +312,9 @@ pergunta associada a esta história de usuário.
 Os exemplos capturados na discussão da história são:
 
 \begin{itemize}
-    \item \textbf{Aquele em que o usuário tinha a chave no bolso e usou a maçaneta} — Este é o caso típico de uso da funcionalidade: a chave autorizada está próxima e é reconhecida pelo sistema, permitindo o destravamento imediato da porta acionada;
-    \item \textbf{Aquele em que outra pessoa abriu outra porta simultaneamente} — Neste caso, mais uma porta é aberta simultaneamente, possivelmente por alguém acompanhando o dono do veículo. O sistema deve tratar as portas de forma independente, e portanto ambas devem ser destravadas individualmente, permitindo o acesso simultâneo;
-    \item \textbf{Aquele em que o usuário destravou a porta e a fechou de novo} — Após acessar o veículo utilizando o \textit{Keyless Access} e em seguida fechar a porta, o sistema deve manter a porta destravada até que o usuário execute explicitamente o comando de travamento. Isso garante que a intenção do usuário seja respeitada e evita travamentos não intencionais.
+    \item \textbf{Aquele em que o usuário tinha a chave no bolso e usou a maçaneta} - Este é o caso típico de uso da funcionalidade: a chave autorizada está próxima e é reconhecida pelo sistema, permitindo o destravamento imediato da porta acionada;
+    \item \textbf{Aquele em que outra pessoa abriu outra porta simultaneamente} - Neste caso, mais uma porta é aberta simultaneamente, possivelmente por alguém acompanhando o dono do veículo. O sistema deve tratar as portas de forma independente, e portanto ambas devem ser destravadas individualmente, permitindo o acesso simultâneo;
+    \item \textbf{Aquele em que o usuário destravou a porta e a fechou de novo} - Após acessar o veículo utilizando o \textit{Keyless Access} e em seguida fechar a porta, o sistema deve manter a porta destravada até que o usuário execute explicitamente o comando de travamento. Isso garante que a intenção do usuário seja respeitada e evita travamentos não intencionais.
 \end{itemize}
 
 Para cobrir os exemplos, as seguintes regras serão utilizadas:
@@ -387,10 +386,10 @@ destravamento como uma indicação explícita da intenção de manter o veículo
 Por fim, os exemplos capturados na história são:
 
 \begin{itemize}
-    \item \textbf{Aquele em que o usuário destravou mas não foi acessar o carro} — este é o cenário padrão de destravamento não intencional, que pode ocorrer por diversos motivos, como o acionamento acidental do botão de destravamento. Nessa situação, o sistema realizará o travamento automático após um intervalo de tempo pré-definido, interpretando que não houve intenção de acesso;
-    \item \textbf{Aquele em que o usuário destravou e foi acessar o carro} — neste cenário, a situação oposta à do exemplo anterior acontece, pois o usuário acessou o veículo, abrindo uma das portas, em tempo. O travamento automático não deve ser acionado neste caso;
-    \item \textbf{Aquele em que o usuário pressionou o botão de destravamento duas vezes para manter o carro destravado sem precisar abrir uma porta} — Quando for da intenção do usuário deixar o veículo destravado sem abrir nenhuma porta, a função de travamento automático será inibida mediante o duplo acionamento do botão de destravamento. Essa ação será interpretada como uma indicação explícita da intenção de manter o veículo acessível;
-    \item \textbf{Aquele em que o usuário destravou o veículo quando ele já estava acessível} — refere-se às situações em que o veículo não estava completamente travado inicialmente, seja porque uma ou mais portas já estavam destravadas ou por conta do acionamento repetido do botão de destravamento. Nestes casos, o sistema entende que o usuário já interagiu com o veículo e portanto o travamento automático também não será executado.
+    \item \textbf{Aquele em que o usuário destravou mas não foi acessar o carro} - este é o cenário padrão de destravamento não intencional, que pode ocorrer por diversos motivos, como o acionamento acidental do botão de destravamento. Nessa situação, o sistema realizará o travamento automático após um intervalo de tempo pré-definido, interpretando que não houve intenção de acesso;
+    \item \textbf{Aquele em que o usuário destravou e foi acessar o carro} - neste cenário, a situação oposta à do exemplo anterior acontece, pois o usuário acessou o veículo, abrindo uma das portas, em tempo. O travamento automático não deve ser acionado neste caso;
+    \item \textbf{Aquele em que o usuário pressionou o botão de destravamento duas vezes para manter o carro destravado sem precisar abrir uma porta} - Quando for da intenção do usuário deixar o veículo destravado sem abrir nenhuma porta, a função de travamento automático será inibida mediante o duplo acionamento do botão de destravamento. Essa ação será interpretada como uma indicação explícita da intenção de manter o veículo acessível;
+    \item \textbf{Aquele em que o usuário destravou o veículo quando ele já estava acessível} - refere-se às situações em que o veículo não estava completamente travado inicialmente, seja porque uma ou mais portas já estavam destravadas ou por conta do acionamento repetido do botão de destravamento. Nestes casos, o sistema entende que o usuário já interagiu com o veículo e portanto o travamento automático também não será executado.
 \end{itemize}
 
 Com os exemplos mapeados, o comportamento definido garante que o travamento automático trata em específico os casos em que a ação do usuário indicou que ele não possuía a intenção de mudar o veículo de um estado inicial em que ele está absolutamente seguro contra furtos - todas as portas estavam travadas - para o caso em que qualquer pessoa poderia acessá-lo. As regras que satisfazem os exemplos são:
@@ -449,8 +448,8 @@ Dessa forma, o diagrama assume a configuração ilustrada na figura \ref{fig:cai
 \label{fig:caixapreta}
 \end{figure}
 
-De maneira análoga, o modelo desenvolvido no Simulink também deverá adotar uma estrutura semelhante, composta por um modelo de alto nível — que define apenas as 
-entradas e saídas do sistema — e um modelo de baixo nível, responsável por conter toda a lógica funcional implementada.
+De maneira análoga, o modelo desenvolvido no Simulink também deverá adotar uma estrutura semelhante, composta por um modelo de alto nível - que define apenas as 
+entradas e saídas do sistema - e um modelo de baixo nível, responsável por conter toda a lógica funcional implementada.
 
 É importante destacar que algumas interfaces adicionais serão necessárias no modelo do sistema, embora não estejam representadas no diagrama de caixa preta, 
 pois não estão diretamente relacionadas aos comportamentos observáveis pelo usuário. Essas interfaces serão detalhadas em \ref{ch:RD}, e são fundamentais para suportar aspectos técnicos que garantem o funcionamento correto do sistema. Um exemplo dessas interfaces é o tempo 
@@ -584,7 +583,7 @@ Na prática, todos os valores serão utilizados como enumerações convertidas p
 \label{sbs:etapa4}
 Nesta etapa, os cenários \textit{Gherkin} serão desenvolvidos e utilizados como critérios de aceitação das histórias previamente definidas. Estes cenários devem ser capazes 
 de cobrir todos os exemplos capturados durante o mapeamento, assegurando que o desenvolvimento do sistema atenda à experiência de usuário desejada.
-Como primeiro passo, será definida a estrutura de pastas do projeto, responsável por organizar tanto os arquivos \texttt{.feature} — um para cada história de usuário — 
+Como primeiro passo, será definida a estrutura de pastas do projeto, responsável por organizar tanto os arquivos \texttt{.feature} - um para cada história de usuário - 
 quanto o modelo em Simulink. Seguindo a estrutura recomendada na documentação da biblioteca Behave \cite{behaveDocs}, o projeto será organizado da seguinte forma:
 
 \begin{verbatim}
@@ -611,7 +610,7 @@ Por fim, o arquivo de definição dos passos \textit{(step definitions)} é arma
 passos descritos nos cenários \textit{Gherkin} para funções executáveis, que realizam as ações esperadas e interagem com o modelo.
 
 É importante destacar que o desenvolvimento dos cenários \textit{Gherkin} é um processo iterativo, que deve evoluir de acordo com o grau de maturidade do sistema. 
-Por esse motivo, como será demonstrado na etapa de modelagem, ajustes pontuais nos cenários — como a adição de passos que facilitem a execução da simulação — 
+Por esse motivo, como será demonstrado na etapa de modelagem, ajustes pontuais nos cenários - como a adição de passos que facilitem a execução da simulação - 
 poderão ser realizados ao longo do tempo.
 
 Durante a criação dos cenários, alguns cuidados serão adotados para garantir consistência e reutilização. Um desses cuidados é a definição de passos genéricos 
@@ -661,7 +660,7 @@ aplicam a múltiplos cenários, promovendo maior clareza e reutilização na esp
 \subsection{História de usuário 1}
 
 Uma maneira eficaz de estruturar o cenário \textit{Gherkin} é adotar a perspectiva do usuário e tentar descrever o comportamento esperado como uma sequência de ações, 
-utilizando as cláusulas Given, When e Then. Tomando como base o primeiro exemplo da história — “aquele em que o usuário estacionou o carro e travou as portas” — 
+utilizando as cláusulas Given, When e Then. Tomando como base o primeiro exemplo da história - “aquele em que o usuário estacionou o carro e travou as portas” - 
 o cenário pode ser representado da seguinte forma:
 
 \begin{verbatim}
@@ -673,10 +672,10 @@ o cenário pode ser representado da seguinte forma:
 Além disso, é possível aplicar o recurso de tabelas de exemplos \textit{(Examples)} para generalizar o cenário e incluir o segundo exemplo descrito na história: “aquele 
 em que o usuário tentou travar o veículo que já estava travado”. Nesse caso, substitui-se a primeira condição \textit{(Given)} por um conjunto de passos que definem 
 individualmente o estado inicial de cada porta, utilizando os valores fornecidos pela tabela para simular todas as combinações possíveis de estados iniciais. 
-A resposta final do sistema é comum entre os exemplos já que ambos compartilham o mesmo resultado final — a mesma cláusula \textit{Then}. 
+A resposta final do sistema é comum entre os exemplos já que ambos compartilham o mesmo resultado final - a mesma cláusula \textit{Then}. 
 
-Dessa forma, o primeiro exemplo é coberto em uma das linhas da tabela — a que define que todas as portas estão inicialmente destravadas — e o segundo é coberto 
-por todas as demais linhas — que definem todas as possíveis combinações de estado para cada porta. O cenário geral pode assumir a seguinte forma:
+Dessa forma, o primeiro exemplo é coberto em uma das linhas da tabela - a que define que todas as portas estão inicialmente destravadas - e o segundo é coberto 
+por todas as demais linhas - que definem todas as possíveis combinações de estado para cada porta. O cenário geral pode assumir a seguinte forma:
 
 \begin{verbatim}
 Scenario Outline: Locking all doors
@@ -821,7 +820,7 @@ Scenario Outline: Locking feedback when locking or unlocking the vehicle
         | unlock    | unlocked | unlocking confirmation |
 \end{verbatim}
 
-Esse cenário descreve que, ao pressionar o botão correspondente, todas as portas devem ser travadas ou destravadas, e um feedback específico deve ser emitido. A cláusula \textit{Given} foi omitida neste caso, pois o estado inicial do veículo — seja total ou parcialmente travado/destravado — não deve influenciar 
+Esse cenário descreve que, ao pressionar o botão correspondente, todas as portas devem ser travadas ou destravadas, e um feedback específico deve ser emitido. A cláusula \textit{Given} foi omitida neste caso, pois o estado inicial do veículo - seja total ou parcialmente travado/destravado - não deve influenciar 
 o resultado esperado. Ou seja, independentemente da condição inicial, o sistema deve aplicar a ação solicitada e fornecer o feedback apropriado.
 
 Os seguintes exemplos são cobertos neste cenário:
@@ -1079,6 +1078,6 @@ todas as combinações possíveis de portas travadas ou destravadas como estado 
 Na condição inicial, após o estado de cada porta ser definido com base na tabela, o botão de destravamento é pressionado e leva ao destravamento inicial de todas as 
 portas. Em seguida, é realizada uma espera de 15 segundos e o estado de travamento final é avaliado,  verificando se o auto-travamento foi acionado.
 
-Em todas as linhas da tabela de exemplos em que pelo menos uma porta já estava destravada — todas, exceto a última — o destravamento é mantido mesmo após a espera. 
+Em todas as linhas da tabela de exemplos em que pelo menos uma porta já estava destravada - todas, exceto a última - o destravamento é mantido mesmo após a espera. 
 Já na última linha, em que todas as portas estavam travadas inicialmente, a condição para o auto-travamento é satisfeita, resultando no estado final de todas as 
 portas travadas.
