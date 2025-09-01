@@ -87,7 +87,7 @@ Após as dúvidas serem anotadas, a discussão segue focada na experiência do u
 \label{sbs:historia1}
 Para garantir o foco na perspectiva do usuário, a discussão da história será iniciada com a listagem de exemplos concretos. Assim como recomendado por 
 Matt Wynne \cite{cucumberExampleMapping}, pode-se utilizar uma nomenclatura do exemplo capturado como em um episódio de seriado, que é simplificado 
-no formato de \texttt{“aquele em que…”}.
+no formato de \texttt{``aquele em que…''}.
 
 Para a primeira história, alguns exemplos podem ser:
 
@@ -107,8 +107,8 @@ Destes exemplos concretos, é possível extrair as seguintes regras acerca do co
 Um dos principais benefícios da metodologia de desenvolvimento orientado a comportamento manifesta-se já nesta etapa do processo: os questionamentos gerados durante 
 a discussão. Esses surgem de forma natural ao adotar a perspectiva do usuário em um ambiente colaborativo, no qual o foco está no mapeamento de exemplos concretos.
 
-Por exemplo, ao definir a primeira regra - “ao pressionar o botão de travamento, todas as portas devem ser travadas” - surge uma pergunta instintiva: 
-“E se o veículo já estiver travado quando o botão for pressionado?”. Essas dúvidas enriquecem a especificação e ajudam a prever cenários reais de uso.
+Por exemplo, ao definir a primeira regra - ``ao pressionar o botão de travamento, todas as portas devem ser travadas'' - surge uma pergunta instintiva: 
+``E se o veículo já estiver travado quando o botão for pressionado?''. Essas dúvidas enriquecem a especificação e ajudam a prever cenários reais de uso.
 
 Neste exemplo, a história de usuário fornece uma indicação clara da intenção do usuário, expressa pelo valor que se busca alcançar. O objetivo é travar todas 
 as portas, protegendo o veículo contra furtos e impedindo o acesso de pessoas não autorizadas. Diante disso, independentemente do estado inicial do veículo, 
@@ -198,7 +198,7 @@ o software básico, esses valores são interpretados e convertidos em sinais de 
 
 Na prática, o travamento ou destravamento funciona apenas como uma limitação à abertura das portas e portanto, especialmente no caso da trava eletrônica, 
 não há distinção física evidente entre os dois estados. Para facilitar essa identificação, este trabalho introduz uma indicação adicional, representada 
-pelo \texttt{Mecanismo de travamento} na Figura \ref{fig:abstracaosw}. Ela servirá apenas para indicar o estado atual de cada porta, facilitando a execução dos 
+pelo ``Mecanismo de travamento'' na Figura \ref{fig:abstracaosw}. Ela servirá apenas para indicar o estado atual de cada porta, facilitando a execução dos 
 testes e a validação funcional do sistema.
 
 \subsection{História de usuário 2}
@@ -263,7 +263,7 @@ abertura das portas. Para isso, as seguintes perguntas são criadas:
     \item É possível travar ou destravar uma porta que está aberta?
 \end{itemize}
 
-Dessa forma, essa história de usuário foi mapeada com 3 exemplos, 2 regras e 2 perguntas, de acordo com a figura \ref{fig:historia3}:
+Dessa forma, essa história de usuário foi mapeada com 3 exemplos, 2 regras e 2 perguntas, de acordo com a Figura \ref{fig:historia3}:
 
 \begin{figure}[H]
 \centering
@@ -280,7 +280,7 @@ apresentado em \citeonline{us4566285a}, que descreve o uso de switches físicos:
 quando a porta se abre. 
 
 Esse tipo de sensor pode ser integrado de forma semelhante às interfaces binárias utilizadas nos botões de travamento e destravamento, empregando sinais 
-binários (0 ou 1) para representar os estados "fechada" ou "aberta" da porta. Com essa informação, o sistema pode combinar o estado físico da porta com a 
+binários (0 ou 1) para representar os estados ``fechada'' ou ``aberta'' da porta. Com essa informação, o sistema pode combinar o estado físico da porta com a 
 entrada da interface do botão de travamento para determinar quando o alerta para o usuário deve ser realizado.
 
 É importante destacar que, embora o controle de abertura da porta seja gerenciado pelo sistema, a utilização de um sensor continua sendo essencial para 
@@ -356,7 +356,7 @@ validada (1) ou não (0).
 
 \subsection{História de usuário 5}
 A funcionalidade de auto travamento é comumente implementada para contemplar diferentes cenários de uso do veículo. Neste caso específico, o foco está na situação em 
-que as portas são destravadas de forma não intencional. Antes de apresentar os exemplos, será feita uma definição do que se entende por "não intenção" por parte do 
+que as portas são destravadas de forma não intencional. Antes de apresentar os exemplos, será feita uma definição do que se entende por ``não intenção'' por parte do 
 usuário, considerando que, na prática, essa intenção precisa ser inferida com base nas entradas disponíveis no sistema. 
 
 Esse tipo de questão costuma ser capturado em perguntas, nas notas vermelhas, para que possa ser investigado após o mapeamento de exemplos. No entanto, para essa 
@@ -388,7 +388,7 @@ Por fim, os exemplos capturados na história são:
 \begin{itemize}
     \item \textbf{Aquele em que o usuário destravou mas não foi acessar o carro} - este é o cenário padrão de destravamento não intencional, que pode ocorrer por diversos motivos, como o acionamento acidental do botão de destravamento. Nessa situação, o sistema realizará o travamento automático após um intervalo de tempo pré-definido, interpretando que não houve intenção de acesso;
     \item \textbf{Aquele em que o usuário destravou e foi acessar o carro} - neste cenário, a situação oposta à do exemplo anterior acontece, pois o usuário acessou o veículo, abrindo uma das portas, em tempo. O travamento automático não deve ser acionado neste caso;
-    \item \textbf{Aquele em que o usuário pressionou o botão de destravamento duas vezes para manter o carro destravado sem precisar abrir uma porta} - Quando for da intenção do usuário deixar o veículo destravado sem abrir nenhuma porta, a função de travamento automático será inibida mediante o duplo acionamento do botão de destravamento. Essa ação será interpretada como uma indicação explícita da intenção de manter o veículo acessível;
+    \item \textbf{Aquele em que o usuário pressionou o botão de destravamento duas vezes para manter o carro destravado} - Quando for da intenção do usuário deixar o veículo destravado sem abrir nenhuma porta, a função de travamento automático será inibida mediante o duplo acionamento do botão de destravamento. Essa ação será interpretada como uma indicação explícita da intenção de manter o veículo acessível;
     \item \textbf{Aquele em que o usuário destravou o veículo quando ele já estava acessível} - refere-se às situações em que o veículo não estava completamente travado inicialmente, seja porque uma ou mais portas já estavam destravadas ou por conta do acionamento repetido do botão de destravamento. Nestes casos, o sistema entende que o usuário já interagiu com o veículo e portanto o travamento automático também não será executado.
 \end{itemize}
 
@@ -623,7 +623,7 @@ essa condição for satisfeita.
 
 Para torná-la ainda mais reutilizável, essa função pode incorporar um parâmetro textual extraído diretamente do passo \textit{Gherkin}, permitindo que parte da frase do 
 cenário seja utilizada como argumento. Dessa forma, a lógica de verificação pode ser adaptada dinamicamente: por exemplo, a função pode identificar se a última 
-palavra do passo é “travadas” ou “destravadas” e, com base nisso, validar se os valores lidos são 1 (para travadas) ou 0 (para destravadas), aprovando o teste 
+palavra do passo é ``travadas'' ou ``destravadas'' e, com base nisso, validar se os valores lidos são 1 (para travadas) ou 0 (para destravadas), aprovando o teste 
 conforme o caso.
 
 Outra funcionalidade importante empregada na escrita dos cenários é o uso de tabelas de exemplos \textit{(Examples)}, que possibilitam a execução repetida de um mesmo 
@@ -660,7 +660,7 @@ aplicam a múltiplos cenários, promovendo maior clareza e reutilização na esp
 \subsection{História de usuário 1}
 
 Uma maneira eficaz de estruturar o cenário \textit{Gherkin} é adotar a perspectiva do usuário e tentar descrever o comportamento esperado como uma sequência de ações, 
-utilizando as cláusulas Given, When e Then. Tomando como base o primeiro exemplo da história - “aquele em que o usuário estacionou o carro e travou as portas” - 
+utilizando as cláusulas Given, When e Then. Tomando como base o primeiro exemplo da história - ``aquele em que o usuário estacionou o carro e travou as portas'' - 
 o cenário pode ser representado da seguinte forma:
 
 \begin{verbatim}
@@ -669,8 +669,8 @@ o cenário pode ser representado da seguinte forma:
     Then todas as portas foram travadas
 \end{verbatim}
 
-Além disso, é possível aplicar o recurso de tabelas de exemplos \textit{(Examples)} para generalizar o cenário e incluir o segundo exemplo descrito na história: “aquele 
-em que o usuário tentou travar o veículo que já estava travado”. Nesse caso, substitui-se a primeira condição \textit{(Given)} por um conjunto de passos que definem 
+Além disso, é possível aplicar o recurso de tabelas de exemplos \textit{(Examples)} para generalizar o cenário e incluir o segundo exemplo descrito na história: ``aquele 
+em que o usuário tentou travar o veículo que já estava travado''. Nesse caso, substitui-se a primeira condição \textit{(Given)} por um conjunto de passos que definem 
 individualmente o estado inicial de cada porta, utilizando os valores fornecidos pela tabela para simular todas as combinações possíveis de estados iniciais. 
 A resposta final do sistema é comum entre os exemplos já que ambos compartilham o mesmo resultado final - a mesma cláusula \textit{Then}. 
 
@@ -708,12 +708,12 @@ Scenario Outline: Locking all doors
 \end{verbatim}
 
 A cláusula \textit{Given} utiliza quatro passos para definir os valores iniciais de cada porta, de forma que cada um recebe uma variável correspondente a uma coluna da 
-tabela de exemplos. Essa tabela contém 16 linhas, que representam todas as combinações possíveis entre os estados "travada" e "destravada" para as quatro portas.
+tabela de exemplos. Essa tabela contém 16 linhas, que representam todas as combinações possíveis entre os estados ``travada'' e ``destravada'' para as quatro portas.
 
 Na cláusula \textit{When}, é descrita a ação do usuário ao pressionar o botão de travamento. Em seguida, a cláusula \textit{Then} especifica que todas as portas devem estar travadas, 
 validando assim o comportamento esperado de assegurar o veículo independentemente de seu estado inicial.
 
-O último exemplo a ser coberto é: “aquele em que uma pessoa não autorizada tentou abrir a porta do veículo travado usando a maçaneta”. Ele é validado por um 
+O último exemplo a ser coberto é: ``aquele em que uma pessoa não autorizada tentou abrir a porta do veículo travado usando a maçaneta''. Ele é validado por um 
 cenário em que a porta continua fechada após a o botão de abertura ser pressionado, tendo em vista que ela está travada.
 
 Para evitar a duplicação de cenários, a tabela de exemplos é novamente utilizada, permitindo a execução automática do teste para cada porta individualmente, variando 
@@ -830,7 +830,7 @@ Os seguintes exemplos são cobertos neste cenário:
     \item Aquele em que o usuário destravou seu veículo e ficou na dúvida se as portas foram travadas ou destravadas;
 \end{itemize}
 
-O último exemplo dessa história é: “aquele em que o usuário tentou travar seu veículo sem perceber que uma das portas ficou aberta” e será coberto no seguinte cenário:
+O último exemplo dessa história é: ``aquele em que o usuário tentou travar seu veículo sem perceber que uma das portas ficou aberta'' e será coberto no seguinte cenário:
 
 \begin{verbatim}
 Scenario Outline: Failure feedback when one door is open
@@ -855,18 +855,18 @@ Scenario Outline: Failure feedback when one door is open
 \end{verbatim}
 
 Este cenário estabelece como pré-condição que uma das quatro portas está destravada, podendo estar aberta ou fechada, conforme os valores definidos na tabela de exemplos. 
-Com base nesse estado inicial, ao pressionar o botão de travamento, o sistema deve emitir um feedback específico: “operação falha” caso a porta esteja aberta, ou 
-“confirmação de travamento” caso ela esteja fechada.
+Com base nesse estado inicial, ao pressionar o botão de travamento, o sistema deve emitir um feedback específico: ``operação falha'' caso a porta esteja aberta, ou 
+``confirmação de travamento'' caso ela esteja fechada.
 
 Além disso, o cenário específica que, independentemente de a porta estar aberta ou fechada, todas as portas devem ser marcadas como travadas após a ação. Isso está 
 de acordo com a análise realizada durante a investigação das perguntas desta história, a qual identificou que o travamento ou destravamento de uma porta aberta é possível. 
-Isso ocorre porque o conceito de “estado da porta” não está vinculado a uma ação física imediata, mas sim a um estado lógico atribuído pelo controlador que é definido 
+Isso ocorre porque o conceito de ``estado da porta'' não está vinculado a uma ação física imediata, mas sim a um estado lógico atribuído pelo controlador que é definido 
 de forma virtual no sistema.
 
 
 \subsection{História de usuário 4}
 
-Para cobrir essa história, o primeiro exemplo considerado é “aquele em que o usuário tinha a chave no bolso e usou a maçaneta”, o qual está representado pelo seguinte cenário:
+Para cobrir essa história, o primeiro exemplo considerado é ``aquele em que o usuário tinha a chave no bolso e usou a maçaneta'', o qual está representado pelo seguinte cenário:
 
 \begin{verbatim}
 Scenario Outline: Unlocking a single door when I have the key
@@ -889,7 +889,7 @@ Scenario Outline: Unlocking a single door when I have the key
 O cenário define que a porta encontra-se inicialmente travada e, ao ser pressionado o botão de abertura enquanto o usuário está em posse da chave, ela deveria 
 ser destravada e aberta. A tabela de exemplos foi novamente utilizada para assegurar que esse comportamento seja testado em todas as portas.
 
-O próximo exemplo é “aquele em que outra pessoa abriu outra porta simultaneamente”, o qual está coberto pelo seguinte cenário:
+O próximo exemplo é ``aquele em que outra pessoa abriu outra porta simultaneamente'', o qual está coberto pelo seguinte cenário:
 
 \begin{verbatim}
 Scenario Outline: Unlocking multiple single doors when I have the key   
@@ -924,7 +924,7 @@ A estrutura do cenário é semelhante à anterior, porém com a adição de novo
 portas simultaneamente. Para isso, foram utilizadas variáveis distintas para cada porta, permitindo que a tabela de exemplos cubra todas as possíveis combinações 
 de abertura simultânea entre duas portas.
 
-Por fim, o último exemplo é “aquele em que o usuário destravou a porta e a fechou de novo”, que é coberto pelo cenário:
+Por fim, o último exemplo é ``aquele em que o usuário destravou a porta e a fechou de novo'', que é coberto pelo cenário:
 
 \begin{verbatim}
     Scenario Outline: Individual door is left unlocked
@@ -956,7 +956,7 @@ a porta estar sendo segurada.
 Nesta história, a utilização de medidas de tempo é um elemento essencial para garantir que a resposta do sistema esteja alinhada ao comportamento esperado. Isso 
 se deve à regra que determina que o auto-travamento das portas deve ocorrer 15 segundos após o destravamento, caso nenhuma porta seja aberta nesse intervalo.
 
-O primeiro exemplo nesta história é “aquele em que o usuário destravou mas não foi acessar o carro” que é coberto pelo cenário:
+O primeiro exemplo nesta história é ``aquele em que o usuário destravou mas não foi acessar o carro'' que é coberto pelo cenário:
 
 \begin{verbatim}
 Scenario Outline: Auto relocking
@@ -989,7 +989,7 @@ Os valores de tempo utilizados na tabela foram selecionados para representar sit
 quanto situações de limite. Como nas linhas que utilizam 14, 15 e 16 segundos, que validam que o sistema responde corretamente em valores que são extremamente 
 próximos da janela temporal especificada.
 
-O próximo exemplo é “aquele em que o usuário destravou e foi acessar o carro”, ilustrando uma situação em que a condição para o auto-travamento não é satisfeita, 
+O próximo exemplo é ``aquele em que o usuário destravou e foi acessar o carro'', ilustrando uma situação em que a condição para o auto-travamento não é satisfeita, 
 pois uma das portas foi aberta. Esse caso é coberto no seguinte cenário:
 
 \begin{verbatim}
@@ -1018,8 +1018,8 @@ A pré-condição definida no primeiro passo estabelece que todas as portas est�
 A diferença ocorre no momento em que, após o uso do botão de destravamento, o botão de abertura de uma das portas é pressionado. Assim, mesmo após a espera de 
 15 segundos (tempo exigido para o auto-travamento), as portas devem permanecer destravadas.
 
-O terceiro exemplo desta história é “aquele em que o usuário pressionou o botão de destravamento duas vezes para manter o carro destravado sem precisar abrir uma 
-porta”, representando outra condição em que o auto-travamento não deve ser acionado. Esse caso é coberto pelo seguinte cenário:
+O terceiro exemplo desta história é ``aquele em que o usuário pressionou o botão de destravamento duas vezes para manter o carro destravado'', representando 
+outra condição em que o auto-travamento não deve ser acionado. Esse caso é coberto pelo seguinte cenário:
 
 \begin{verbatim}
     Scenario: Not auto relocking if unlock button is pressed twice
@@ -1035,7 +1035,7 @@ porta”, representando outra condição em que o auto-travamento não deve ser 
 Assim como no cenário anterior, não foram utilizadas variáveis para representar diferentes condições iniciais, pois o próprio exemplo também estabelece uma condição 
 em que o auto-travamento não deve ocorrer. A diferença aqui está na inclusão de um segundo acionamento do botão de destravamento logo no início da sequência.
 
-Por fim, o último exemplo desta história é “aquele em que o usuário destravou o veículo quando ele já estava acessível”, descrevendo a situação em que o auto-travamento 
+Por fim, o último exemplo desta história é ``aquele em que o usuário destravou o veículo quando ele já estava acessível'', descrevendo a situação em que o auto-travamento 
 não deve ser acionado caso pelo menos uma das portas já esteja destravada no início. Esse caso é tratado no seguinte cenário:
 
 \begin{verbatim}

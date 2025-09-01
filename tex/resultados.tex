@@ -333,7 +333,7 @@ Para garantir que a implementação utilize valores de tempo compatíveis com a 
 modelo o tempo atual da simulação. A cada passo executado, o arquivo \textbf{environment.py} atualiza o valor dessa interface de tempo com o valor gerado pelo Python. 
 Esse valor é então considerado como uma condição adicional na determinação do status.
 
-A última falha identificada decorreu de inconsistências observadas durante a execução dos testes. De forma aparentemente aleatória, o valor "sem status" era gerado 
+A última falha identificada decorreu de inconsistências observadas durante a execução dos testes. De forma aparentemente aleatória, o valor ``sem status'' era gerado 
 repetidamente junto com o valor correto, como se o sistema estivesse oscilando continuamente entre os dois estados.
 
 O problema foi evidenciado ao analisar o modelo, especificamente o comportamento interno do bloco \textit{Chart}, que contém o diagrama de estados. Inicialmente, a 
@@ -365,7 +365,7 @@ de status, adicionando um novo item sempre que um novo status é gerado. Dessa f
 a quantidade correta de status foi registrada.
 
 Por fim, um último problema foi identificado durante a execução repetida dos testes desta história: o feedback de operação falha era gerado em situações nas quais outro 
-valor era esperado. A causa estava relacionada à interface do sensor de abertura das portas, que permanecia configurada como "aberta" em cenários que não especificavam 
+valor era esperado. A causa estava relacionada à interface do sensor de abertura das portas, que permanecia configurada como ``aberta'' em cenários que não especificavam 
 explicitamente esse estado nos seus passos.
 
 Esse comportamento ocorria porque, em cenários destinados a validar a saída considerando uma porta aberta, o valor atribuído ao modelo permanecia persistente, afetando 
@@ -449,7 +449,7 @@ contendo um diagrama de estados, no qual o pressionamento do botão de destravam
 %\label{fig:casos-uso}
 \end{figure}
 
-O sistema é iniciado no estado "Nada", no qual o auto-travamento não é verificado, permanecendo nessa condição até que seja atingida a situação válida para iniciar 
+O sistema é iniciado no estado ``Nada'', no qual o auto-travamento não é verificado, permanecendo nessa condição até que seja atingida a situação válida para iniciar 
 a contagem de tempo. Essa situação ocorre quando duas condições são simultaneamente satisfeitas:
 
 \begin{itemize}
@@ -461,15 +461,15 @@ A primeira condição garante que o auto-travamento não será aplicado caso o v
 ou mais portas permanecem destravadas no início. Durante essa transição, o sistema registra o valor atual do tempo de simulação, permitindo determinar o momento em 
 que a condição de passagem de 15 segundos é satisfeita.
 
-Uma vez realizada a transição para o estado "Esperando o tempo", o sistema aguarda a passagem dos 15 segundos, enquanto monitora se alguma das condições que impedem 
-o auto-travamento é satisfeita. Nessa situação, o sistema retorna ao estado "Nada" sem acionar o auto-travamento caso pelo menos uma das seguintes condições seja atendida:
+Uma vez realizada a transição para o estado ``Esperando o tempo'', o sistema aguarda a passagem dos 15 segundos, enquanto monitora se alguma das condições que impedem 
+o auto-travamento é satisfeita. Nessa situação, o sistema retorna ao estado ``Nada'' sem acionar o auto-travamento caso pelo menos uma das seguintes condições seja atendida:
 \begin{itemize}
 	\item Uma porta foi aberta;
 	\item O botão de destravamento foi acionado.
 \end{itemize}
 
 Cada uma dessas condições corresponde a um cenário de teste, definindo os comportamentos em que o usuário manifesta a intenção de manter o veículo acessível. Por fim, 
-caso nenhuma dessas condições seja satisfeita durante o período de espera, a passagem do tempo provoca a transição para o estado "Travamento automático", acionando 
+caso nenhuma dessas condições seja satisfeita durante o período de espera, a passagem do tempo provoca a transição para o estado ``Travamento automático'', acionando 
 o mesmo \textit{Triggered Subsystem} utilizado na história de travamento de todas as portas.
 
 Dessa forma, o comportamento esperado do sistema em relação ao auto-travamento é completamente atendido; entretanto, uma complicação técnica faz com que diversos 
