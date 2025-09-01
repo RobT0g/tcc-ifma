@@ -1040,34 +1040,34 @@ não deve ser acionado caso pelo menos uma das portas já esteja destravada no i
 
 \begin{verbatim}
     Scenario Outline: Not auto relocking if some doors are unlocked
-    Given the door '1' is <door_1_state>
-    And the door '2' is <door_2_state>
-    And the door '3' is <door_3_state>
-    And the door '4' is <door_4_state>
-    And the vehicle 'unlock' button has been pressed
-    
-    When I wait '15' seconds
-    
-    Then all doors should be <final_state>
-    
-    Examples:
-    | d1 | d2 | d3 | d4 | final |
-    | u  | u  | u  | u  | u     |
-    | u  | u  | u  | l  | u     |
-    | u  | u  | l  | u  | u     |
-    | u  | u  | l  | l  | u     |
-    | u  | l  | u  | u  | u     |
-    | u  | l  | u  | l  | u     |
-    | u  | l  | l  | u  | u     |
-    | u  | l  | l  | l  | u     |
-    | l  | u  | u  | u  | u     |
-    | l  | u  | u  | l  | u     |
-    | l  | u  | l  | u  | u     |
-    | l  | u  | l  | l  | u     |
-    | l  | l  | u  | u  | u     |
-    | l  | l  | u  | l  | u     |
-    | l  | l  | l  | u  | u     |
-    | l  | l  | l  | l  | l     |
+        Given the door '1' is <door_1_state>
+        And the door '2' is <door_2_state>
+        And the door '3' is <door_3_state>
+        And the door '4' is <door_4_state>
+        And the vehicle 'unlock' button has been pressed
+        
+        When I wait '15' seconds
+        
+        Then all doors should be <final_state>
+        
+        Examples:
+            | d1 | d2 | d3 | d4 | final |
+            | u  | u  | u  | u  | u     |
+            | u  | u  | u  | l  | u     |
+            | u  | u  | l  | u  | u     |
+            | u  | u  | l  | l  | u     |
+            | u  | l  | u  | u  | u     |
+            | u  | l  | u  | l  | u     |
+            | u  | l  | l  | u  | u     |
+            | u  | l  | l  | l  | u     |
+            | l  | u  | u  | u  | u     |
+            | l  | u  | u  | l  | u     |
+            | l  | u  | l  | u  | u     |
+            | l  | u  | l  | l  | u     |
+            | l  | l  | u  | u  | u     |
+            | l  | l  | u  | l  | u     |
+            | l  | l  | l  | u  | u     |
+            | l  | l  | l  | l  | l     |
     
 \end{verbatim}
 \noindent\textbf{Observação:} u = unlocked, l = locked, d1 = door\_1\_state, d2 = door\_2\_state, d3 = door\_3\_state, d4 = door\_4\_state, final = final\_state.
