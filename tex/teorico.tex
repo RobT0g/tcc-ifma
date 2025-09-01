@@ -35,8 +35,13 @@ amadurecimento é evidente nas características apontadas por \citeonline{studyB
 	os quais orientam o desenvolvimento.
 \end{enumerate}
 
-Para garantir que todas as características listadas sejam capturadas neste trabalho, o uso de histórias de usuário \cite{atlassianUserStories} e da 
-linguagem \textit{Gherkin} (cucumber) \cite{cucumberHistory} serão aplicadas.
+A validação das funcionalidades definidas durante o processo de BDD, consiste na criação de especificações executáveis na forma de cenários que servem de critérios de aceitação das 
+histórias de usuário. Os cenários utilizam um padrão de escrita que incorpora uma junção de palavras-chave com linguagem natural e podem ter interface com o código desenvolvido por 
+meio de diversas ferramentas como \textit{JBehave}, \textit{RSpec} \cite{cucumberHistory} e a que será aplicado neste trabalho - Cucumber \cite{cucumberDocs} em junção com a biblioteca 
+do Python chamada Behave \cite{behaveDocs}.
+
+% Para garantir que todas as características listadas sejam capturadas neste trabalho, o uso de histórias de usuário \cite{atlassianUserStories} e da 
+% linguagem \textit{Gherkin} (Cucumber) \cite{cucumberHistory} serão aplicadas.
 
 
 \section{\textbf{Definição das funcionalidades do sistema por meio de Histórias de Usuário e Mapeamento de Exemplos}}
@@ -167,27 +172,24 @@ prosseguida com os exemplos concretos que devem ser descritos usando as notas ve
 %Para referenciar uma figura deve ser usada comando \textbackslash ref\{img:<label ou nome do arquivo>\}, como exemplo, estamos referenciando a figura \ref{img:placeholder}. Isso vale tanto para figuras simples quanto para as compostas, como por exemplo as figuras \ref{img:subfigura1} e \ref{img:subfigura2}. Ao inserir uma figura, ela é automaticamente identificada e incluída no elemento pré-textual da lista de figuras.
 
 \section{\textbf{A linguagem Gherkin}}
-A validação das funcionalidades definidas, como detalhado no processo de BDD, consiste na criação de especificações executáveis na forma de cenários que servem de 
-critérios de aceitação das histórias de usuário. Os cenários utilizam um padrão de escrita que incorpora uma junção de palavras-chave com linguagem natural e podem 
-ter interface com o código desenvolvido por meio de diversas ferramentas como \textit{JBehave}, \textit{RSpec} \cite{cucumberHistory} e a que será aplicado neste trabalho - 
-\textit{Cucumber} \cite{cucumberDocs}  em junção com a biblioteca do Python chamada \textit{Behave} \cite{behaveDocs}.
+A linguagem \textit{Gherkin} refere-se ao padrão definido pelo \textit{Cucumber} \cite{cucumberDocs} para a escrita dos cenários do BDD. Sua estrutura baseia-se no uso das palavras-chave 
+\textit{Given/When/Then} (Dado que/Quando/Então), juntamente com linguagem natural para tornar os cenários compreensíveis tanto para humanos quanto para máquinas. 
 
-Cucumber utiliza a gramática \textit{Gherkin} para a escrita dos cenários, adotando as palavras-chave \textit{Given/When/Then} (Dado que/Quando/Então), que permitem descrever o 
-comportamento esperado do sistema de forma compreensível para todas as partes envolvidas. Esses cenários são traduzidos em testes automatizados que interagem com 
-o software e verificam seu comportamento por meio de passos e definições de passos, os quais contêm as instruções necessárias para manipular o sistema e gerar 
-situações de teste.
-
-A estrutura da especificação é organizada em arquivos com extensão \textbf{.feature}, próprios do \textit{Cucumber}. Esses arquivos descrevem conjuntos de cenários, compostos por 
-passos que são interpretados e associados às definições implementadas em Python, por meio da biblioteca \textit{Behave}. Cada cenário dentro da feature descreve, utilizando 
-as palavras guias, os seguintes componentes do teste:
+A estrutura dos cenários é organizada em arquivos com extensão \textbf{.feature}, próprios do \textit{Cucumber}. Esses arquivos contém conjuntos de cenários que descrevem os seguintes componentes do teste:
 
 \begin{itemize}
-   	\item \textit{Given} - estado inicial ou pré-condições.
-   	\item \textit{When} - evento ou transição de estado.
-   	\item \textit{Then} - estado final do sistema ou ação.
+	\item \textit{Given} - estado inicial ou pré-condições.
+	\item \textit{When} - evento ou transição de estado.
+	\item \textit{Then} - estado final do sistema ou ação.
 \end{itemize}
 
-Dessa forma, um cenário descreve como o sistema deve transitar de um estado inicial - definido pela cláusula \textit{Given} - para um estado final - especificado pelo 
+% Cada componente \textit{Given/When/Then} é denominado de passo, e é responsável por descrever uma ação que deve ser executada. O conjunto de passos do cenário forma a sequência de processos que devem ser 
+% realizados durante o procedimento de teste e gera um especificação que valida um comportamento do sistema.
+
+Cada componente \textit{Given/When/Then} é denominado passo, sendo responsável por descrever uma ação a ser executada. O conjunto de passos de um cenário constitui a sequência de processos que orienta a execução 
+do teste, resultando em uma especificação capaz de validar o comportamento esperado do sistema.
+
+Para isso, o cenário descreve como o sistema deve transitar de um estado inicial - definido pela cláusula \textit{Given} - para um estado final - especificado pelo 
 \textit{Then} - em resposta a uma mudança ou evento descrito pelo \textit{When}. Um exemplo disso pode ser demonstrado da seguinte forma:
 
 \begin{verbatim}
@@ -209,17 +211,32 @@ Um exemplo aplicado a um sistema de software para travamento de portas - como no
 		Then o carro deveria ser travado
 \end{verbatim}
 
-Tanto este quanto o exemplo anterior ilustram como o uso da linguagem natural proposto pelo processo de BDD na escrita dos cenários torna o entendimento claro 
-e evita confusões. Outro benefício dessa abordagem é sua independência em relação à tecnologia utilizada - ao definir que o comportamento esperado do sistema é 
-travar o carro em resposta ao pressionar o botão, essa especificação permanece válida independentemente do tipo de trava adotado ou mesmo do número de portas no veículo.
+Neste exemplo, o comportamento definido é o travamento das portas, que deveria acontecer uma vez em que o evento - o pressionar do botão - é executado. Dessa maneira, o
+sistema realiza a transição do estado inicial - em que o carro se econtra destravado - para o cenário final - no qual as portas estão travadas.
 
-Com a biblioteca \textit{Behave}, do Python, é possível implementar os passos definidos nos cenários \textit{Gherkin} por meio de funções associadas a decoradores específicos. 
-Esses decoradores utilizam as palavras-chave da gramática \textit{Gherkin} - como Given, When e Then - para vincular cada trecho do cenário a uma função que executa a 
-lógica correspondente.
+Os dois exemplos ilustram como o uso da linguagem natural - um dos pilares do BDD - torna as especificações mais claras e acessíveis. A combinação da leitura facilitada 
+com o padrão \textit{Given/When/Then} contribui tanto para contextualizar o leitor quanto para possibilitar a visualização objetiva do comportamento esperado do sistema.
 
-Assim como citado por \citeonline{studyBDD} as definições de passo e integração com o software é feita de maneira iterativa, similar ao do processo de TDD, seguindo o ciclo 
-“vermelho-verde-refatorar”. Nesse contexto, cada passo do cenário assume o papel de um teste: inicialmente, o passo falha (“vermelho”); em seguida, são feitas alterações 
-mínimas para que ele seja satisfeito (“verde”); por fim, o código é aprimorado mantendo o comportamento esperado (“refatoração”).
+% Os passos são criados nos cenários e 
+% descrevem a sequência de ações ou validações que devem ocorrer na execução do teste. 
+
+% e para implementar a lógica desta ação, a biblioteca \textit{Behave} será utilizada neste
+% trabalho. Ela faz a ligação entre um passo e uma função Python, que contém os detalhes de implementação necessários para realizar o passo. 
+
+% que são compostos por passos 
+% formados ao juntar uma palavra-chave com uma sentença em linguagem natural.
+
+A partir dos cenários Gherkin, são gerados testes automatizados, capazes de interagir com o software e verificar seu comportamento. Isso é feito por meio de definições de passos 
+que contêm as instruções necessárias para manipular o sistema e gerar situações de teste.
+
+Com a biblioteca \textit{Behave}, as definições dos passos dos cenários podem ser implementadas por meio de funções em Python. Cada função encapsula a lógica necessária para interagir 
+com o sistema e executar a ação descrita no respectivo passo.
+
+% Assim como citado por \citeonline{studyBDD} as definições de passo e integração com o software é feita de maneira iterativa, similar ao do processo de TDD, seguindo o ciclo 
+% “vermelho-verde-refatorar”. Nesse contexto, cada passo do cenário assume o papel de um teste: inicialmente, o passo falha (“vermelho”); em seguida, são feitas alterações 
+% mínimas para que ele seja satisfeito (“verde”); por fim, o código é aprimorado mantendo o comportamento esperado (“refatoração”).
+
+
 
 No exemplo da cláusula \textit{When} do último cenário descrito nesta seção, a intenção do passo é representar o pressionar do botão de travamento das portas. Essa ação pode 
 ser realizada por meio da alteração do sinal de entrada do sistema que indica o estado do botão, modificando seu valor de 0 para 1. Utilizando a biblioteca Behave em 
@@ -328,11 +345,11 @@ Os principais benefícios dessa metodologia são:
 	\item Simulação de vários cenários possíveis;
 	\item Otimização de performance a nível do sistema;
 	\item Geração automática de código embarcado, documentação e relatórios;
-	\item Detectar erros mais cedo por testar mais cedo;
+	\item Detectar erros mais cedo por testar mais cedo.
 \end{itemize}
 
 Neste trabalho o último ponto será especialmente demonstrado, devido a utilização dos testes de aceitação das histórias de usuário. Isso será feito ao integrar 
-cenários \textit{Gherkin} com o modelo em \textit{Simulink} para executar os testes que validam o seu comportamento durante as simulações.
+cenários \textit{Gherkin} com o modelo em \textit{Simulink} - ferramenta da MathWorks para modelagem e simulação - para executar os testes que validam o comportamento do sistema.
 
 Outra barreira frequentemente  encontrada no desenvolvimento de software embarcado é a sua forte dependência do hardware utilizado, especialmente quando se trata 
 da interação com os diversos componentes conectados ao microcontrolador. No caso do sistema de travamento de portas, por exemplo, é necessária a utilização de um 
@@ -343,7 +360,7 @@ entanto, muitas vezes o hardware ainda não está totalmente definido nesta etap
 disponibilidade ou requisitos de desempenho. Essas mudanças forçam modificações no modelo do sistema, o que acaba reproduzindo um dos principais problemas da 
 abordagem tradicional baseada em código manual: a necessidade constante de retrabalho sempre que há mudanças na base de hardware.
 
-Para mitigar esses tipo de problema, é comum a adoção de padrões de desenvolvimento de software, como o \textit{AUTOSAR} \cite{autosarClassic}, que separa o sistema em 
+Para mitigar esses tipo de problema, é comum a adoção de padrões de desenvolvimento de software, como o AUTOSAR \cite{autosarClassic}, que separa o sistema em 
 camadas, cada uma com um nível específico de abstração. Essa arquitetura em camadas permite isolar as dependências de hardware, facilitando a reutilização de 
 código e a manutenção do sistema. 
 
@@ -352,10 +369,10 @@ No modelo AUTOSAR, a estrutura do software é decomposta nas seguintes camadas:
 \begin{itemize}
 	\item \textbf{Camada de Aplicação} - contém componentes de software que são responsáveis pela lógica funcional do sistema, que são completamente independentes do hardware;
 	\item \textbf{Software básico} - implementa serviços que permitem o acesso direto ao hardware, lidando com os detalhes técnicos da plataforma física utilizada;
-	\item \textbf{\textit{RTE (Run-Time Environment)}} - faz a interface entre as duas camadas anteriores e gerencia a comunicação entre diferentes componentes de software;
+	\item \textbf{RTE (\textit{Run-Time Environment})} - faz a interface entre as duas camadas anteriores e gerencia a comunicação entre diferentes componentes de software;
 \end{itemize}
 
-Neste caso, o desenvolvimento do modelo será focado na camada de aplicação, similar à presente no padrão \textit{AUTOSAR}, definindo interfaces de entrada e saída como 
+Neste caso, o desenvolvimento do modelo será focado na camada de aplicação, similar à presente no padrão AUTOSAR, definindo interfaces de entrada e saída como 
 abstrações simplificadas que satisfazem o comportamento do sistema sem se prender em detalhes técnicos. Para isso, a definição do modelo do sistema e dos testes 
 de aceitação tomará como base o teste de caixa preta \cite{sommerville2019}.
 
