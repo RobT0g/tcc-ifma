@@ -3,13 +3,12 @@
 %--------------------------------------------------------------------------------------
 \chapter{Metodologia} \label{ch:MM} %Uma label é como você referencia uma seção no texto com a tag \ref{}
 Neste capítulo, será apresentada a metodologia aplicada para o desenvolvimento deste produto do Trabalho de Conclusão de Curso (TCC), que possui natureza técnica 
-e tem como objetivo o desenvolvimento de um sistema integrado de travamento de portas veicular, quais as ferramentas utilizadas e como o Desenvolvimento Baseado 
-em Comportamento (BDD) foi empregado.
+e tem como objetivo a adapatação do processo de \textit{Behavior-Driven Development} (BDD) ao contexto da Engenharia Automotiva. A prova de conceito é realizada a 
+partir da aplicação da metodologia na produção de um sistema de travamento de portas veicular. 
 
-\section{\textbf{Tipo de Pesquisa}} 
-Esta é uma pesquisa aplicada, tendo em vista à solução de problemas presentes em metodologias de desenvolvimento de produto tradicionais como rastreabilidade 
-de requisitos e aplicação de testes manuais. Também será aplicada uma abordagem mista, que demonstra quantitativamente a cobertura dos testes desenvolvidos em 
-Modelo em Loop (MIL) e qualitativamente na experiência de usuário no modelo final.
+Esta é uma pesquisa aplicada, voltada à solução de complexidades presentes em metodologias de desenvolvimento de produto tradicionais como a rastreabilidade de 
+requisitos e a execução de testes manuais. Para a avaliação dos resultados, foi aplicada uma abordagem quantitativa, com a finalidade de metrificar a cobertura 
+dos testes de caixa-preta desenvolvidos sobre o modelo do sistema, além de identificar falhas que guiam a sua implementação. 
 
 \section{\textbf{Procedimentos Metodológicos}}
 Este produto teve seu desenvolvimento em etapas com base na metodologia do processo de BDD como demonstrado em \citeonline{studyBDD}, com uma série de adaptações específicas 
@@ -20,14 +19,13 @@ para o contexto da Engenharia Automotiva. As etapas de desenvolvimento a seguir 
     \item Mapeamento de exemplos: Definição de exemplos concretos tomados da perspectiva do usuário final;
     \item Desenho do diagrama de caixa preta: Desenho do diagrama do sistema que demonstra suas interfaces de entrada e saída, sem demonstrar detalhes de suas interações;
     \item Desenvolvimento dos cenários Gherkin: Escrita dos cenários aplicando o padrão cucumber e que aborde todas as regras definidas;
-    \item Tradução dos cenários em testes: Desenvolvimento de funções dos passos dos cenários gherkin utilizando as interfaces do diagrama de caixa branca;
-    \item Modelagem iterativa do sistema em simulink: Modelagem feita de forma iterativa aplicando os cenários como critério de aceitação a cada iteração;
+    \item Modelagem iterativa do sistema em simulink: Modelagem feita de forma iterativa com a criação das definições de passos dos cenários, seguido da sua aplicação como critérios de aceitação;
     \item Análise qualitativa do produto final: Testes de uso do produto final e aprovação da experiência de usuário entregue.
 \end{enumerate}
 
 Neste projeto, algumas etapas serão repetidas, pois o desenvolvimento orientado por comportamento (BDD) é um processo incremental, baseado em iterações 
 sucessivas que introduzem novas funcionalidades ao produto. Assim, as etapas 1 e 2 serão inicialmente executadas para cada história de usuário. Ao final 
-desse ciclo, a etapa 3 será iniciada elaborando um diagrama de caixa preta que abrange todas as funcionalidades definidas até o momento.
+desse ciclo, a etapa 3 foi iniciada elaborando um diagrama de caixa preta que abrange todas as funcionalidades definidas até o momento.
 
 \section{\textbf{Ferramentas Utilizadas}}
 As ferramentas e tecnologias adotadas no desenvolvimento deste produto foram escolhidas com base na compatibilidade com o modelo proposto e na sua capacidade 
@@ -35,7 +33,7 @@ de integrar diferentes etapas do processo. A seguir, descreve-se cada uma delas:
 
 \begin{itemize}
     \item \textbf{Cucumber (Gherkin)}: utilizado como padrão para a escrita de cenários comportamentais, permitindo a especificação dos requisitos no formato Given-When-Then, de forma legível por humanos e máquinas;
-    \item \textbf{Miro}: empregado para a criação de diagramas não técnicos, bem como para auxiliar na discussão colaborativa de exemplos, fluxos e histórias de usuário;
+    \item \textbf{Miro}: website empregado para a criação de diagramas não técnicos, bem como para auxiliar na discussão colaborativa de exemplos, fluxos e histórias de usuário;
     \item \textbf{Visual Studio Code}: ambiente de desenvolvimento (IDE) utilizado para escrever os cenários em Gherkin, desenvolver a tradução para testes executáveis e integrar o código gerado ao microcontrolador;
     \item \textbf{Python}: linguagem escolhida para implementar a lógica de tradução dos cenários Gherkin em testes executáveis, permitindo automatização e validação do comportamento esperado do sistema.
     \begin{itemize}
