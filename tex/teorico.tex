@@ -61,8 +61,9 @@ Para isso, adota-se um formato que se utiliza de linguagem natural e assegura a 
 Esses três pontos são organizados em uma estrutura padronizada que utiliza conjunções específicas, resultando no seguinte modelo:
 \textit{“Como [tipo de usuário], eu quero [funcionalidade], para que [valor gerado].”}
 Assim como destacado por Dan North ``[...] sua força está em forçar que você identifique o valor de entregar uma história quando você a define [...]'' 
-\cite{north2006bdd}. Essa ênfase em entender o valor entregue ao usuário - desde a formulação das histórias - é essencial para garantir que as funcionalidades desenvolvidas estejam 
-alinhadas com as reais necessidades do usuário.
+\cite{north2006bdd}. Essa ênfase em entender o valor entregue ao usuário - desde a formulação das histórias - é essencial para garantir que as funcionalidades 
+desenvolvidas estejam alinhadas com as reais necessidades do usuário. 
+%Durante a etapa \ref{sbs:etapa1}, serão definidas as histórias de usuário que descrevem as funcionalidades implementadas neste trabalho.
 
 Para garantir um bom fluxo nas discussões durante a definição do escopo das histórias, o exemplo prático da aplicação de BDD demonstrado em \citeonline{Lawrence2019cucumber} 
 destaca o uso do mapeamento de exemplos como uma forma eficaz para explorar e esclarecer os comportamentos esperados do sistema. Esse método contribui para que 
@@ -87,7 +88,7 @@ assim como descrito na metodologia de \citeonline{cucumberExampleMapping}. Ela s
 \end{itemize}
 
 Dessa maneira, todos os pontos desconhecidos que foram previamente identificados são registrados como perguntas, evitando que a discussão se desvie para tópicos 
-fora do escopo naquele momento. Na etapa \ref{ch:IM}, serão apresentados exemplos dessas perguntas e a forma como cada uma será tratada ao longo do processo.
+fora do escopo naquele momento. Essas questões são respondidas após a conclusão do mapeamento de exemplos, com base na bibliografia disponível.
 
 Após as dúvidas serem anotadas, a discussão segue focada na experiência do usuário, mesmo que alguns aspectos técnicos ainda não estejam totalmente esclarecidos. 
 Neste caso, assume-se que o veículo existe e que suas portas funcionam “magicamente”, conforme os comportamentos definidos, permitindo que a discussão possa ser 
@@ -369,19 +370,25 @@ No modelo AUTOSAR, a estrutura do software é decomposta nas seguintes camadas:
 \begin{itemize}
 	\item \textbf{Camada de Aplicação} - contém componentes de software que são responsáveis pela lógica funcional do sistema, que são completamente independentes do hardware;
 	\item \textbf{Software básico} - implementa serviços que permitem o acesso direto ao hardware, lidando com os detalhes técnicos da plataforma física utilizada;
-	\item \textbf{RTE (\textit{Run-Time Environment})} - faz a interface entre as duas camadas anteriores e gerencia a comunicação entre diferentes componentes de software;
+	\item \textbf{RTE (\textit{Run-Time Environment})} - faz a interface entre as duas camadas anteriores e gerencia a comunicação entre diferentes componentes de software.
 \end{itemize}
 
-Neste caso, o desenvolvimento do modelo será focado na camada de aplicação, similar à presente no padrão AUTOSAR, definindo interfaces de entrada e saída como 
-abstrações simplificadas que satisfazem o comportamento do sistema sem se prender em detalhes técnicos. Para isso, a definição do modelo do sistema e dos testes 
-de aceitação tomará como base o teste de caixa preta \cite{sommerville2019}.
+Neste caso, o desenvolvimento do modelo tem foco na camada de aplicação, similar à presente no padrão AUTOSAR, definindo interfaces de entrada e saída como 
+abstrações simplificadas que satisfazem o comportamento do sistema sem se prender em detalhes técnicos. Por exemplo, uma possível abstração da saída do sistema, 
+considerando o problema levantado anteriormente - o estado de travamento da porta - pode ser feita ao representar cada trava por meio de um sinal binário: onde 
+1 indica o estado travado e 0, o destravado. 
 
-Dessa forma, uma possível abstração da saída do sistema, considerando o problema levantado anteriormente - o estado de travamento da porta -, pode ser feita ao 
-representar cada trava por meio de um sinal binário: onde 1 indica o estado travado e 0, o destravado. Essa interface corresponde à saída do modelo, a qual, na 
-prática, é transmitida através da camada de RTE para o software básico que é responsável por converter esse sinal em um formato compatível com o componente físico 
-selecionado.
+Essa interface corresponde à saída do modelo, a qual, na prática, é transmitida através da camada de RTE para o software básico. Nele acontece a conversão desse 
+valor binário para um formato compatível com o componente físico selecionado, gerando uma interface física que é transmitida para o atuador - a trava da porta. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[height=2cm]{figuras/diagrama_interface.png}
+\caption{Interfaces binárias e físicas utilizadas no travamento da porta.}
+\label{fig:diagramainterface}
+\end{figure}
 
 Um benefício adicional dessa abstração é que ela permite a utilização direta das interfaces nos cenários \textit{Gherkin} e torna a validação independente dos detalhes 
-técnicos do sistema, assim como é definido em testes de caixa preta. Essa metodologia vai de acordo com a definição dos comportamentos no BDD, afinal, o valor 
-gerado na funcionalidade de travamento de portas não depende da capacidade de movimentar um motor, mas sim da lógica que habilita o estado de travamento, 
+técnicos do sistema, assim como é definido em testes de caixa preta \cite{sommerville2019}. Essa metodologia vai de acordo com a definição dos comportamentos no BDD, 
+afinal, o valor gerado na funcionalidade de travamento de portas não depende da capacidade de movimentar um motor, mas sim da lógica que habilita o estado de travamento, 
 independentemente do mecanismo utilizado para isso.

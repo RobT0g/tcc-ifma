@@ -5,6 +5,7 @@ Neste capítulo será demonstrado em detalhes o procedimento da aplicação de d
 com 9 etapas que expandem o modelo de \citeonline{Lawrence2019cucumber} para adaptá-lo ao produto em questão.
 
 \section{\textbf{Etapa 1: Descrição das histórias de usuário}}
+\label{sbs:etapa1}
 A etapa inicial do Desenvolvimento Orientado por Comportamento (BDD) consiste na definição das funcionalidades a serem implementadas por meio de histórias de usuário. 
 Nessa fase, a perspectiva do usuário — ou da pessoa que se beneficia da funcionalidade — deve ser o foco principal. Essa abordagem é um dos pilares fundamentais do BDD, 
 pois garante que o produto desenvolvido entregue valor real ao usuário final.
@@ -61,6 +62,7 @@ Essa funcionalidade será capturada pela seguinte história de usuário:
 \end{itemize}
 
 \section{\textbf{Etapa 2: Mapeamento de exemplos}}
+\label{sbs:etapa2}
 As histórias definidas na etapa anterior têm o papel de estabelecer um escopo claro da funcionalidade em discussão, garantindo que toda a equipe compreenda de forma 
 alinhada o incremento de produto que está sendo proposto. Essa clareza é essencial para a etapa de mapeamento de exemplos, na qual ocorrem discussões colaborativas 
 com pessoas de diferentes áreas.
@@ -409,6 +411,7 @@ O mapeamento de exemplos dessa história na forma de notas coloridas é composto
 \end{figure}
 
 \section{\textbf{Etapa 3: Desenho do diagrama de caixa preta}}
+\label{sbs:etapa3}
 Com todas as histórias de usuário definidas, o próximo passo do trabalho consiste na elaboração do diagrama de caixa preta, com o objetivo de identificar todas as 
 interfaces necessárias para suportar os comportamentos previamente levantados. Essa etapa é essencial para garantir que todas as interações entre o usuário e o 
 sistema estejam claramente especificadas e para suportar a criação dos cenários \textit{Gherkin} a seguir.
@@ -578,7 +581,7 @@ Nesta tabela, os valores das interfaces foram descritos de maneira textual, com 
 Na prática, todos os valores serão utilizados como enumerações convertidas para um valor numérico que representa o estado da interface.
 
 \section{\textbf{Etapa 4: Desenvolvimento dos cenários Gherkin}}
-
+\label{sbs:etapa4}
 Nesta etapa, os cenários \textit{Gherkin} serão desenvolvidos e utilizados como critérios de aceitação das histórias previamente definidas. Estes cenários devem ser capazes 
 de cobrir todos os exemplos capturados durante o mapeamento, assegurando que o desenvolvimento do sistema atenda à experiência de usuário desejada.
 Como primeiro passo, será definida a estrutura de pastas do projeto, responsável por organizar tanto os arquivos \texttt{.feature} — um para cada história de usuário — 
