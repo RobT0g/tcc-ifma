@@ -496,5 +496,61 @@ Essa abordagem foi adotada para garantir que a latência decorrente da interaç�
 do modelo ocorre de forma independente da execução dos cenários, a indicação de tempo precisa refletir uma representação fiel do tempo real. Alternativas como a 
 utilização de \textit{multi-threading} ou do tempo de simulação interno do Simulink ainda apresentariam problemas semelhantes e, por esse motivo, foram descartadas.
 
-Após a correção da lógica de geração do tempo, todos os testes foram reexecutados, resultando em 100\% de aprovação em todos os cenários de todas as histórias de usuário.
+Após a correção da lógica de geração do tempo, todos os testes foram reexecutados, resultando em 100\% de aprovação em todos os cenários de todas as histórias de usuário, 
+assim como demonstrado na Figura \ref{fig:resultado-terminal}: 
 
+\begin{figure}[H]
+\centering
+\includegraphics[height=3cm]{figuras/passed\_all\_tests.png}
+\caption{Relatório de testes - execução final.}
+\label{fig:resultado-terminal}
+\end{figure}
+
+A execução completa dos testes levou pouco mais de 31 minutos e contemplou:
+
+\begin{itemize}
+    \item 5 \textit{features}
+    \item 101 cenários (incluindo combinação geradas pelas tabelas)
+    \item 890 passos
+\end{itemize}
+
+O Quadro \ref{qua:falhas} demonstra um sumário das falhas nos testes que foram capturadas durante a etapa, assim como uma demonstração da melhoria 
+necessária para capturar cada problema:
+
+\begin{quadro}[H]
+\caption{Falhas de comportamento capturadas durante a modelagem iterativa}
+\label{qua:falhas}
+\begin{tabular}{|p{5cm}|p{7cm}|}
+\hline
+Falha Capturada & Melhoria Implementada em \\ 
+\hline
+Definição dos estados iniciais de travamento das portas, conforme descrito na cláusula Given & Modelo \\
+\hline
+Travamento de todas as portas ao pressionar o botão de travamento & Modelo \\
+\hline
+Destravamento das portas ao acionar o botão de destravamento & Modelo \\
+\hline
+Abertura de portas específicas ao acionar o botão de abertura & Modelo \\
+\hline
+Definição das condições para cada status & Modelo \\
+\hline
+Utilização do tempo de espera para validar a saída de travamento em relação ao valor esperado & Cenários \\
+\hline
+Indicação da atualização de status & Definições dos passos \\
+\hline
+Todas as portas devem ser fechadas durante o início dos testes & Cenários \\
+\hline
+A porta não é destravada quando o botão de abertura é pressionado, mesmo com a chave presente & Modelo \\
+\hline
+No início de todos os cenários, a chave não deve estar presente & Cenários \\
+\hline
+O travamento automático não ocorre após a passagem do tempo & Modelo \\
+\hline
+As condições de abertura de uma porta, o estado inicial de travamento das portas e o acionamento do botão de destravamento duas vezes não impedem o travamento automático & Modelo \\
+\hline
+Problema na determinação correta do tempo decorrido na simulação & Definições dos passos  \\
+\hline
+\end{tabular}
+\end{quadro}
+
+Um total de 13 falhas foram levantadas, que culminaram na implementação de 8 melhorias no modelo, 3 melhorias no cenários e 2 melhorias nas definições dos passos. 
