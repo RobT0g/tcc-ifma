@@ -253,13 +253,13 @@ O primeiro ponto decorre do fato de que, em ambos os cenários, a cláusula \tex
 o teste falha porque o modelo não possui a implementação de um mecanismo que permita modificar diretamente o valor da saída nesse momento.
 
 Para viabilizar essa estrutura, foi criada uma interface auxiliar denominada \textbf{manual\_lock}, que possibilita alterar o estado inicial das portas sem recorrer aos 
-botões físicos ou ao sistema \textit{keyless access}. Essa interface executa uma operação de escrita direta no bloco \textit{Data Store Memory}, responsável por armazenar o 
+botões físicos ou ao sistema \textit{Keyless Access}. Essa interface executa uma operação de escrita direta no bloco \textit{Data Store Memory}, responsável por armazenar o 
 estado de travamento das portas no modelo.
 
 A adoção de uma interface auxiliar para definir o estado inicial de travamento de cada porta tem como objetivo preservar a independência entre as funcionalidades. 
-Conforme mencionado anteriormente, é possível obter qualquer combinação de travamento ou destravamento por meio do \textit{keyless access} em portas específicas. 
+Conforme mencionado anteriormente, é possível obter qualquer combinação de travamento ou destravamento por meio do \textit{Keyless Access} em portas específicas. 
 Entretanto, para que essa sequência de entradas fosse utilizada diretamente na definição do primeiro passo, seria necessário que a história de usuário do 
-\textit{keyless access} já estivesse implementada e operacional.
+\textit{Keyless Access} já estivesse implementada e operacional.
 
 Tanto a interface quanto o bloco de memória utilizam um valor inteiro de 4 bits, no qual cada bit representa o estado de travamento de uma porta. Como cada passo 
 define de forma independente o estado de cada porta, a lógica da função de definição altera apenas o bit correspondente à porta em questão.
@@ -415,8 +415,8 @@ Essa operação é acionada através de um Triggered Subsystem, cuja execução 
 Essa estrutura foi replicada para cada porta, ajustando a interface do botão de abertura correspondente e definindo qual bit do \textit{Data Store Memory} deve ser setado 
 para 0. Após a implementação, todos os testes da história foram aprovados. No entanto, um novo problema foi identificado ao executar a história de usuário 1.
 
-Durante os testes do \textit{keyless access}, a presença da chave é simulada no modelo ao escrever 1 no bloco de constante de entrada. O problema ocorre porque essa 
-condição não é revertida em nenhum momento, fazendo com que, durante o teste que verifica que uma porta travada não pode ser aberta, o \textit{keyless access} seja 
+Durante os testes do \textit{Keyless Access}, a presença da chave é simulada no modelo ao escrever 1 no bloco de constante de entrada. O problema ocorre porque essa 
+condição não é revertida em nenhum momento, fazendo com que, durante o teste que verifica que uma porta travada não pode ser aberta, o \textit{Keyless Access} seja 
 aplicado inadvertidamente, permitindo que a porta se abra e causando a falha no teste.
 
 Este problema é exatamente igual ao caso demonstrado na história anterior, e sua solução também utiliza o Background para definir estados iniciais comuns para todos 
@@ -435,7 +435,7 @@ As definições desses passos garantem que a condição inicial de todas as entr
 	\item Nenhum dos botões de abertura está pressionado.
 \end{itemize}
 
-Dessa forma, ao iniciar a execução dos cenários da primeira história, a chave permanece ausente, o \textit{keyless access} não é acionado e a porta travada não se 
+Dessa forma, ao iniciar a execução dos cenários da primeira história, a chave permanece ausente, o \textit{Keyless Access} não é acionado e a porta travada não se 
 abre quando o botão de abertura é pressionado. Como resultado, todos os testes são aprovados.
 
 
@@ -455,7 +455,7 @@ contendo um diagrama de estados, no qual o pressionamento do botão de destravam
 \begin{figure}[H]
 \centering
 \includegraphics[height=5cm]{figuras/diagrama\_auto\_travamento.png}
-\caption{Relatório de testes - por cenário.}
+\caption{Diagrama de estados da lógica do auto travamento.}
 %\label{fig:casos-uso}
 \end{figure}
 
@@ -482,7 +482,7 @@ Cada uma dessas condições corresponde a um cenário de teste, definindo os com
 caso nenhuma dessas condições seja satisfeita durante o período de espera, a passagem do tempo provoca a transição para o estado ``Travamento automático'', acionando 
 o mesmo \textit{Triggered Subsystem} utilizado na história de travamento de todas as portas.
 
-Dessa forma, o comportamento esperado do sistema em relação ao auto-travamento é completamente atendido; entretanto, uma complicação técnica faz com que diversos 
+Dessa forma, o comportamento esperado do sistema em relação ao auto-travamento é completamente atendido. Entretanto, uma complicação técnica faz com que diversos 
 testes falhem. Nos casos em que a espera é de 10 ou 14 segundos, os testes apresentam falha porque o auto-travamento é acionado antes que o tempo correto tenha decorrido.
 
 A investigação revelou que esse problema ocorre devido à latência nas interações do Python com o modelo, que pode chegar a cerca de 500 ms por operação de escrita e 
@@ -490,4 +490,11 @@ A investigação revelou que esse problema ocorre devido à latência nas intera
 que deveriam ser praticamente instantâneas.
 
 Para resolver essa questão, a lógica de geração do tempo de simulação em Python foi ajustada para contabilizar o tempo gasto nas interações com o modelo. Dessa forma, 
-a passagem do tempo de simulação é incrementada apenas durante passos que envolvem espera de tempo, garantindo que todos os testes sejam aprovados.
+a passagem do tempo de simulação é incrementada apenas durante passos que envolvem espera de tempo.
+
+Essa abordagem foi adotada para garantir que a latência decorrente da interação entre as ferramentas não comprometesse a validade dos cenários de teste. Como a execução 
+do modelo ocorre de forma independente da execução dos cenários, a indicação de tempo precisa refletir uma representação fiel do tempo real. Alternativas como a 
+utilização de \textit{multi-threading} ou do tempo de simulação interno do Simulink ainda apresentariam problemas semelhantes e, por esse motivo, foram descartadas.
+
+Após a correção da lógica de geração do tempo, todos os testes foram reexecutados, resultando em 100\% de aprovação em todos os cenários de todas as histórias de usuário.
+
