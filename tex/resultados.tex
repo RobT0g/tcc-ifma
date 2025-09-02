@@ -343,7 +343,7 @@ Para garantir que a implementação utilize valores de tempo compatíveis com a 
 modelo o tempo atual da simulação. A cada passo executado, o arquivo \textbf{environment.py} atualiza o valor dessa interface de tempo com o valor gerado pelo Python. 
 Esse valor é então considerado como uma condição adicional na determinação do status.
 
-A última falha identificada decorreu de inconsistências observadas durante a execução dos testes. De forma aparentemente aleatória, o valor ``sem status'' era gerado 
+A terceira falha identificada decorreu de inconsistências observadas durante a execução dos testes. De forma aparentemente aleatória, o valor ``sem status'' era gerado 
 repetidamente junto com o valor correto, como se o sistema estivesse oscilando continuamente entre os dois estados.
 
 O problema foi evidenciado ao analisar o modelo, especificamente o comportamento interno do bloco \textit{Chart}, que contém o diagrama de estados. Inicialmente, a 
@@ -496,8 +496,11 @@ Essa abordagem foi adotada para garantir que a latência decorrente da interaç�
 do modelo ocorre de forma independente da execução dos cenários, a indicação de tempo precisa refletir uma representação fiel do tempo real. Alternativas como a 
 utilização de \textit{multi-threading} ou do tempo de simulação interno do Simulink ainda apresentariam problemas semelhantes e, por esse motivo, foram descartadas.
 
-Após a correção da lógica de geração do tempo, todos os testes foram reexecutados, resultando em 100\% de aprovação em todos os cenários de todas as histórias de usuário, 
-assim como demonstrado na Figura \ref{fig:resultado-terminal}: 
+Após a correção da lógica de geração do tempo, todos os testes foram reexecutados, resultando em 100\% de aprovação em todos os cenários de todas as histórias de usuário.
+
+\section{Análise dos Resultados}
+
+Ao fim do processo de modelagem iterativa, os resultados demonstrados na Figura \ref{fig:resultado-terminal} foram obtidos: 
 
 \begin{figure}[H]
 \centering
@@ -509,18 +512,18 @@ assim como demonstrado na Figura \ref{fig:resultado-terminal}:
 A execução completa dos testes levou pouco mais de 31 minutos e contemplou:
 
 \begin{itemize}
-    \item 5 \textit{features}
-    \item 101 cenários (incluindo combinação geradas pelas tabelas)
-    \item 890 passos
+    \item 5 \textit{features};
+    \item 101 cenários (incluindo combinação geradas pelas tabelas);
+    \item 890 passos.
 \end{itemize}
 
 O Quadro \ref{qua:falhas} demonstra um sumário das falhas nos testes que foram capturadas durante a etapa, assim como uma demonstração da melhoria 
-necessária para capturar cada problema:
+necessária para solucionar cada problema:
 
 \begin{quadro}[H]
 \caption{Falhas de comportamento capturadas durante a modelagem iterativa}
 \label{qua:falhas}
-\begin{tabular}{|p{5cm}|p{7cm}|}
+\begin{tabular}{|p{7cm}|p{5cm}|}
 \hline
 Falha Capturada & Melhoria Implementada em \\ 
 \hline
@@ -554,3 +557,19 @@ Problema na determinação correta do tempo decorrido na simulação & Definiç�
 \end{quadro}
 
 Um total de 13 falhas foram levantadas, que culminaram na implementação de 8 melhorias no modelo, 3 melhorias no cenários e 2 melhorias nas definições dos passos. 
+
+O processo iterativo demonstrou-se extremamente eficiente quando comparado a metodologias alternativas de desenvolvimento e testes de software embarcado. Um exemplo 
+que ilustra claramente essa eficiência ocorreu durante a execução dos testes da história de usuário 3: a identificação das três primeiras falhas, bem como a implementação 
+das respectivas soluções para atender aos cenários relevantes.
+
+Os problemas encontrados estavam associados a detalhes específicos da implementação, cuja identificação exigiu uma visualização precisa do comportamento do sistema. 
+Para tanto, foi necessário executar os testes repetidas vezes, realizando pequenos ajustes no modelo entre cada execução.
+
+Em metodologias que realizam testes apenas após o lançamento do código embarcado, o processo análogo de identificação de falhas demandaria um número grande de 
+compilações seguidas de testes. Além disso, a instrumentação utilizada nesse contexto pode apresentar limitações na observação do comportamento do sistema, o que 
+dificultaria a detecção, por exemplo, de um loop indesejado.
+
+Essas dificuldades são mitigadas pelo uso do ambiente de simulação, que se mostra altamente flexível ao permitir alterações rápidas no modelo, sem exigir grande 
+esforço de compilação ou implementação em hardware. Outro benefício é a possibilidade de acompanhar a execução de forma visual, permitindo que os diagramas de 
+estados sejam observados em tempo real, além de possibilitar a adição de um \textit{display} - bloco que exibe o valor contido em uma interface - em qualquer 
+ponto do sistema.
