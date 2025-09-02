@@ -677,6 +677,7 @@ o cenário pode ser representado da seguinte forma:
     Then todas as portas foram travadas
 \end{verbatim}
 
+
 Além disso, é possível aplicar o recurso de tabelas de exemplos \textit{(Examples)} para generalizar o cenário e incluir o segundo exemplo descrito na história: ``aquele 
 em que o usuário tentou travar o veículo que já estava travado''. Nesse caso, substitui-se a primeira condição \textit{(Given)} por um conjunto de passos que definem 
 individualmente o estado inicial de cada porta, utilizando os valores fornecidos pela tabela para simular todas as combinações possíveis de estados iniciais. 
@@ -685,35 +686,42 @@ A resposta final do sistema é comum entre os exemplos já que ambos compartilha
 Dessa forma, o primeiro exemplo é coberto em uma das linhas da tabela - a que define que todas as portas estão inicialmente destravadas - e o segundo é coberto 
 por todas as demais linhas - que definem todas as possíveis combinações de estado para cada porta. O cenário geral pode assumir a seguinte forma:
 
-\begin{verbatim}
-Scenario Outline: Locking all doors
-    Given the door '1' is <door_1_state>
-    And the door '2' is <door_2_state>
-    And the door '3' is <door_3_state>
-    And the door '4' is <door_4_state>
+% \begin{verbatim}
+% Scenario Outline: Locking all doors
+%     Given the door '1' is <door_1_state>
+%     And the door '2' is <door_2_state>
+%     And the door '3' is <door_3_state>
+%     And the door '4' is <door_4_state>
 
-    When I press the vehicle 'lock' button
-    Then all doors should be 'locked'
+%     When I press the vehicle 'lock' button
+%     Then all doors should be 'locked'
 
-    Examples:
-        | door_1_state | door_2_state | door_3_state | door_4_state |
-        | unlocked     | unlocked     | unlocked     | unlocked     |
-        | unlocked     | unlocked     | unlocked     | locked       |
-        | unlocked     | unlocked     | locked       | unlocked     |
-        | unlocked     | unlocked     | locked       | locked       |
-        | unlocked     | locked       | unlocked     | unlocked     |
-        | unlocked     | locked       | unlocked     | locked       |
-        | unlocked     | locked       | locked       | unlocked     |
-        | unlocked     | locked       | locked       | locked       |
-        | locked       | unlocked     | unlocked     | unlocked     |
-        | locked       | unlocked     | unlocked     | locked       |
-        | locked       | unlocked     | locked       | unlocked     |
-        | locked       | unlocked     | locked       | locked       |
-        | locked       | locked       | unlocked     | unlocked     |
-        | locked       | locked       | unlocked     | locked       |
-        | locked       | locked       | locked       | unlocked     |
-        | locked       | locked       | locked       | locked       |
-\end{verbatim}
+%     Examples:
+%         | door_1_state | door_2_state | door_3_state | door_4_state |
+%         | unlocked     | unlocked     | unlocked     | unlocked     |
+%         | unlocked     | unlocked     | unlocked     | locked       |
+%         | unlocked     | unlocked     | locked       | unlocked     |
+%         | unlocked     | unlocked     | locked       | locked       |
+%         | unlocked     | locked       | unlocked     | unlocked     |
+%         | unlocked     | locked       | unlocked     | locked       |
+%         | unlocked     | locked       | locked       | unlocked     |
+%         | unlocked     | locked       | locked       | locked       |
+%         | locked       | unlocked     | unlocked     | unlocked     |
+%         | locked       | unlocked     | unlocked     | locked       |
+%         | locked       | unlocked     | locked       | unlocked     |
+%         | locked       | unlocked     | locked       | locked       |
+%         | locked       | locked       | unlocked     | unlocked     |
+%         | locked       | locked       | unlocked     | locked       |
+%         | locked       | locked       | locked       | unlocked     |
+%         | locked       | locked       | locked       | locked       |
+% \end{verbatim}
+
+\begin{figure}[H]
+\centering
+\includegraphics[height=12cm]{figuras/cenarios/h1c1.png}
+\caption{Primeiro cenário \textit{Gherkin} da história de usuário 1.}
+\label{fig:h1c1}
+\end{figure}
 
 A cláusula \textit{Given} utiliza quatro passos para definir os valores iniciais de cada porta, de forma que cada um recebe uma variável correspondente a uma coluna da 
 tabela de exemplos. Essa tabela contém 16 linhas, que representam todas as combinações possíveis entre os estados ``travada'' e ``destravada'' para as quatro portas.
@@ -727,57 +735,70 @@ cenário em que a porta continua fechada após a o botão de abertura ser pressi
 Para evitar a duplicação de cenários, a tabela de exemplos é novamente utilizada, permitindo a execução automática do teste para cada porta individualmente, variando 
 apenas o ponto de interação. Ao final, o cenário assume a seguinte forma:
 
-\begin{verbatim}
+% \begin{verbatim}
 
-    Scenario Outline: Door cannot be released when locked
-        Given the door <door_id> is 'locked'
-        When I 'press' the door <door_id> release button
-        Then the door <door_id> should be 'held'
+%     Scenario Outline: Door cannot be released when locked
+%         Given the door <door_id> is 'locked'
+%         When I 'press' the door <door_id> release button
+%         Then the door <door_id> should be 'held'
 
-        Examples:
-            | door_id |
-            | 1       |
-            | 2       |
-            | 3       |
-            | 4       |
+%         Examples:
+%             | door_id |
+%             | 1       |
+%             | 2       |
+%             | 3       |
+%             | 4       |
 
-\end{verbatim}
+% \end{verbatim}
 
+\begin{figure}[H]
+\centering
+\includegraphics[height=6cm]{figuras/cenarios/h1c2.png}
+\caption{Segundo cenário \textit{Gherkin} da história de usuário 1.}
+\label{fig:h1c2}
+\end{figure}
 
 \subsection{História de usuário 2}
 
 A segunda história de usuário tem grande semelhança com a primeira e possui exemplos mapeados com casos de uso que são análogos à de travamento das portas. O 
 primeiro cenário criado para esta história é:
 
-\begin{verbatim}
-Scenario Outline: Unlocking all doors    
-    Given the door '1' is <door_1_state>
-    And the door '2' is <door_2_state>
-    And the door '3' is <door_3_state>
-    And the door '4' is <door_4_state>
+% \begin{verbatim}
+% Scenario Outline: Unlocking all doors    
+%     Given the door '1' is <door_1_state>
+%     And the door '2' is <door_2_state>
+%     And the door '3' is <door_3_state>
+%     And the door '4' is <door_4_state>
 
-    When I press the vehicle 'unlock' button
-    Then all doors should be 'unlocked'
+%     When I press the vehicle 'unlock' button
+%     Then all doors should be 'unlocked'
 
-    Examples:
-        | door_1_state  | door_2_state  | door_3_state  | door_4_state  |
-        | unlocked      | unlocked      | unlocked      | unlocked      |
-        | unlocked      | unlocked      | unlocked      | locked        |
-        | unlocked      | unlocked      | locked        | unlocked      |
-        | unlocked      | unlocked      | locked        | locked        |
-        | unlocked      | locked        | unlocked      | unlocked      |
-        | unlocked      | locked        | unlocked      | locked        |
-        | unlocked      | locked        | locked        | unlocked      |
-        | unlocked      | locked        | locked        | locked        |
-        | locked        | unlocked      | unlocked      | unlocked      |
-        | locked        | unlocked      | unlocked      | locked        |
-        | locked        | unlocked      | locked        | unlocked      |
-        | locked        | unlocked      | locked        | locked        |
-        | locked        | locked        | unlocked      | unlocked      |
-        | locked        | locked        | unlocked      | locked        |
-        | locked        | locked        | locked        | unlocked      |
-        | locked        | locked        | locked        | locked        |
-\end{verbatim}
+%     Examples:
+%         | door_1_state  | door_2_state  | door_3_state  | door_4_state  |
+%         | unlocked      | unlocked      | unlocked      | unlocked      |
+%         | unlocked      | unlocked      | unlocked      | locked        |
+%         | unlocked      | unlocked      | locked        | unlocked      |
+%         | unlocked      | unlocked      | locked        | locked        |
+%         | unlocked      | locked        | unlocked      | unlocked      |
+%         | unlocked      | locked        | unlocked      | locked        |
+%         | unlocked      | locked        | locked        | unlocked      |
+%         | unlocked      | locked        | locked        | locked        |
+%         | locked        | unlocked      | unlocked      | unlocked      |
+%         | locked        | unlocked      | unlocked      | locked        |
+%         | locked        | unlocked      | locked        | unlocked      |
+%         | locked        | unlocked      | locked        | locked        |
+%         | locked        | locked        | unlocked      | unlocked      |
+%         | locked        | locked        | unlocked      | locked        |
+%         | locked        | locked        | locked        | unlocked      |
+%         | locked        | locked        | locked        | locked        |
+% \end{verbatim}
+
+\begin{figure}[H]
+\centering
+\includegraphics[height=12cm]{figuras/cenarios/h2c1.png}
+\caption{Primeiro cenário \textit{Gherkin} da história de usuário 2.}
+\label{fig:h2c1}
+\end{figure}
 
 Este cenário define que, com as pré-condições que cobrem todas as possíveis combinações de travamento e destravamento para cada porta, após o botão de destravamento 
 ser pressionado, o veículo será destravado. Ele cobre os dois primeiros exemplos mapeados:
@@ -788,19 +809,26 @@ ser pressionado, o veículo será destravado. Ele cobre os dois primeiros exempl
 
 Para o último exemplo, o seguinte cenário será utilizado:
 
-\begin{verbatim}
-    Scenario Outline: Door can be released when unlocked
-        Given the door <door_id> is 'unlocked'
-        When I 'press' the door <door_id> release button
-        Then the door <door_id> should be 'released'
+% \begin{verbatim}
+%     Scenario Outline: Door can be released when unlocked
+%         Given the door <door_id> is 'unlocked'
+%         When I 'press' the door <door_id> release button
+%         Then the door <door_id> should be 'released'
 
-        Examples:
-            | door_id |
-            | 1       |
-            | 2       |
-            | 3       |
-            | 4       |
-\end{verbatim}
+%         Examples:
+%             | door_id |
+%             | 1       |
+%             | 2       |
+%             | 3       |
+%             | 4       |
+% \end{verbatim}
+
+\begin{figure}[H]
+\centering
+\includegraphics[height=6cm]{figuras/cenarios/h2c2.png}
+\caption{Segundo cenário \textit{Gherkin} da história de usuário 2.}
+\label{fig:h2c2}
+\end{figure}
 
 Este cenário, que é executado para cada uma das portas, define que a porta será aberta após o botão de abertura ser pressionado, tendo em vista que ela 
 está destravada. Ele cobre o seguinte exemplo mapeado:
@@ -815,18 +843,25 @@ está destravada. Ele cobre o seguinte exemplo mapeado:
 Para especificar o comportamento descrito nesta história, é necessário criar um novo tipo de passo que valide qual resposta de feedback foi acionada pelo veículo. 
 Isso pode ser feito de acordo com o cenário:
 
-\begin{verbatim}
-Scenario Outline: Locking feedback when locking or unlocking the vehicle
-    When I press the vehicle <operation> button
+% \begin{verbatim}
+% Scenario Outline: Locking feedback when locking or unlocking the vehicle
+%     When I press the vehicle <operation> button
 
-    Then all doors should be <state>
-    And I should receive a <feedback> feedback
+%     Then all doors should be <state>
+%     And I should receive a <feedback> feedback
 
-    Examples:
-        | operation | state    | feedback               |
-        | lock      | locked   | locking confirmation   |
-        | unlock    | unlocked | unlocking confirmation |
-\end{verbatim}
+%     Examples:
+%         | operation | state    | feedback               |
+%         | lock      | locked   | locking confirmation   |
+%         | unlock    | unlocked | unlocking confirmation |
+% \end{verbatim}
+
+\begin{figure}[H]
+\centering
+\includegraphics[height=5cm]{figuras/cenarios/h3c1.png}
+\caption{Primeiro cenário \textit{Gherkin} da história de usuário 3.}
+\label{fig:h3c1}
+\end{figure}
 
 Esse cenário descreve que, ao pressionar o botão correspondente, todas as portas devem ser travadas ou destravadas, e um feedback específico deve ser emitido. A cláusula \textit{Given} foi omitida neste caso, pois o estado inicial do veículo - seja total ou parcialmente travado/destravado - não deve influenciar 
 o resultado esperado. Ou seja, independentemente da condição inicial, o sistema deve aplicar a ação solicitada e fornecer o feedback apropriado.
@@ -840,27 +875,34 @@ Os seguintes exemplos são cobertos neste cenário:
 
 O último exemplo dessa história é: ``aquele em que o usuário tentou travar seu veículo sem perceber que uma das portas ficou aberta'' e será coberto no seguinte cenário:
 
-\begin{verbatim}
-Scenario Outline: Failure feedback when one door is open
-    Given the door <door_id> is 'unlocked'
-    And the door <door_id> is <door_open_state>
+% \begin{verbatim}
+% Scenario Outline: Failure feedback when one door is open
+%     Given the door <door_id> is 'unlocked'
+%     And the door <door_id> is <door_open_state>
 
-    When I press the vehicle 'lock' button
+%     When I press the vehicle 'lock' button
 
-    Then all doors should be 'locked'
-    And I should receive a <feedback_received> feedback
+%     Then all doors should be 'locked'
+%     And I should receive a <feedback_received> feedback
 
-    Examples:
-        | door_id | door_open_state | feedback_received    |
-        | 1       | open            | operation failed     |
-        | 2       | open            | operation failed     |
-        | 3       | open            | operation failed     |
-        | 4       | open            | operation failed     |
-        | 1       | closed          | locking confirmation |
-        | 2       | closed          | locking confirmation |
-        | 3       | closed          | locking confirmation |
-        | 4       | closed          | locking confirmation |
-\end{verbatim}
+%     Examples:
+%         | door_id | door_open_state | feedback_received    |
+%         | 1       | open            | operation failed     |
+%         | 2       | open            | operation failed     |
+%         | 3       | open            | operation failed     |
+%         | 4       | open            | operation failed     |
+%         | 1       | closed          | locking confirmation |
+%         | 2       | closed          | locking confirmation |
+%         | 3       | closed          | locking confirmation |
+%         | 4       | closed          | locking confirmation |
+% \end{verbatim}
+
+\begin{figure}[H]
+\centering
+\includegraphics[height=8cm]{figuras/cenarios/h3c2.png}
+\caption{Segundo cenário \textit{Gherkin} da história de usuário 3.}
+\label{fig:h3c2}
+\end{figure}
 
 Este cenário estabelece como pré-condição que uma das quatro portas está destravada, podendo estar aberta ou fechada, conforme os valores definidos na tabela de exemplos. 
 Com base nesse estado inicial, ao pressionar o botão de travamento, o sistema deve emitir um feedback específico: ``operação falha'' caso a porta esteja aberta, ou 
@@ -876,57 +918,71 @@ de forma virtual no sistema.
 
 Para cobrir essa história, o primeiro exemplo considerado é ``aquele em que o usuário tinha a chave no bolso e usou a maçaneta'', o qual está representado pelo seguinte cenário:
 
-\begin{verbatim}
-Scenario Outline: Unlocking a single door when I have the key
-    Given the door <door_id> is 'locked'
-    And I have an authenticated key with me
+% \begin{verbatim}
+% Scenario Outline: Unlocking a single door when I have the key
+%     Given the door <door_id> is 'locked'
+%     And I have an authenticated key with me
 
-    When I 'press' the door <door_id> release button
+%     When I 'press' the door <door_id> release button
 
-    Then the door <door_id> should be 'unlocked'
-    And the door <door_id> should be 'released'
+%     Then the door <door_id> should be 'unlocked'
+%     And the door <door_id> should be 'released'
 
-    Examples:
-        | door_id |
-        | 1       |
-        | 2       |
-        | 3       |
-        | 4       |
-\end{verbatim}
+%     Examples:
+%         | door_id |
+%         | 1       |
+%         | 2       |
+%         | 3       |
+%         | 4       |
+% \end{verbatim}
+
+\begin{figure}[H]
+\centering
+\includegraphics[height=8cm]{figuras/cenarios/h4c1.png}
+\caption{Primeiro cenário \textit{Gherkin} da história de usuário 4.}
+\label{fig:h4c1}
+\end{figure}
 
 O cenário define que a porta encontra-se inicialmente travada e, ao ser pressionado o botão de abertura enquanto o usuário está em posse da chave, ela deveria 
 ser destravada e aberta. A tabela de exemplos foi novamente utilizada para assegurar que esse comportamento seja testado em todas as portas.
 
 O próximo exemplo é ``aquele em que outra pessoa abriu outra porta simultaneamente'', o qual está coberto pelo seguinte cenário:
 
-\begin{verbatim}
-Scenario Outline: Unlocking multiple single doors when I have the key   
-    Given all doors are 'locked'
-    And I have an authenticated key with me
+% \begin{verbatim}
+% Scenario Outline: Unlocking multiple single doors when I have the key   
+%     Given all doors are 'locked'
+%     And I have an authenticated key with me
 
-    When I 'press' the door <door_id_1> release button
-    And I 'press' the door <door_id_2> release button
+%     When I 'press' the door <door_id_1> release button
+%     And I 'press' the door <door_id_2> release button
 
-    Then the door <door_id_1> should be 'unlocked'
-    And the door <door_id_1> should be 'released'
-    And the door <door_id_2> should be 'unlocked'
-    And the door <door_id_2> should be 'released'
+%     Then the door <door_id_1> should be 'unlocked'
+%     And the door <door_id_1> should be 'released'
+%     And the door <door_id_2> should be 'unlocked'
+%     And the door <door_id_2> should be 'released'
 
-    Examples:
-        | door_id_1 | door_id_2 |
-        | 1         | 2         |
-        | 1         | 3         |
-        | 1         | 4         |
-        | 2         | 1         |
-        | 2         | 3         |
-        | 2         | 4         |
-        | 3         | 1         |
-        | 3         | 2         |
-        | 3         | 4         |
-        | 4         | 1         |
-        | 4         | 2         |
-        | 4         | 3         |
-\end{verbatim}
+%     Examples:
+%         | door_id_1 | door_id_2 |
+%         | 1         | 2         |
+%         | 1         | 3         |
+%         | 1         | 4         |
+%         | 2         | 1         |
+%         | 2         | 3         |
+%         | 2         | 4         |
+%         | 3         | 1         |
+%         | 3         | 2         |
+%         | 3         | 4         |
+%         | 4         | 1         |
+%         | 4         | 2         |
+%         | 4         | 3         |
+% \end{verbatim}
+
+\begin{figure}[H]
+\centering
+\includegraphics[height=12cm]{figuras/cenarios/h4c2.png}
+\caption{Segundo cenário \textit{Gherkin} da história de usuário 4.}
+\label{fig:h4c2}
+\end{figure}
 
 A estrutura do cenário é semelhante à anterior, porém com a adição de novos passos que simulam o pressionamento do botão, o destravamento e a abertura de duas 
 portas simultaneamente. Para isso, foram utilizadas variáveis distintas para cada porta, permitindo que a tabela de exemplos cubra todas as possíveis combinações 
@@ -934,25 +990,32 @@ de abertura simultânea entre duas portas.
 
 Por fim, o último exemplo é ``aquele em que o usuário destravou a porta e a fechou de novo'', que é coberto pelo cenário:
 
-\begin{verbatim}
-    Scenario Outline: Individual door is left unlocked
-        Given the door <door_id> is 'locked'
-        And I have an authenticated key with me
+% \begin{verbatim}
+%     Scenario Outline: Individual door is left unlocked
+%         Given the door <door_id> is 'locked'
+%         And I have an authenticated key with me
 
-        When I 'press' the door <door_id> release button
-        And I wait '1' seconds
-        And I 'release' the door <door_id> release button
+%         When I 'press' the door <door_id> release button
+%         And I wait '1' seconds
+%         And I 'release' the door <door_id> release button
 
-        Then the door <door_id> should be 'unlocked'
-        And the door <door_id> should be 'held'
+%         Then the door <door_id> should be 'unlocked'
+%         And the door <door_id> should be 'held'
 
-        Examples:
-            | door_id |
-            | 1       |
-            | 2       |
-            | 3       |
-            | 4       |
-\end{verbatim}
+%         Examples:
+%             | door_id |
+%             | 1       |
+%             | 2       |
+%             | 3       |
+%             | 4       |
+% \end{verbatim}
+
+\begin{figure}[H]
+\centering
+\includegraphics[height=9cm]{figuras/cenarios/h4c3.png}
+\caption{Terceiro cenário \textit{Gherkin} da história de usuário 4.}
+\label{fig:h4c3}
+\end{figure}
 
 Este cenário também é executado repetidamente para cada porta, e apresenta a diferença que, após 1 segundo de espera, o botão de abertura que havia sido pressionado 
 é solto. Com essa sequência de execução, a resposta do sistema é a de manter a porta destravada, mas de deixar o trinco da trava em sua posição fechada - o que equivale 
@@ -966,28 +1029,35 @@ se deve à regra que determina que o auto-travamento das portas deve ocorrer 15 
 
 O primeiro exemplo nesta história é ``aquele em que o usuário destravou mas não foi acessar o carro'' que é coberto pelo cenário:
 
-\begin{verbatim}
-Scenario Outline: Auto relocking
-    Given all doors are <initial_state>
-    And the vehicle 'unlock' button has been pressed
+% \begin{verbatim}
+% Scenario Outline: Auto relocking
+%     Given all doors are <initial_state>
+%     And the vehicle 'unlock' button has been pressed
 
-    When I wait <wait_time> seconds
+%     When I wait <wait_time> seconds
 
-    Then all doors should be <expected_state>
+%     Then all doors should be <expected_state>
 
-    Examples:
-        | initial_state | wait_time | expected_state |
-        | locked        | 5         | unlocked       |
-        | locked        | 10        | unlocked       |
-        | locked        | 14        | unlocked       |
-        | locked        | 15        | locked         |
-        | locked        | 16        | locked         |
-        | unlocked      | 5         | unlocked       |
-        | unlocked      | 10        | unlocked       |
-        | unlocked      | 14        | unlocked       |
-        | unlocked      | 15        | unlocked       |
-        | unlocked      | 16        | unlocked       |
-\end{verbatim}
+%     Examples:
+%         | initial_state | wait_time | expected_state |
+%         | locked        | 5         | unlocked       |
+%         | locked        | 10        | unlocked       |
+%         | locked        | 14        | unlocked       |
+%         | locked        | 15        | locked         |
+%         | locked        | 16        | locked         |
+%         | unlocked      | 5         | unlocked       |
+%         | unlocked      | 10        | unlocked       |
+%         | unlocked      | 14        | unlocked       |
+%         | unlocked      | 15        | unlocked       |
+%         | unlocked      | 16        | unlocked       |
+% \end{verbatim}
+
+\begin{figure}[H]
+\centering
+\includegraphics[height=10cm]{figuras/cenarios/h5c1.png}
+\caption{Primeiro cenário \textit{Gherkin} da história de usuário 5.}
+\label{fig:h5c1}
+\end{figure}
 
 Esse cenário descreve que, após o botão de destravamento ser pressionado, seguido da espera de um determinado valor de tempo, o estado final das 
 portas deve corresponder ao valor definido na variável de saída. O auto-travamento é efetivamente acionado nas linhas 4 e 5 da tabela, que representam 
@@ -1000,24 +1070,31 @@ próximos da janela temporal especificada.
 O próximo exemplo é ``aquele em que o usuário destravou e foi acessar o carro'', ilustrando uma situação em que a condição para o auto-travamento não é satisfeita, 
 pois uma das portas foi aberta. Esse caso é coberto no seguinte cenário:
 
-\begin{verbatim}
-Scenario Outline: Not auto relocking if release button is pressed
-    Given all doors are 'locked'
-    And the vehicle 'unlock' button has been pressed
-    And the release button on door <door_id> is 'released'
-    And the release button on door <door_id> is 'pressed'
+% \begin{verbatim}
+% Scenario Outline: Not auto relocking if release button is pressed
+%     Given all doors are 'locked'
+%     And the vehicle 'unlock' button has been pressed
+%     And the release button on door <door_id> is 'released'
+%     And the release button on door <door_id> is 'pressed'
 
-    When I wait '15' seconds
+%     When I wait '15' seconds
 
-    Then all doors should be 'unlocked'
+%     Then all doors should be 'unlocked'
 
-    Examples:
-        | door_id |
-        | 1       |
-        | 2       |
-        | 3       |
-        | 4       |
-\end{verbatim}
+%     Examples:
+%         | door_id |
+%         | 1       |
+%         | 2       |
+%         | 3       |
+%         | 4       |
+% \end{verbatim}
+
+\begin{figure}[H]
+\centering
+\includegraphics[height=8cm]{figuras/cenarios/h5c2.png}
+\caption{Segundo cenário \textit{Gherkin} da história de usuário 5.}
+\label{fig:h5c2}
+\end{figure}
 
 Neste exemplo, não foram definidos valores de tabela para testar múltiplas variações de estado inicial do veículo ou de tempos de espera. Essa decisão se deve ao 
 fato de que o próprio exemplo descreve explicitamente uma condição na qual, mesmo a espera de tempo sendo satisfeita, o auto-travamento não deve ser acionado.
@@ -1029,16 +1106,23 @@ A diferença ocorre no momento em que, após o uso do botão de destravamento, o
 O terceiro exemplo desta história é ``aquele em que o usuário pressionou o botão de destravamento duas vezes para manter o carro destravado'', representando 
 outra condição em que o auto-travamento não deve ser acionado. Esse caso é coberto pelo seguinte cenário:
 
-\begin{verbatim}
-    Scenario: Not auto relocking if unlock button is pressed twice
-        Given all doors are 'locked'
-        And the vehicle 'unlock' button has been pressed
-        And the vehicle 'unlock' button has been pressed
+% \begin{verbatim}
+%     Scenario: Not auto relocking if unlock button is pressed twice
+%         Given all doors are 'locked'
+%         And the vehicle 'unlock' button has been pressed
+%         And the vehicle 'unlock' button has been pressed
 
-        When I wait '15' seconds
+%         When I wait '15' seconds
 
-        Then all doors should be 'unlocked'
-\end{verbatim}
+%         Then all doors should be 'unlocked'
+% \end{verbatim}
+
+\begin{figure}[H]
+\centering
+\includegraphics[height=4cm]{figuras/cenarios/h5c3.png}
+\caption{Terceiro cenário \textit{Gherkin} da história de usuário 5.}
+\label{fig:h5c3}
+\end{figure}
 
 Assim como no cenário anterior, não foram utilizadas variáveis para representar diferentes condições iniciais, pois o próprio exemplo também estabelece uma condição 
 em que o auto-travamento não deve ocorrer. A diferença aqui está na inclusão de um segundo acionamento do botão de destravamento logo no início da sequência.
@@ -1046,39 +1130,46 @@ em que o auto-travamento não deve ocorrer. A diferença aqui está na inclusão
 Por fim, o último exemplo desta história é ``aquele em que o usuário destravou o veículo quando ele já estava acessível'', descrevendo a situação em que o auto-travamento 
 não deve ser acionado caso pelo menos uma das portas já esteja destravada no início. Esse caso é tratado no seguinte cenário:
 
-\begin{verbatim}
-    Scenario Outline: Not auto relocking if some doors are unlocked
-        Given the door '1' is <door_1_state>
-        And the door '2' is <door_2_state>
-        And the door '3' is <door_3_state>
-        And the door '4' is <door_4_state>
-        And the vehicle 'unlock' button has been pressed
+% \begin{verbatim}
+%     Scenario Outline: Not auto relocking if some doors are unlocked
+%         Given the door '1' is <door_1_state>
+%         And the door '2' is <door_2_state>
+%         And the door '3' is <door_3_state>
+%         And the door '4' is <door_4_state>
+%         And the vehicle 'unlock' button has been pressed
         
-        When I wait '15' seconds
+%         When I wait '15' seconds
         
-        Then all doors should be <final_state>
+%         Then all doors should be <final_state>
         
-        Examples:
-            | d1 | d2 | d3 | d4 | final |
-            | u  | u  | u  | u  | u     |
-            | u  | u  | u  | l  | u     |
-            | u  | u  | l  | u  | u     |
-            | u  | u  | l  | l  | u     |
-            | u  | l  | u  | u  | u     |
-            | u  | l  | u  | l  | u     |
-            | u  | l  | l  | u  | u     |
-            | u  | l  | l  | l  | u     |
-            | l  | u  | u  | u  | u     |
-            | l  | u  | u  | l  | u     |
-            | l  | u  | l  | u  | u     |
-            | l  | u  | l  | l  | u     |
-            | l  | l  | u  | u  | u     |
-            | l  | l  | u  | l  | u     |
-            | l  | l  | l  | u  | u     |
-            | l  | l  | l  | l  | l     |
+%         Examples:
+%             | d1 | d2 | d3 | d4 | final |
+%             | u  | u  | u  | u  | u     |
+%             | u  | u  | u  | l  | u     |
+%             | u  | u  | l  | u  | u     |
+%             | u  | u  | l  | l  | u     |
+%             | u  | l  | u  | u  | u     |
+%             | u  | l  | u  | l  | u     |
+%             | u  | l  | l  | u  | u     |
+%             | u  | l  | l  | l  | u     |
+%             | l  | u  | u  | u  | u     |
+%             | l  | u  | u  | l  | u     |
+%             | l  | u  | l  | u  | u     |
+%             | l  | u  | l  | l  | u     |
+%             | l  | l  | u  | u  | u     |
+%             | l  | l  | u  | l  | u     |
+%             | l  | l  | l  | u  | u     |
+%             | l  | l  | l  | l  | l     |
     
-\end{verbatim}
-\noindent\textbf{Observação:} u = unlocked, l = locked, d1 = door\_1\_state, d2 = door\_2\_state, d3 = door\_3\_state, d4 = door\_4\_state, final = final\_state.
+% \end{verbatim}
+% \noindent\textbf{Observação:} u = unlocked, l = locked, d1 = door\_1\_state, d2 = door\_2\_state, d3 = door\_3\_state, d4 = door\_4\_state, final = final\_state.
+
+\begin{figure}[H]
+\centering
+\includegraphics[height=12cm]{figuras/cenarios/h5c4.png}
+\caption{Quarto cenário \textit{Gherkin} da história de usuário 5.}
+\label{fig:h5c4}
+\end{figure}
 
 Neste cenário, os quatro primeiros passos definem os estados iniciais de cada porta, de forma semelhante ao que foi feito na primeira história. Isso permite configurar 
 todas as combinações possíveis de portas travadas ou destravadas como estado inicial.
