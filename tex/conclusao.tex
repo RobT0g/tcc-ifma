@@ -96,13 +96,27 @@ lidar com as complexidades do setor automotivo.
 \section{Trabalhos futuros}
 
 Para que o processo de BDD seja plenamente adaptado à Engenharia Automotiva, alguns passos adicionais precisam ser realizados, garantindo que a geração do 
-produto seja validada também em um veículo físico. 
+produto seja validada também em um veículo físico.
+
 Como passos futuros, devem ser realizados como parte de trabalhos que se preveem:
 
 \begin{itemize} 
     \item Geração do software embarcado, a partir do modelo do sistema;
     \item Testes de software de aplicação, gerado diretamente a partir do modelo;
+    \item Definiçao do hardware aplicado para o desenvolvimento do produto físico;
     \item Testes do software básico, desenvolvido para o hardware utilizado;
     \item Aplicação do software em uma plataforma de desenvolvimento embarcado;
     \item Testes de hardware, realizados no produto físico.
 \end{itemize}
+
+A abordagem aplicada para possibilitar a interface entre a execução dos testes a partir dos cenários \textit{Gherkin} com o modelo em \textit{Simulink} pode 
+ser feita de maneira similar com outras ferramentas. Isso torna possível aplicar os testes de aceitação gerados pelo \textit{Behave} compatíveis com qualquer 
+sistema que possa estabelecer comunicação com o Python. Dessa maneira, podem ser incluídos neste processo o uso ferramentas que permitam o teste do software 
+gerado a partir do modelo, assim como de hardware para o produto físico.
+
+Outra necessidade que deve ser atendida em trabalhos futuros é a definição de componentes físicos, como sensores e atuadores, que serão aplicados para desenvolver 
+o produto final. Este passo é diretamente relacionado com o desenvolvimento do software básico, pois determina como a integração com o hardware deve ser feita. 
+
+A validação do software básico pode gerar a necessidade da inclusão de níveis de teste extras, que vão além da metodologia de caixa-preta. Isto deve-se ao fato 
+de que nele são criadas funções que realizam a abstração do hardware, não necessariamente expressando um valor à nível do usuário, mas apenas provendo 
+funcionalidades para o software de aplicação.
