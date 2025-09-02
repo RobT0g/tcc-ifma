@@ -25,7 +25,11 @@ apenas descrevem o sistema, mas também validam seu funcionamento.
 
 Por fim, durante o desenvolvimento iterativo, todo o processo foi colocado à prova com a geração do produto final: o modelo do sistema. A execução repetitiva dos 
 testes assegurou que as especificações fossem atendidas e que o produto desenvolvido apresentasse robustez e conformidade com os requisitos definidos. No fim do 
-processo do desenvolvimento iterativo, o conjunto de cenários resultou em um relatório abrangente, contemplando:
+processo do desenvolvimento iterativo, o conjunto de cenários resultou em um relatório abrangente, assim como foi demonstado na Figura \ref{fig:resultado-terminal}.
+
+É possível observar que as melhorias capturadas a cada iteração dos testes resultaram não apenas na evolução do produto — neste caso, o modelo do sistema — mas também 
+no aprimoramento da própria definição do sistema, com cenários mais bem estruturados e definições de passos mais detalhadas. Cada modificação decorrente de um problema 
+identificado nos testes, como detalhado no Quadro \ref{qua:falhas}, não representa apenas a adição de lógica, mas sim um incremento na qualidade e na robustez do produto.
 
 % \begin{itemize}
 %     \item 5 features
@@ -81,27 +85,23 @@ processo do desenvolvimento iterativo, o conjunto de cenários resultou em um re
 % \end{tabular}
 % \end{quadro}
 
-É possível observar que as melhorias capturadas a cada iteração dos testes resultaram não apenas na evolução do produto — neste caso, o modelo do sistema — mas também 
-no aprimoramento da própria definição do sistema, com cenários mais bem estruturados e definições de passos mais detalhadas. Cada modificação decorrente de um problema 
-identificado nos testes não representa apenas a adição de lógica, mas sim um incremento na qualidade e na robustez do produto.
-
 Esse aspecto torna-se ainda mais evidente ao considerar como a utilização do modelo possibilitou a detecção antecipada de falhas que dificilmente seriam percebidas sem 
 a execução dos testes. Um exemplo claro foi a definição do feedback: na implementação inicial, ele era atualizado de forma repetitiva, gerando um loop que alternava 
 continuamente entre a mensagem ``Sem status'' e o feedback esperado. A identificação desse comportamento, seguida pela análise da causa raiz e pela implementação de uma 
 solução, permitiu eliminar uma falha que poderia resultar em insatisfação do usuário, ainda na fase de modelagem, antes mesmo do desenvolvimento do código.
 
-Este tipo de metodologia que permite a descoberta e tratamento de possíveis erros tão cedo no desenvolvimento de um produto é uma ferramenta perfeita para lidar com as 
-complexidades do sensor automotivo.
+Este tipo de metodologia que permite a descoberta e tratamento de possíveis erros tão cedo no desenvolvimento de um produto é uma ferramenta extremamente eficaz para 
+lidar com as complexidades do setor automotivo.
 
 \section{Trabalhos futuros}
 
 Para que o processo de BDD seja plenamente adaptado à Engenharia Automotiva, alguns passos adicionais precisam ser realizados, garantindo que a geração do 
-produto seja validada também em um veículo físico. O próximo passo imediato consiste no desenvolvimento do software embarcado, utilizando ferramentas específicas 
-para a geração de código a partir do modelo.
-
-As etapas futuras de validação tendem a ser ainda mais desafiadoras, pois envolvem diferentes níveis de testes, tais como:
-\begin{itemize}
+produto seja validada também em um veículo físico. 
+Como passos futuros, devem ser realizados como parte de trabalhos que se preveem:
+\begin{itemize} 
+    \item Geração do software embarcado, a partir do modelo do sistema;
     \item Testes de software de aplicação, gerado diretamente a partir do modelo;
     \item Testes do software básico, desenvolvido para o hardware utilizado;
+    \item Aplicação do software em uma plataforma de desenvolvimento embarcado;
     \item Testes de hardware, realizados no produto físico.
 \end{itemize}
