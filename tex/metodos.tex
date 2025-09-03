@@ -20,7 +20,7 @@ para o contexto da Engenharia Automotiva, resultando nas seguintes etapas:
     \item Desenho do diagrama de caixa preta: Desenho do diagrama do sistema que demonstra suas interfaces de entrada e saída, sem demonstrar detalhes de suas interações;
     \item Desenvolvimento dos cenários Gherkin: Escrita dos cenários aplicando o padrão cucumber e que aborde todas as regras definidas;
     \item Modelagem iterativa do sistema em simulink: Modelagem feita de forma iterativa com a criação das definições de passos dos cenários, seguido da sua aplicação como critérios de aceitação;
-    \item Análise qualitativa do produto final: Testes de uso do produto final e aprovação da experiência de usuário entregue.
+    \item 
 \end{enumerate}
 
 Durante a primeira etapa (\ref{sbs:etapa1}) foram criadas as histórias de usuário que definem as funcionalidades a serem implementadas pelo sistema, 
@@ -47,11 +47,30 @@ Em seguida, são criados os cenários \textit{Gherkin} na quarta etapa (\ref{sbs
 da história. Cada um dos exemplos levantados durante o mapeamento deve ser coberto por um ou mais cenários, para garantir que as situações de teste cubram 
 a interação prevista.
 
+Durante a quinta etapa (\ref{sbs:etapa5}), será feita a modelagem iterativa do sistema, baseada na execução dos testes de aceitação dos cenários. Este processo será 
+feito com a repetição dos seguinte passos:
 
+\begin{enumerate}
+    \item Execução dos cenários de uma das histórias de usuário a partir do arquivo \textbf{.feature};
+    \item Identificação dos erros obtidos a partir do relatório de testes;
+    \item Implementação da solução no modelo, passos ou definição dos passos;
+    \item Repetição dos passos 1, 2 e 3 para que todas as falhas sejam identificadas e todos os testes da história sejam aprovados;
+    \item Aprovação da história (caso todos os cenários tenham sido aprovados);
+    \item Repetição dos testes das histórias aprovadas anteriormente para constatar possíveis falhas geradas na implementação de novos comportamentos;
+    \item Identificação e implementação de soluções das falhas das histórias de usuário anteriores;
+    \item Repetição dos passos para a história seguinte.
+\end{enumerate}
 
-Neste projeto, algumas etapas serão repetidas, pois o desenvolvimento orientado por comportamento (BDD) é um processo incremental, baseado em iterações 
-sucessivas que introduzem novas funcionalidades ao produto. Assim, as etapas 1 e 2 serão inicialmente executadas para cada história de usuário. Ao final 
-desse ciclo, a etapa 3 foi iniciada elaborando um diagrama de caixa preta que abrange todas as funcionalidades definidas até o momento.
+Desta maneira, a execução dos testes é sempre realizada de maneira repetitiva, para garantir que a evolução gradual do sistema seja alcançada sem afetar 
+nenhum comportamento aprovado previamente. Esta constatação repetida traz um maior nível de cobertura de testes, pois possibilita identificar possíveis 
+conflitos gerados entre as diferentes histórias de usuário e contribui para a maior robustez do sistema, dos cenários e das definições de passo.
+
+Ao final da modalgem iterativa, o conjunto completo de todos os cenários de todas as histórias de usuário deve ser executado. Isso é feito como uma 
+validação final de que todo o comportamento definido para o sistema é satisfeito.
+
+Por fim, na sexta etapa (\ref{sbs:etapa6}), será feita uma análise quantitativa a cerca dos resultados obtidos durante a aplicação do processo. Serão 
+demonstradas instâncias de falhas de teste capturadas por conta da aplicação da metodologia, assim como a maior cobertura de testes foi resultante das 
+etapas de análise.
 
 \section{\textbf{Ferramentas Utilizadas}}
 As ferramentas e tecnologias adotadas no desenvolvimento deste produto foram escolhidas com base na compatibilidade com o modelo proposto e na sua capacidade 
