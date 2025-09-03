@@ -11,8 +11,8 @@ requisitos e a execução de testes manuais. Para a avaliação dos resultados, 
 dos testes de caixa-preta desenvolvidos sobre o modelo do sistema, além de identificar falhas que guiam a sua implementação. 
 
 \section{\textbf{Procedimentos Metodológicos}}
-Este produto teve seu desenvolvimento em etapas com base na metodologia do processo de BDD como demonstrado em \citeonline{studyBDD}, com uma série de adaptações específicas 
-para o contexto da Engenharia Automotiva. As etapas de desenvolvimento a seguir serão aplicadas:
+Este produto teve seu desenvolvimento com base na metodologia do processo de BDD como demonstrado em \citeonline{studyBDD}, com uma série de adaptações específicas 
+para o contexto da Engenharia Automotiva, resultando nas seguintes etapas:
 \begin{enumerate}
     \item Descrição das histórias de usuário: Capturar as histórias definidas em forma de requisitos funcionais com linguagem natural e que capture o valor 
     gerado pela perspectiva do usuário;
@@ -22,6 +22,32 @@ para o contexto da Engenharia Automotiva. As etapas de desenvolvimento a seguir 
     \item Modelagem iterativa do sistema em simulink: Modelagem feita de forma iterativa com a criação das definições de passos dos cenários, seguido da sua aplicação como critérios de aceitação;
     \item Análise qualitativa do produto final: Testes de uso do produto final e aprovação da experiência de usuário entregue.
 \end{enumerate}
+
+Durante a primeira etapa (\ref{sbs:etapa1}) foram criadas as histórias de usuário que definem as funcionalidades a serem implementadas pelo sistema, 
+pela perspectiva do usuário. Para isso, a base utilizada se utiliza da bibliografia disponível para descrever como veículos implementam o travamento das portas, 
+mais especificamente tomando exemplos dos veículos da Volkswagen \cite{vwLocking} e da Bosch \cite{bosch2022handbook,reif2017locking}.
+
+Após a criação das histórias de usuário, a segunda etapa (\ref{sbs:etapa2}) tem foco na aplicação do mapeamento de exemplos que incrementa o design do sistema definindo aspectos 
+que descrevem a utilização da funcionalidade pela perspectiva do usuário. Para isso, os seguintes pontos foram definidos:
+
+\begin{itemize}
+    \item Exemplos concretos de uso da funcionalidade pela perspectiva do usuário;
+    \item Regras de comportamento que clarificam a responsta esperada pelo sistema nos exemplos citados;
+    \item Perguntas que não são pertinentes para a definição dos exemplos, sendo respondidas ao fim da definição da história.
+\end{itemize}
+
+As perguntas geradas na definição dos exemplos poderiam ser respondidas no fim do processo, tendo em vista que, a princípio, elas não afetam a definição 
+dos comportamentos do sistema. No entanto, optou-se por tratá-las antes de prosseguir para as próximas histórias, para garantir que haja o entendimento 
+mais detalhado do comportamento esperado e possibilitar a evolução incremental das funcionalidades definidas.
+
+Na terceira etapa (\ref{sbs:etapa3}), um diagrama do sistema em formato de caixa-preta foi criado, para suportar a criação dos cenários \textit{Gherkin}. Ele 
+também serve como uma base para a modelagem em Simulink, especificando as entradas e saídas que serão utilizados na execução dos testes.
+
+Em seguida, são criados os cenários \textit{Gherkin} na quarta etapa (\ref{sbs:etapa4}), que definem o comportamento do sistema e atuam como testes de aceitação 
+da história. Cada um dos exemplos levantados durante o mapeamento deve ser coberto por um ou mais cenários, para garantir que as situações de teste cubram 
+a interação prevista.
+
+
 
 Neste projeto, algumas etapas serão repetidas, pois o desenvolvimento orientado por comportamento (BDD) é um processo incremental, baseado em iterações 
 sucessivas que introduzem novas funcionalidades ao produto. Assim, as etapas 1 e 2 serão inicialmente executadas para cada história de usuário. Ao final 

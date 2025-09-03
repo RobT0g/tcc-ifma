@@ -1,8 +1,10 @@
 1. Incluir informações sobre aceitação de historia na metodologia
-2. Inluir contexto industrial sem mencionar o nome das montadoras na justificativa
-3. Falar sobre o sistema de travamento na introdução ok
-4. Usar prints ao invés do codigo - OK
-5. Incluir citações na comparação dos métodos
-6. Procurar citações academicas alternativas
 7. Explicitar a continuação do trabalho
     Considerando o potencial...
+
+5. Incluir citações na comparação dos métodos
+6. Procurar citações academicas alternativas
+
+2. Inluir contexto industrial sem mencionar o nome das montadoras na justificativa - OK
+3. Falar sobre o sistema de travamento na introdução - OK
+4. Usar prints ao invés do codigo - OK
