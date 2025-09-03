@@ -1,5 +1,5 @@
-1. Incluir informações sobre aceitação de historia na metodologia
-7. Explicitar a continuação do trabalho
+1. Incluir informações sobre aceitação de historia na metodologia ok
+7. Explicitar a continuação do trabalho ok
     Considerando o potencial...
 
 5. Incluir citações na comparação dos métodos
