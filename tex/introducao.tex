@@ -28,10 +28,29 @@ comportamento que gera valor ao usuário. Além disso, ele busca promover a cola
 compreenda o produto e consiga assumir a perspectiva do usuário.
 
 Por outro lado, a Engenharia Automotiva apresenta uma complexidade significativa, o que torna desafiadora a entrega de produtos de alta qualidade. A definição de 
-um sistema veicular envolve muito mais do que software ou eletrônica \cite{bosch2022handbook}, sendo necessário integrar componentes mecânicos, considerar falhas 
+um sistema veicular envolve muito mais do que software ou eletrônica, sendo necessário integrar componentes mecânicos, considerar falhas 
 potenciais, garantir a rastreabilidade de requisitos e contemplar casos de uso extremos.
 
-O principal desafio deste trabalho está em identificar técnicas capazes de capturar essas complexidades e torná-las compatíveis com as premissas do BDD.
+O principal desafio deste trabalho consiste em identificar técnicas capazes de capturar as complexidades envolvidas no desenvolvimento de sistemas automotivos 
+e adaptá-las às premissas do BDD. Em casos como o do sistema de travamento de portas, isso é traduzido na necessidade de atender a funcionalidades 
+essenciais, como (GSMH, 2022):
+
+\begin{itemize}
+    \item Permitir o acesso ao interior do veículo para todas as pessoas autorizadas;
+    \item Gerenciar a abertura das portas a partir das maçanetas internas e externas;
+    \item Proteger os ocupantes da abertura indevida das portas;
+    \item Proteger o veículo contra furtos enquanto ele está estacionado.
+\end{itemize}
+
+Uma das principais complexidades desse tipo de sistema está na definição do mecanismo empregado no travamento das portas. Conforme descrito por 
+\citeonline{reif2017locking}, podem ser utilizadas travas mecânicas ou eletrônicas, cada um com conjuntos específicos de componentes e lógicas de 
+software distintas que influenciam diretamente o desenvolvimento. Esse desafio é recorrente na indústria automotiva, na qual diversos sistemas dependem 
+de decisões técnicas de hardware ou soluções mecânicas para viabilizar o início do processo de design.
+
+Neste trabalho, será apresentada uma metodologia que demonstra como a aplicação do Desenvolvimento Orientado a Comportamento (BDD) possibilita projetar o 
+sistema de forma independente dos detalhes técnicos, facilitando tanto o desenvolvimento das funcionalidades quanto a execução dos testes. Isso ocorre 
+porque a abordagem do BDD prioriza a perspectiva do usuário e a especificação do comportamento esperado do sistema, os quais não estão diretamente vinculados 
+à implementação.
 
 \section{\textbf{Objetivos}}
 
@@ -69,5 +88,43 @@ aceitação automatizados, demonstrando como essas práticas podem contribuir pa
 % confiabilidade do sistema. A validação será realizada por meio da execução dos testes de aceitação e da análise do uso do sistema final sob a perspectiva do usuário.
 
 \section{Organização do trabalho}
-Este trabalho está estruturado da seguinte forma: o capítulo 2 apresenta a fundamentação teórica sobre BDD e testes automatizados, 
-o capítulo 3 descreve a metodologia aplicada, o capítulo 4 detalha a implementação e os resultados obtidos, e o capítulo 5 apresenta as conclusões e considerações finais.
+No Capítulo \ref{ch:te}, serão apresentados os conceitos que compõem a fundamentação teórica deste trabalho, abrangendo:
+
+\begin{itemize}
+    \item \textbf{O processo de BDD} - histórico do desenvolvimento do processo e seus pilares fundamentais do processo;
+    \item \textbf{Mapeamento de exemplos} - metodologia aplicada para realizar a análise do sistema e definição de funcionalidades;
+    \item \textbf{A linguagem \textit{Gherkin}} - linguagem usada para a escrita de cenários, que atuam como definição de comportamentos e como testes de aceitação;
+    \item \textbf{Design orientado por modelo} - metodologia adotada para a implementação do sistema;
+    \item \textbf{Sistemas de travamento de porta veiculares} - definição e caracterização dos sistemas de segurança voltados ao travamento de portas em veículos. 
+\end{itemize}
+
+Em seguida, no Capítulo \ref{ch:MM}, será apresentada a metodologia adotada, descrevendo o procedimento de desenvolvimento do produto, estruturado em seis etapas. 
+Serão também detalhadas as ferramentas utilizadas neste trabalho, bem como os critérios de avaliação, definidos a partir da execução dos testes de aceitação de 
+cada funcionalidade do sistema.
+
+No Capítulo \ref{ch:IM}, a implementação é conduzida por meio da execução das quatro primeiras etapas do processo. Essa fase tem início com a definição das histórias 
+de usuário — que representam as funcionalidades do sistema — conforme descrito na Seção \ref{sbs:etapa1}. A histórias orientam todas as etapas subsequentes, desde a 
+elaboração dos testes de aceitação até a modelagem do sistema.
+
+Para cada história de usuário, o mapeamento de exemplos, descrito na Seção \ref{sbs:etapa2}, será empregado para orientar a definição dos detalhes relacionados 
+ao comportamento esperado. Em seguida, na Seção \ref{sbs:etapa3}, o sistema será modelado como uma abstração que explicita as interações com o usuário, ao mesmo 
+tempo em que oculta os aspectos técnicos de sua implementação. A partir das histórias de usuário e do modelo do sistema, será elaborada, na Seção \ref{sbs:etapa4}, 
+uma série de cenários que representam tanto a especificação do comportamento esperado quanto os testes de aceitação correspondentes.  
+
+No capítulo \ref{ch:RD}, será feita a execução dos testes de validação que foram criados ao fim do capítulo \ref{ch:IM}. Esse processo é feito para garantir 
+que a modelagem do sistema é guiada a partir dos cenários desenvolvidos e satisfaz o comportamento definido como uma forma de resolver erros capturados na execução 
+dos testes. 
+
+No Capítulo \ref{ch:RD}, serão executados os testes de validação definidos pelos cenários das histórias de usuário. Esse processo assegura que a modelagem do sistema 
+seja orientada pela execução dos testes e que o comportamento especificado seja atendido. Ela também possibilita a identificação e a correção de falhas detectadas 
+durante a execução dos testes.
+
+A aprovação das histórias de usuário será realizada a partir da verificação de que:
+
+\begin{itemize}
+    \item Os testes foram executados e confirmaram a aprovação de todos os cenários relacionados à história;
+    \item A execução dos cenários é repetida ao longo do desenvolvimento das demais histórias, de modo a assegurar que o comportamento previamente validado não seja comprometido.
+\end{itemize}
+
+Por fim, no Capítulo \ref{ch:CC}, será apresentada uma síntese dos principais aspectos observados durante a aplicação da metodologia proposta. Adicionalmente, serão 
+discutidas algumas limitações do escopo deste trabalho, acompanhadas de sugestões de continuidade para o desenvolvimento futuro que culminam na geração do produto físico.
