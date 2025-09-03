@@ -20,57 +20,57 @@ para o contexto da Engenharia Automotiva, resultando nas seguintes etapas:
     \item Desenho do diagrama de caixa preta: Desenho do diagrama do sistema que demonstra suas interfaces de entrada e saída, sem demonstrar detalhes de suas interações;
     \item Desenvolvimento dos cenários Gherkin: Escrita dos cenários aplicando o padrão cucumber e que aborde todas as regras definidas;
     \item Modelagem iterativa do sistema em simulink: Modelagem feita de forma iterativa com a criação das definições de passos dos cenários, seguido da sua aplicação como critérios de aceitação;
-    \item 
+    \item Análise quantitativa do produto final: Validação dos resultados obtidos nas etapas anteriores.
 \end{enumerate}
 
-Durante a primeira etapa (\ref{sbs:etapa1}) foram criadas as histórias de usuário que definem as funcionalidades a serem implementadas pelo sistema, 
-pela perspectiva do usuário. Para isso, a base utilizada se utiliza da bibliografia disponível para descrever como veículos implementam o travamento das portas, 
-mais especificamente tomando exemplos dos veículos da Volkswagen \cite{vwLocking} e da Bosch \cite{bosch2022handbook,reif2017locking}.
+Durante a primeira etapa (\ref{sbs:etapa1}), foram elaboradas as histórias de usuário que descrevem as funcionalidades a serem implementadas no sistema, considerando 
+a perspectiva do usuário final. Para essa definição, utilizou-se como referência a bibliografia disponível sobre o funcionamento de sistemas de travamento de portas 
+em veículos, com destaque para os exemplos da Volkswagen \cite{vwLocking} e da Bosch \cite{bosch2022handbook,reif2017locking}.
 
-Após a criação das histórias de usuário, a segunda etapa (\ref{sbs:etapa2}) tem foco na aplicação do mapeamento de exemplos que incrementa o design do sistema definindo aspectos 
-que descrevem a utilização da funcionalidade pela perspectiva do usuário. Para isso, os seguintes pontos foram definidos:
+Concluída essa fase, a segunda etapa (\ref{sbs:etapa2}) concentrou-se na aplicação do mapeamento de exemplos, cujo objetivo é refinar o design do sistema ao explicitar 
+a utilização das funcionalidades sob a perspectiva do usuário. Nesse processo, foram definidos os seguintes elementos:
 
 \begin{itemize}
-    \item Exemplos concretos de uso da funcionalidade pela perspectiva do usuário;
-    \item Regras de comportamento que clarificam a responsta esperada pelo sistema nos exemplos citados;
-    \item Perguntas que não são pertinentes para a definição dos exemplos, sendo respondidas ao fim da definição da história.
+    \item Exemplos concretos de uso da funcionalidade, descritos pela perspectiva do usuário;
+    \item Regras de comportamento que esclarecem a resposta esperada do sistema diante dos exemplos apresentados;
+    \item Questões consideradas não pertinentes para a definição dos exemplos, mas que são respondidas ao término da elaboração da história.
 \end{itemize}
 
-As perguntas geradas na definição dos exemplos poderiam ser respondidas no fim do processo, tendo em vista que, a princípio, elas não afetam a definição 
-dos comportamentos do sistema. No entanto, optou-se por tratá-las antes de prosseguir para as próximas histórias, para garantir que haja o entendimento 
-mais detalhado do comportamento esperado e possibilitar a evolução incremental das funcionalidades definidas.
+As perguntas levantadas durante a definição dos exemplos poderiam, em princípio, ser respondidas apenas ao final do processo, uma vez que não impactam diretamente a 
+especificação dos comportamentos do sistema. Contudo, optou-se por tratá-las antes de avançar para as histórias seguintes, a fim de garantir um entendimento mais 
+detalhado do comportamento esperado e permitir a evolução incremental das funcionalidades definidas.
 
-Na terceira etapa (\ref{sbs:etapa3}), um diagrama do sistema em formato de caixa-preta foi criado, para suportar a criação dos cenários \textit{Gherkin}. Ele 
-também serve como uma base para a modelagem em Simulink, especificando as entradas e saídas que serão utilizados na execução dos testes.
+Na terceira etapa (\ref{sbs:etapa3}), elaborou-se um diagrama do sistema no formato de caixa-preta, utilizado como suporte para a criação dos cenários em \textit{Gherkin}, 
+definindo as interações com o sistema que devem ser utilizadas durante os passos. Esse diagrama também serve como base para a modelagem no Simulink, especificando as 
+entradas e saídas necessárias para a execução dos testes.
 
-Em seguida, são criados os cenários \textit{Gherkin} na quarta etapa (\ref{sbs:etapa4}), que definem o comportamento do sistema e atuam como testes de aceitação 
-da história. Cada um dos exemplos levantados durante o mapeamento deve ser coberto por um ou mais cenários, para garantir que as situações de teste cubram 
-a interação prevista.
+Na quarta etapa (\ref{sbs:etapa4}), são definidos os cenários em \textit{Gherkin}, que especificam o comportamento esperado do sistema e funcionam como testes de 
+aceitação das histórias de usuário. Cada exemplo levantado durante o mapeamento deve ser representado em um ou mais cenários, assegurando que todas as interações 
+previstas estejam contempladas nos testes.
 
-Durante a quinta etapa (\ref{sbs:etapa5}), será feita a modelagem iterativa do sistema, baseada na execução dos testes de aceitação dos cenários. Este processo será 
-feito com a repetição dos seguinte passos:
+A quinta etapa (\ref{sbs:etapa5}) consiste na modelagem iterativa do sistema, orientada pela execução dos testes de aceitação definidos nos cenários. Esse processo 
+é realizado por meio da repetição cíclica dos seguintes passos:
 
 \begin{enumerate}
-    \item Execução dos cenários de uma das histórias de usuário a partir do arquivo \textbf{.feature};
-    \item Identificação dos erros obtidos a partir do relatório de testes;
-    \item Implementação da solução no modelo, passos ou definição dos passos;
-    \item Repetição dos passos 1, 2 e 3 para que todas as falhas sejam identificadas e todos os testes da história sejam aprovados;
-    \item Aprovação da história (caso todos os cenários tenham sido aprovados);
-    \item Repetição dos testes das histórias aprovadas anteriormente para constatar possíveis falhas geradas na implementação de novos comportamentos;
-    \item Identificação e implementação de soluções das falhas das histórias de usuário anteriores;
-    \item Repetição dos passos para a história seguinte.
+    \item Executar os cenários de uma das histórias de usuário a partir do arquivo \textbf{.feature};
+    \item Identificar os erros reportados na execução dos testes;
+    \item Implementar as correções no modelo, nos passos ou na definição dos passos;
+    \item Repetir os passos 1 a 3 até que todas as falhas sejam corrigidas e os testes da história sejam aprovados;
+    \item Aprovar a história, caso todos os seus cenários tenham sido validados com sucesso;
+    \item Executar novamente os testes das histórias já aprovadas para verificar possíveis falhas introduzidas pela implementação de novos comportamentos;
+    \item Corrigir eventuais falhas identificadas nas histórias de usuário anteriores;
+    \item Repetir o ciclo para a história seguinte.
 \end{enumerate}
 
-Desta maneira, a execução dos testes é sempre realizada de maneira repetitiva, para garantir que a evolução gradual do sistema seja alcançada sem afetar 
-nenhum comportamento aprovado previamente. Esta constatação repetida traz um maior nível de cobertura de testes, pois possibilita identificar possíveis 
-conflitos gerados entre as diferentes histórias de usuário e contribui para a maior robustez do sistema, dos cenários e das definições de passo.
+Dessa forma, a execução dos testes ocorre de maneira repetitiva, assegurando que a evolução gradual do sistema não comprometa comportamentos previamente aprovados. 
+Essa verificação contínua amplia a cobertura dos testes, permitindo identificar conflitos entre diferentes histórias de usuário e aumentando a robustez do sistema, 
+dos cenários e das definições de passo.
 
-Ao final da modalgem iterativa, o conjunto completo de todos os cenários de todas as histórias de usuário deve ser executado. Isso é feito como uma 
-validação final de que todo o comportamento definido para o sistema é satisfeito.
+Ao término da modelagem iterativa, todo o conjunto de cenários de todas as histórias de usuário deve ser executado como uma validação final, garantindo que o 
+comportamento especificado para o sistema seja plenamente atendido.
 
-Por fim, na sexta etapa (\ref{sbs:etapa6}), será feita uma análise quantitativa a cerca dos resultados obtidos durante a aplicação do processo. Serão 
-demonstradas instâncias de falhas de teste capturadas por conta da aplicação da metodologia, assim como a maior cobertura de testes foi resultante das 
-etapas de análise.
+Por fim, na sexta etapa (\ref{sbs:etapa6}), realiza-se uma análise quantitativa dos resultados obtidos durante a aplicação do processo. Nessa fase, são apresentadas 
+instâncias de falhas detectadas graças à maior cobertura de testes proporcionada pelo desenvolvimento iterativo.
 
 \section{\textbf{Ferramentas Utilizadas}}
 As ferramentas e tecnologias adotadas no desenvolvimento deste produto foram escolhidas com base na compatibilidade com o modelo proposto e na sua capacidade 
@@ -92,7 +92,7 @@ de integrar diferentes etapas do processo. A seguir, descreve-se cada uma delas:
 
 \section{\textbf{Critérios de Avaliação}}
 Para a verificação e validação do produto gerado, serão aplicados critérios quantitativos de análise, com base nos testes de aceitação de cada história de usuário. Este 
-processo será realizado durante a etapa 6, correspondente à modelagem iterativa do sistema no Simulink.
+processo será realizado durante a etapa 6 (\ref{sbs:etapa6}), correspondente à modelagem iterativa do sistema no Simulink.
 
 A cada iteração, os testes de aceitação de uma história de usuário serão executados e, com base nos cenários não aprovados, serão identificadas falhas no comportamento 
 do modelo. A partir dessas falhas, serão implementadas soluções para garantir a aprovação dos testes que podem envolver ajustes na lógica do modelo, 
