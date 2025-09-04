@@ -162,7 +162,7 @@
 \label{sbs:etapa5}
 
 Após a finalização da criação dos cenários \textit{Gherkin}, a implementação prossegue com o desenvolvimento do modelo e das definições de passos. Inicialmente, o modelo é 
-criado dentro da estrutura do projeto, em uma nova pasta denominada \textit{model}. O conteúdo desta pasta inclui:
+criado dentro da estrutura do projeto, em uma nova pasta denominada \textit{model} que também inclui:
 
 \begin{itemize}
 	\item \textbf{feature\_model.slx} - modelo caixa preta, utilizado nos testes;
@@ -519,8 +519,9 @@ A execução completa dos testes levou pouco mais de 31 minutos e contemplou:
     \item 890 passos.
 \end{itemize}
 
-O Quadro \ref{qua:falhas} demonstra um sumário das falhas nos testes que foram capturadas durante a etapa, assim como uma demonstração da melhoria 
-necessária para solucionar cada problema:
+O número total de cenários e de passos executados demonstra a ampla cobertura de testes aplicados, que satisfazem todos os comportamentos definidos nas 
+histórias de usuário. Além destes, O Quadro \ref{qua:falhas} demonstra um sumário das falhas nos testes que foram capturadas durante a etapa, assim como 
+uma demonstração da melhoria necessária para solucionar cada problema:
 
 \begin{quadro}[H]
 \caption{Falhas de comportamento capturadas durante a modelagem iterativa}
@@ -560,16 +561,38 @@ Problema na determinação correta do tempo decorrido na simulação & Definiç�
 
 Um total de 13 falhas foram levantadas, que culminaram na implementação de 8 melhorias no modelo, 3 melhorias no cenários e 2 melhorias nas definições dos passos. 
 
-O processo iterativo demonstrou-se extremamente eficiente quando comparado a metodologias alternativas de desenvolvimento e testes de software embarcado. Um exemplo 
-que ilustra claramente essa eficiência ocorreu durante a execução dos testes da história de usuário 3: a identificação das três primeiras falhas, bem como a implementação 
-das respectivas soluções para atender aos cenários relevantes.
+O processo iterativo demonstrou-se extremamente eficiente para a modelagem do sistema, especialmente quando comparado a metodologias alternativas de desenvolvimento e 
+testes de software embarcado. Isso é demonstrado em diferentes perspectivas, dentre as quais é importamnte destacar a possibilidade da validação do sistema antes 
+mesmo da escrita ou geração do código.
 
+A validação aplicada apenas no sistema físico traz uma complicação que não só atrasa a entrega do produto físico, mas também torna 
+o processo mais caro. Isso deve-se ao fato de que atingir o nível de maturidade do sistema em que é possível executar testes no hardware normalmente só é alcançado 
+meses após a conclusão da etapa de análise, em que o design do sistema é definido.
+
+Até que a maturidade seja alcançada e o design seja colocado a prova, o trabalho de implementação já foi executado em grande parte, custando várias horas de trabalho 
+de engenheiros de software. Qualquer problema encontrado nos testes desta fase vão precisar passar por extensos processos de identificação e precisarão ser comunicados 
+ao engenheiro de sistema responsável pela análise. 
+
+Diante deste cenário, um possível erro no design que passou despercebido durante a definição do sistema se torna extremamente caro, pois a sua identificação só foi 
+possível após meses de trabalho de vários engenheiros de diferentes departamentos. Além do mais, para conseguir definir uma solução, é necessário que os engenheiros 
+revisem o design, proponham uma mudança que deve ser implementada e testada novamente, o que gera um grande custo de horas de retrabalho.  
+
+No caso da metodologia proposta por este trabalho, a execução dos testes pode ser feita antes mesmo do desenvolvimento do código, podendo até estar sob a 
+responsabilidade do mesmo engenheiro que realiza a análise do sistema. Isso faz com que ele tenha uma maior confiabilidade sobre o seu design e tenha o 
+controle sobre quaisquer mudanças que venham a ser necessárias. Quanto mais cedo uma falha for descoberta no desenvolvimento de um sistema, mais barato é 
+a sua solução.
+
+Um exemplo que ilustra claramente essa eficiência ocorreu durante a execução dos testes da história de usuário 3, quando foi constatado a necessidade do uso de uma 
+condição de tempo para validar a condição em que o feedback deveria ser realizado. A princípio, sem visualizar a execução do sistema, o tempo não foi considerado 
+como uma condição necessária, pois a necessidade de validar a saída do sistema, não apenas o pressionar do botão, não foi levantada.
+
+Outro benefício desta metodologia é a facilidade na identificação da causa dos erros dos testes, como no caso das três primeiras falhas da história de usuário 3.
 Os problemas encontrados estavam associados a detalhes específicos da implementação, cuja identificação exigiu uma visualização precisa do comportamento do sistema. 
 Para tanto, foi necessário executar os testes repetidas vezes, realizando pequenos ajustes no modelo entre cada execução.
 
 Em metodologias que realizam testes apenas após o lançamento do código embarcado, o processo análogo de identificação de falhas demandaria um número grande de 
 compilações seguidas de testes. Além disso, a instrumentação utilizada nesse contexto pode apresentar limitações na observação do comportamento do sistema, o que 
-dificultaria a detecção, por exemplo, de um loop indesejado.
+dificultaria a detecção das falhas observadas.
 
 Essas dificuldades são mitigadas pelo uso do ambiente de simulação, que se mostra altamente flexível ao permitir alterações rápidas no modelo, sem exigir grande 
 esforço de compilação ou implementação em hardware. Outro benefício é a possibilidade de acompanhar a execução de forma visual, permitindo que os diagramas de 
