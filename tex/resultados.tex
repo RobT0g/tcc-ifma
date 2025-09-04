@@ -565,9 +565,9 @@ O processo iterativo mostrou-se altamente eficiente para a modelagem do sistema,
 de software embarcado. Entre os principais benefícios, destaca-se a possibilidade de validar o sistema antes mesmo da escrita ou geração do código, que torna o 
 a detecção de falhas e implementação de soluções mais rápidas e com menos custo associado.
 
-Realizar a validação apenas no sistema físico acarreta complicações que não apenas atrasam a entrega do produto final, mas também elevam os custos 
-do processo. Isso ocorre porque o nível de maturidade necessário para a execução de testes em hardware geralmente só é alcançado meses após a conclusão da etapa de 
-análise, na qual o design do sistema é definido. 
+Realizar a validação apenas no sistema físico acarreta complicações que não apenas atrasam a entrega do produto final, mas também elevam os custos do processo, o que 
+é normalmente referenciado como \textit{Cost of Poor Quality} (custo da má qualidade) \cite{costOfPoorQuality}. Isso ocorre porque o nível de maturidade necessário 
+para a execução de testes em hardware geralmente só é alcançado meses após a conclusão da etapa de análise, na qual o design do sistema é definido. 
 
 Até que o sistema atinja o nível de maturidade necessário para que o design seja efetivamente colocado à prova, grande parte da implementação já terá sido realizada, 
 demandando inúmeras horas de trabalho dos engenheiros de software. Qualquer problema identificado nessa fase exige processos extensos de diagnóstico e deve ser 
@@ -577,9 +577,10 @@ Nesse contexto, um erro de design não detectado durante a fase de definição t
 de diversos engenheiros de diferentes departamentos. Além disso, para que uma solução seja estabelecida, torna-se necessário revisar o design, propor modificações, 
 implementá-las e testá-las novamente — resultando em um elevado custo de retrabalho.
 
+A execução dos testes no modelo do sistema, tem se provado como uma forma de melhorar tanto a qualidade quanto a eficiência do processo de desenvolvimento \cite{modelTesting}.
 Na metodologia proposta por este trabalho, a execução dos testes pode ocorrer antes mesmo do desenvolvimento do código, podendo inclusive estar sob a responsabilidade 
 do próprio engenheiro que realiza a análise do sistema. Isso proporciona maior confiabilidade em relação ao design e permite que o engenheiro mantenha controle direto 
-sobre eventuais mudanças necessárias. Além disso, quanto mais cedo uma falha é identificada no processo de desenvolvimento, menor é o custo de sua correção.
+sobre eventuais mudanças necessárias.
 
 Um exemplo que ilustra claramente essa eficiência ocorreu durante a execução dos testes da história de usuário 3, quando se constatou a necessidade de incluir uma 
 condição temporal para validar o momento em que o feedback deveria ser realizado. Inicialmente, sem a visualização prática do sistema, essa condição não foi 
